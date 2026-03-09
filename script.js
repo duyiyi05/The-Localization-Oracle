@@ -258,6 +258,7 @@ function seedDust(container, count = 34) {
   const finalReading = document.getElementById("finalReading");
   const finalCards = document.getElementById("finalCards");
   const closingPetals = document.getElementById("closingPetals");
+  const finalLastWhisper = document.getElementById("finalLastWhisper");
   const readingCard = document.getElementById("readingCard");
   const readingHeader = document.querySelector(".readingHeader");
 
@@ -307,7 +308,8 @@ function seedDust(container, count = 34) {
     if (!finalCards || finalCards.children.length) return;
     ARCANA.forEach((card, i) => {
       const cardFace = document.createElement("article");
-      cardFace.className = "finalReading__miniCard";
+      const zoneClass = i < 5 ? "finalReading__miniCard--row1" : "finalReading__miniCard--row2";
+      cardFace.className = `finalReading__miniCard ${zoneClass}`;
       cardFace.innerHTML = `<p class="finalReading__miniSigil">${i + 1}</p><p>${card.title}</p>`;
       finalCards.appendChild(cardFace);
     });
@@ -328,7 +330,6 @@ function seedDust(container, count = 34) {
     closing.hidden = false;
     closing.dataset.phase = "summoning";
     seedDust(closingDust);
-    if (candleWhisper) candleWhisper.textContent = "The final card has spoken.";
 
     if (closingPetals && !petalTimer) {
       petalTimer = window.setInterval(() => {
@@ -395,9 +396,16 @@ function seedDust(container, count = 34) {
       hiddenCard.classList.add("is-opened");
       if (hiddenCardNote) hiddenCardNote.hidden = false;
       buildFinalCards();
+      if (finalLastWhisper) {
+        finalLastWhisper.hidden = false;
+        requestAnimationFrame(() => finalLastWhisper.classList.add("is-visible"));
+      }
       if (finalReading) {
         finalReading.hidden = false;
-        requestAnimationFrame(() => finalReading.classList.add("is-visible"));
+        setTimeout(() => {
+          finalLastWhisper?.classList.remove("is-visible");
+          requestAnimationFrame(() => finalReading.classList.add("is-visible"));
+        }, 1100);
       }
       closing?.setAttribute("data-phase", "complete");
       document.body.classList.remove("is-reading-quiet");
