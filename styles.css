@@ -78,3 +78,50 @@ a{color:inherit}
 
 .closingScene{margin:22px auto 0;max-width:920px;padding:40px 28px;text-align:center;position:relative;overflow:hidden}
 .closingScene h2{margin-top:20px;font-size:clamp(24px,3.5vw,38px)}
+
+/* ===== Spread chamber redesign ===== */
+.page--spread .spreadStage{max-width:1200px;padding-top:42px}
+.spreadWindow{position:relative;padding:30px 26px 28px;border:1px solid rgba(198,166,91,.34);border-radius:28px;background:linear-gradient(180deg,rgba(23,7,11,.86),rgba(8,2,4,.78));box-shadow:inset 0 0 0 1px rgba(198,166,91,.09),0 45px 140px rgba(0,0,0,.65)}
+.spreadWindow::before{content:"";position:absolute;inset:12px;border:1px solid rgba(198,166,91,.15);border-radius:22px;pointer-events:none}
+.spreadWindow__header{text-align:center;padding:8px 0 14px}
+.spreadWindow__title{font-size:clamp(32px,4.9vw,54px);margin-bottom:8px}
+.tarotTable{padding:8px 8px 2px}
+.cardsGrid--spread{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:980px;margin:0 auto;opacity:1;pointer-events:auto;transform:none;transition:none}
+.cardsGrid--spread[data-state='stacked'] .tarot{grid-area:1/1;justify-self:center;align-self:center;transform:translate(0,0) rotate(var(--stack-rot,0deg));opacity:.92}
+.cardsGrid--spread[data-state='stacked'] .tarot:nth-child(1){--stack-rot:-8deg}
+.cardsGrid--spread[data-state='stacked'] .tarot:nth-child(2){--stack-rot:6deg}
+.cardsGrid--spread[data-state='stacked'] .tarot:nth-child(3){--stack-rot:-4deg}
+.cardsGrid--spread[data-state='stacked'] .tarot:nth-child(n+4){opacity:0}
+.cardsGrid--spread[data-state='spread'] .tarot{opacity:1;transform:translateY(0) rotate(0);animation:dealCard 500ms cubic-bezier(.22,.61,.36,1) both;animation-delay:calc(var(--i) * 55ms)}
+@keyframes dealCard{from{opacity:0;transform:translateY(-24px) scale(.93)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+.page--spread .tarot{aspect-ratio:3/5;border:1px solid rgba(198,166,91,.38);border-radius:16px;padding:0;position:relative;overflow:visible;cursor:pointer;box-shadow:0 22px 75px rgba(0,0,0,.58);background:linear-gradient(145deg,rgba(84,23,35,.7),rgba(9,2,4,.95));transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.page--spread .tarot::before{content:"";position:absolute;inset:9px;border-radius:12px;border:1px solid rgba(198,166,91,.24);background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.08),transparent 42%),radial-gradient(circle at 80% 86%,rgba(198,166,91,.19),transparent 48%),linear-gradient(160deg,rgba(12,2,5,.35),rgba(0,0,0,.64))}
+.page--spread .tarot::after{content:attr(data-whisper);position:absolute;left:50%;bottom:calc(100% + 12px);transform:translateX(-50%);min-width:220px;max-width:290px;padding:8px 10px;background:rgba(9,4,5,.95);border:1px solid rgba(198,166,91,.38);border-radius:10px;color:var(--ivory-soft);font-size:11px;line-height:1.35;letter-spacing:.02em;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;box-shadow:0 15px 40px rgba(0,0,0,.45);z-index:6}
+.page--spread .tarot:hover,.page--spread .tarot:focus-visible{transform:translateY(-6px);box-shadow:0 28px 95px rgba(0,0,0,.68),0 0 28px rgba(198,166,91,.2);border-color:rgba(198,166,91,.66);outline:none}
+.page--spread .tarot:hover::after,.page--spread .tarot:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(-2px)}
+.page--spread .tarot.has-img{background-size:cover;background-position:center;background-color:#1a070d}
+.page--spread .tarot.has-img::before{background:linear-gradient(to bottom,rgba(0,0,0,.02),rgba(0,0,0,.68));border-color:rgba(198,166,91,.2)}
+.tarot__sigil,.tarot__label{position:absolute;left:50%;transform:translateX(-50%);z-index:2;text-transform:uppercase;pointer-events:none}
+.tarot__sigil{top:14px;font-size:13px;letter-spacing:.26em;color:rgba(255,235,205,.86)}
+.tarot__label{bottom:12px;font-size:11px;letter-spacing:.08em;color:rgba(244,234,223,.9);background:rgba(4,1,2,.42);padding:4px 7px;border-radius:999px;white-space:nowrap;max-width:90%;overflow:hidden;text-overflow:ellipsis}
+.page--spread .spreadActions{margin-top:20px}
+
+.candleField--spread .candle:nth-child(1){left:4%;bottom:8px;height:116px}
+.candleField--spread .candle:nth-child(2){left:13%;bottom:2px;height:86px}
+.candleField--spread .candle:nth-child(3){left:23%;bottom:10px;height:104px}
+.candleField--spread .candle:nth-child(4){right:24%;bottom:10px;height:108px}
+.candleField--spread .candle:nth-child(5){right:13%;bottom:2px;height:90px}
+.candleField--spread .candle:nth-child(6){right:4%;bottom:8px;height:122px}
+.candleField--spread .candle:nth-child(7){left:48%;bottom:0;height:78px}
+.candleField--spread .candle:nth-child(8){right:48%;bottom:0;height:80px}
+
+@media (max-width:900px){
+  .cardsGrid--spread{grid-template-columns:repeat(2,minmax(0,1fr));max-width:740px}
+}
+@media (max-width:620px){
+  .spreadWindow{padding:20px 14px 18px}
+  .cardsGrid--spread{grid-template-columns:1fr;gap:14px;max-width:330px}
+  .cardsGrid--spread[data-state='stacked'] .tarot:nth-child(n+2){opacity:0}
+  .page--spread .tarot::after{min-width:170px;max-width:220px;font-size:10px}
+}

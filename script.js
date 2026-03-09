@@ -115,28 +115,23 @@ function preloadImage(src) {
 })();
 
 (function spreadPage() {
-  const spreadBtn = document.getElementById("spreadBtn");
   const grid = document.getElementById("cardsGrid");
-  const hint = document.getElementById("hint");
-  if (!spreadBtn || !grid) return;
+  if (!grid) return;
 
   const tarotButtons = Array.from(grid.querySelectorAll(".tarot"));
-  tarotButtons.forEach(async (btn) => {
+  tarotButtons.forEach(async (btn, index) => {
+    btn.style.setProperty("--i", String(index));
     const n = String(btn.dataset.card).padStart(2, "0");
     const src = `assets/tarot-${n}.jpg`;
     if (await preloadImage(src)) {
       btn.classList.add("has-img");
       btn.style.backgroundImage = `url("${src}")`;
     }
-    btn.title = btn.dataset.whisper || "";
   });
 
-  spreadBtn.addEventListener("click", () => {
-    grid.dataset.state = "shown";
-    spreadBtn.disabled = true;
-    spreadBtn.textContent = "Cards Revealed";
-    if (hint) hint.innerHTML = "Touch a card to unveil it, or choose <strong>Start Reading</strong>.";
-  });
+  setTimeout(() => {
+    grid.dataset.state = "spread";
+  }, 220);
 
   grid.addEventListener("click", (e) => {
     const card = e.target.closest(".tarot");
