@@ -77,6 +77,10 @@ a{color:inherit}
 .detailBlock p{margin:0;color:var(--ivory-soft)}
 @media (max-width:860px){.detailGrid{grid-template-columns:1fr}}
 
+
+.is-reading-quiet .particles{opacity:.32;filter:saturate(.75)}
+.readingHeader.is-quiet,.arcanaRail.is-quiet,.readingCard.is-quiet{opacity:.36;filter:blur(.6px) saturate(.8);transition:opacity .8s ease,filter .8s ease}
+
 .closingScene{margin:22px auto 0;max-width:920px;padding:40px 28px 150px;text-align:center;position:relative;overflow:hidden;isolation:isolate}
 .closingScene[hidden]{display:none}
 .closingScene::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,.62),rgba(0,0,0,.24) 52%,transparent 100%);z-index:2;pointer-events:none}
@@ -97,6 +101,7 @@ a{color:inherit}
 
 .closingScene[data-phase='summoning']::before{background:radial-gradient(ellipse at center,rgba(0,0,0,.72),rgba(0,0,0,.38) 55%,transparent 100%)}
 .closingScene[data-phase='summoning'] .readingActions,.closingScene[data-phase='summoning'] .subtitle{filter:saturate(.85)}
+.closingScene[data-phase='summoning'] .flame{animation-duration:1.25s;filter:blur(.35px) drop-shadow(0 0 14px rgba(255,178,71,.58))}
 
 .closingPetals{position:absolute;inset:0;pointer-events:none;z-index:5;overflow:hidden}
 .closingPetal{position:absolute;top:-20px;width:12px;height:16px;background:linear-gradient(160deg,rgba(247,213,217,.92),rgba(190,79,95,.84));border-radius:62% 38% 65% 35%;opacity:.74;animation:closingPetalFall linear forwards}
@@ -181,16 +186,16 @@ a{color:inherit}
 .hiddenPrelude{min-height:24px;font-style:italic;color:rgba(244,234,223,.86);opacity:0;transform:translateY(6px);transition:opacity .7s ease,transform .7s ease}
 .closingScene[data-phase='revealed'] .hiddenPrelude,.closingScene[data-phase='complete'] .hiddenPrelude{opacity:1;transform:translateY(0)}
 
-.hiddenCard{margin:20px auto 0;width:min(540px,100%);min-height:340px;border:1px solid rgba(198,166,91,.45);border-radius:18px;background:transparent;position:relative;display:block;cursor:pointer;transform-style:preserve-3d;perspective:1400px;box-shadow:0 26px 80px rgba(0,0,0,.5);opacity:0;transform:translateY(34px) scale(.95);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.22,.61,.36,1)}
+.hiddenCard{margin:20px auto 0;width:min(540px,100%);min-height:340px;border:1px solid rgba(198,166,91,.45);border-radius:18px;background:transparent;position:relative;display:block;cursor:pointer;perspective:1400px;box-shadow:0 26px 80px rgba(0,0,0,.5);opacity:0;transform:translateY(34px) scale(.95);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.22,.61,.36,1)}
+.hiddenCard::before{content:"";position:absolute;inset:-16px;border-radius:26px;background:radial-gradient(circle at 50% 40%,rgba(198,166,91,.2),transparent 68%);opacity:0;transition:opacity .8s ease;pointer-events:none}
 .hiddenCard.is-risen{opacity:1;transform:translateY(0) scale(1)}
-.hiddenCard__face{position:absolute;inset:0;padding:24px 22px;border-radius:18px;backface-visibility:hidden;background:linear-gradient(160deg,rgba(14,3,6,.9),rgba(44,10,18,.84));color:var(--ivory);text-align:left}
+.hiddenCard.is-risen::before{opacity:1}
+.hiddenCard__inner{position:relative;display:block;min-height:340px;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.22,.61,.36,1)}
+.hiddenCard__face{position:absolute;inset:0;padding:24px 22px;border-radius:18px;backface-visibility:hidden;background:linear-gradient(160deg,rgba(14,3,6,.92),rgba(44,10,18,.86));color:var(--ivory);text-align:left}
 .hiddenCard__face--back{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;text-align:center;letter-spacing:.06em;text-transform:uppercase}
 .hiddenCard__face--front{transform:rotateY(180deg);overflow:auto}
 .hiddenCard__face h3{margin:8px 0 10px;font-size:clamp(20px,2.5vw,28px)}
-.hiddenCard.is-flipping{animation:hiddenFlip 820ms cubic-bezier(.22,.61,.36,1) forwards}
-.hiddenCard.is-opened .hiddenCard__face--back{transform:rotateY(180deg)}
-.hiddenCard.is-opened .hiddenCard__face--front{transform:rotateY(360deg)}
-@keyframes hiddenFlip{0%{transform:translateY(0) rotateY(0deg)}100%{transform:translateY(-4px) rotateY(180deg)}}
+.hiddenCard.is-flipping .hiddenCard__inner,.hiddenCard.is-opened .hiddenCard__inner{transform:rotateY(180deg)}
 
 .hiddenCardNote{margin:16px auto 0;font-style:italic;color:rgba(244,234,223,.88)}
 .finalReading{margin:24px auto 0;max-width:760px;padding:20px;border:1px solid rgba(198,166,91,.3);border-radius:16px;background:rgba(5,2,3,.66);opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease}

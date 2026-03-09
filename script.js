@@ -254,6 +254,8 @@ function seedDust(container, count = 34) {
   const finalReading = document.getElementById("finalReading");
   const finalCards = document.getElementById("finalCards");
   const closingPetals = document.getElementById("closingPetals");
+  const readingCard = document.getElementById("readingCard");
+  const readingHeader = document.querySelector(".readingHeader");
 
   let lens = "tarot";
   let hiddenSequenceStarted = false;
@@ -314,9 +316,27 @@ function seedDust(container, count = 34) {
   function startHiddenSequence() {
     if (!closing || hiddenSequenceStarted) return;
     hiddenSequenceStarted = true;
+    document.body.classList.add("is-reading-quiet");
+    readingCard?.classList.add("is-quiet");
+    readingHeader?.classList.add("is-quiet");
+    rail?.classList.add("is-quiet");
+
     closing.hidden = false;
     closing.dataset.phase = "summoning";
     seedDust(closingDust);
+
+    if (closingPetals && !petalTimer) {
+      petalTimer = window.setInterval(() => {
+        const petal = document.createElement("span");
+        petal.className = "closingPetal";
+        petal.style.left = `${Math.random() * 100}%`;
+        petal.style.animationDuration = `${8.8 + Math.random() * 3.6}s`;
+        petal.style.animationDelay = `${Math.random() * 0.8}s`;
+        closingPetals.appendChild(petal);
+        setTimeout(() => petal.remove(), 14000);
+      }, 900);
+    }
+
     requestAnimationFrame(() => closing.classList.add("is-revealed"));
     closing.scrollIntoView({ behavior: "smooth", block: "start" });
 
@@ -324,26 +344,15 @@ function seedDust(container, count = 34) {
       if (hiddenPrelude) {
         hiddenPrelude.textContent = "Not all forces shaping the outcome are visible at the beginning.";
       }
-    }, 850);
+    }, 900);
 
     setTimeout(() => {
       if (hiddenCard) {
         hiddenCard.hidden = false;
         hiddenCard.classList.add("is-risen");
       }
-      if (closingPetals && !petalTimer) {
-        petalTimer = window.setInterval(() => {
-          const petal = document.createElement("span");
-          petal.className = "closingPetal";
-          petal.style.left = `${Math.random() * 100}%`;
-          petal.style.animationDuration = `${7 + Math.random() * 5}s`;
-          petal.style.animationDelay = `${Math.random() * 0.6}s`;
-          closingPetals.appendChild(petal);
-          setTimeout(() => petal.remove(), 12000);
-        }, 700);
-      }
       closing.dataset.phase = "revealed";
-    }, 2150);
+    }, 2300);
 
     sessionStorage.setItem("readingCompleted", "1");
   }
@@ -386,11 +395,15 @@ function seedDust(container, count = 34) {
         requestAnimationFrame(() => finalReading.classList.add("is-visible"));
       }
       closing?.setAttribute("data-phase", "complete");
+      document.body.classList.remove("is-reading-quiet");
+      readingCard?.classList.remove("is-quiet");
+      readingHeader?.classList.remove("is-quiet");
+      rail?.classList.remove("is-quiet");
       if (petalTimer) {
         clearInterval(petalTimer);
         petalTimer = null;
       }
-    }, 620);
+    }, 760);
   });
 
   closingCandles?.addEventListener("click", (event) => {
