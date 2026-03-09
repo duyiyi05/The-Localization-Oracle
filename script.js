@@ -246,8 +246,6 @@ function seedDust(container, count = 34) {
   const rail = document.getElementById("arcanaRail");
   const closing = document.getElementById("closingScene");
   const closingDust = closing?.querySelector(".magic-dust");
-  const closingCandles = document.getElementById("closingCandles");
-  const candleWhisper = document.getElementById("candleWhisper");
   const oracleCard = document.getElementById("oracleCard");
 
   let lens = "tarot";
@@ -308,20 +306,15 @@ function seedDust(container, count = 34) {
     closing.hidden = false;
     seedDust(closingDust);
     requestAnimationFrame(() => closing.classList.add("is-revealed"));
+    setTimeout(() => closing.classList.add("is-text-visible"), 520);
     setTimeout(() => {
-      if (oracleCard) oracleCard.hidden = false;
+      if (oracleCard) {
+        oracleCard.hidden = false;
+        closing.classList.add("is-oracle-visible");
+      }
     }, 1300);
     closing.scrollIntoView({ behavior: "smooth", block: "start" });
     sessionStorage.setItem("readingCompleted", "1");
-  });
-
-  closingCandles?.addEventListener("click", (event) => {
-    if (!event.target.closest(".candle")) return;
-    if (!candleWhisper) return;
-    candleWhisper.textContent = "Even the smallest light can guide a message across the world.";
-    setTimeout(() => {
-      candleWhisper.textContent = "";
-    }, 2400);
   });
 
   paint();
