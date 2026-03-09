@@ -24,12 +24,17 @@
     <nav class="arcanaRail" id="arcanaRail" aria-label="Arcana navigation"></nav>
 
     <section class="readingCard" id="readingCard" aria-live="polite">
-      <p class="progress" id="progress">Arcana 1 of 9</p>
+      <p class="progress" id="progress">Revelation 1 of 9</p>
+      <div class="progressDots" id="progressDots" aria-hidden="true"></div>
+      <div class="lensToggle" role="tablist" aria-label="Reading lens">
+        <button class="btn btn--gold-soft is-active" data-lens="tarot" type="button">🔮 Tarot Meaning</button>
+        <button class="btn btn--ghost" data-lens="real" type="button">🌍 Real Localization Example</button>
+      </div>
       <h2 id="arcanaTitle">Arcana</h2>
       <p class="prophecy" id="arcanaProphecy"></p>
 
       <div class="detailBlock">
-        <h3>Meaning in Localization Project Management</h3>
+        <h3 id="lensHeading">Meaning in Localization Project Management</h3>
         <p id="arcanaMeaning"></p>
       </div>
 
@@ -41,21 +46,33 @@
 
       <div class="readingActions">
         <button class="btn btn--gold-soft" id="prevArcana">Previous Arcana</button>
-        <button class="btn btn--gold" id="nextArcana">Turn the Next Arcana</button>
+        <button class="btn btn--gold" id="nextArcana">Reveal the Next Arcana</button>
       </div>
     </section>
 
     <section class="closingScene" id="closingScene" hidden>
-      <div class="candleField candleField--dense" aria-hidden="true">
+      <div class="magic-dust" aria-hidden="true"></div>
+      <div class="closingScene__veil" aria-hidden="true"></div>
+      <div class="closingScene__candles" id="closingCandles" aria-hidden="true">
         <div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div>
-        <div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div>
-        <div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div>
+        <div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div><div class="candle"><div class="flame"></div></div>
       </div>
-      <h2>The cards fall silent here, but their lesson remains: great localization is not just managed — it is interpreted, orchestrated, and brought to life.</h2>
-      <p>Let the next project begin.</p>
-      <p>Duygu Taş — Localization Project Management | Language Operations | Multilingual Content Strategy</p>
-      <p>Email: your-email@example.com · LinkedIn: your-linkedin · Portfolio: your-portfolio</p>
-      <a class="btn btn--gold" href="spread.html">Enter the Next Reading</a>
+      <p class="hint candleWhisper" id="candleWhisper" aria-live="polite"></p>
+      <div class="closingScene__text">
+        <p class="subtitle">The Reading Concludes</p>
+        <h2>The cards grow quiet now. Yet their message remains clear.</h2>
+        <p>Localization is not simply translation. It is the art of guiding meaning safely across languages, cultures, and worlds.</p>
+        <p>And every successful journey needs someone who can read the signs.</p>
+        <p>Duygu Taş — Localization Project Management | Language Operations | Multilingual Content Strategy</p>
+        <p>Email: your-email@example.com · LinkedIn: your-linkedin · Portfolio: your-portfolio</p>
+        <a class="btn btn--gold" href="spread.html">Enter the Next Reading</a>
+      </div>
+      <article class="oracleCard" id="oracleCard" hidden>
+        <p class="kicker">Arcana X — The Oracle</p>
+        <h3>Localization Project Manager</h3>
+        <p>Behind every successful global launch stands someone who sees the path before others do.</p>
+        <p>The Localization PM is the unseen guide — balancing languages, systems, teams, and time to ensure meaning reaches every market.</p>
+      </article>
     </section>
   </main>
 
