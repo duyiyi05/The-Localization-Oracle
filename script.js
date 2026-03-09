@@ -248,9 +248,17 @@ function seedDust(container, count = 34) {
   const closingDust = closing?.querySelector(".magic-dust");
   const closingCandles = document.getElementById("closingCandles");
   const candleWhisper = document.getElementById("candleWhisper");
-  const oracleCard = document.getElementById("oracleCard");
+  const hiddenPrelude = document.getElementById("hiddenPrelude");
+  const hiddenCard = document.getElementById("hiddenCard");
+  const hiddenCardNote = document.getElementById("hiddenCardNote");
+  const finalReading = document.getElementById("finalReading");
+  const finalCards = document.getElementById("finalCards");
+  const closingPetals = document.getElementById("closingPetals");
 
   let lens = "tarot";
+  let hiddenSequenceStarted = false;
+  let hiddenCardOpened = false;
+  let petalTimer = null;
   let index = Math.max(0, Math.min(8, Number(new URLSearchParams(window.location.search).get("card") || 1) - 1));
 
   ARCANA.forEach((_, i) => {
@@ -289,6 +297,57 @@ function seedDust(container, count = 34) {
     nextBtn.textContent = index === 8 ? "Complete the Reading" : "Reveal the Next Arcana";
   }
 
+  function buildFinalCards() {
+    if (!finalCards || finalCards.children.length) return;
+    ARCANA.forEach((card) => {
+      const chip = document.createElement("span");
+      chip.className = "finalReading__chip";
+      chip.textContent = card.title;
+      finalCards.appendChild(chip);
+    });
+    const hiddenChip = document.createElement("span");
+    hiddenChip.className = "finalReading__chip finalReading__chip--x";
+    hiddenChip.textContent = "Arcana X — The Invisible Conductor";
+    finalCards.appendChild(hiddenChip);
+  }
+
+  function startHiddenSequence() {
+    if (!closing || hiddenSequenceStarted) return;
+    hiddenSequenceStarted = true;
+    closing.hidden = false;
+    closing.dataset.phase = "summoning";
+    seedDust(closingDust);
+    requestAnimationFrame(() => closing.classList.add("is-revealed"));
+    closing.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    setTimeout(() => {
+      if (hiddenPrelude) {
+        hiddenPrelude.textContent = "Not all forces shaping the outcome are visible at the beginning.";
+      }
+    }, 850);
+
+    setTimeout(() => {
+      if (hiddenCard) {
+        hiddenCard.hidden = false;
+        hiddenCard.classList.add("is-risen");
+      }
+      if (closingPetals && !petalTimer) {
+        petalTimer = window.setInterval(() => {
+          const petal = document.createElement("span");
+          petal.className = "closingPetal";
+          petal.style.left = `${Math.random() * 100}%`;
+          petal.style.animationDuration = `${7 + Math.random() * 5}s`;
+          petal.style.animationDelay = `${Math.random() * 0.6}s`;
+          closingPetals.appendChild(petal);
+          setTimeout(() => petal.remove(), 12000);
+        }, 700);
+      }
+      closing.dataset.phase = "revealed";
+    }, 2150);
+
+    sessionStorage.setItem("readingCompleted", "1");
+  }
+
   prevBtn.addEventListener("click", () => {
     if (index > 0) {
       index -= 1;
@@ -305,14 +364,33 @@ function seedDust(container, count = 34) {
       return;
     }
 
-    closing.hidden = false;
-    seedDust(closingDust);
-    requestAnimationFrame(() => closing.classList.add("is-revealed"));
+    startHiddenSequence();
+  });
+
+
+  hiddenCard?.addEventListener("click", () => {
+    if (hiddenCardOpened) return;
+    hiddenCardOpened = true;
+
+    if (candleWhisper) {
+      candleWhisper.textContent = "Strange… this card was not part of the original spread.";
+    }
+
+    hiddenCard.classList.add("is-flipping");
     setTimeout(() => {
-      if (oracleCard) oracleCard.hidden = false;
-    }, 1300);
-    closing.scrollIntoView({ behavior: "smooth", block: "start" });
-    sessionStorage.setItem("readingCompleted", "1");
+      hiddenCard.classList.add("is-opened");
+      if (hiddenCardNote) hiddenCardNote.hidden = false;
+      buildFinalCards();
+      if (finalReading) {
+        finalReading.hidden = false;
+        requestAnimationFrame(() => finalReading.classList.add("is-visible"));
+      }
+      closing?.setAttribute("data-phase", "complete");
+      if (petalTimer) {
+        clearInterval(petalTimer);
+        petalTimer = null;
+      }
+    }, 620);
   });
 
   closingCandles?.addEventListener("click", (event) => {
