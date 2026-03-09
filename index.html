@@ -8,33 +8,22 @@
 </head>
 <body class="page page--cover">
   <div class="bg"></div>
+  <div class="particles" aria-hidden="true"></div>
+  <div class="petalLayer" id="petalLayer" aria-hidden="true"></div>
 
-  <!-- floating corner candles (png optional) -->
   <div class="cornerCandles" aria-hidden="true">
-    <div class="candle candle--tl">
-      <div class="flame"></div>
-    </div>
-    <div class="candle candle--br">
-      <div class="flame"></div>
-    </div>
+    <div class="candle candle--tl"><div class="flame"></div></div>
+    <div class="candle candle--tr"><div class="flame"></div></div>
+    <div class="candle candle--bl"><div class="flame"></div></div>
+    <div class="candle candle--br"><div class="flame"></div></div>
   </div>
 
   <main class="centerStage">
-    <section class="stack" aria-label="Cover">
-      <div class="stack__card stack__card--back"></div>
-      <div class="stack__card stack__card--mid"></div>
-
-      <div class="stack__card stack__card--front" id="coverCard">
-        <!-- Optional photo face; if you add assets/cover-front.jpg later it will show -->
-        <div class="coverPhoto" aria-hidden="true"></div>
-
-        <div class="coverFace">
-          <h1 class="title">THE ALCHEMY<br/>OF<br/>LOCALIZATION</h1>
-          <p class="subtitle">A Ritual in Nine Arcana</p>
-
-          <a class="btn btn--gold" id="beginReading" href="spread.html">Begin the Reading</a>
-        </div>
-      </div>
+    <section class="heroCard" aria-label="Cover">
+      <p class="kicker">A TAROT-INSPIRED PORTFOLIO EXPERIENCE</p>
+      <h1 class="title">THE ALCHEMY OF LOCALIZATION</h1>
+      <p class="lead">A tarot-inspired journey through the unseen craft of localization project management. Nine cards. Nine revelations. One discipline that turns complexity into clarity.</p>
+      <a class="btn btn--gold" id="beginReading" href="spread.html">Begin Reading</a>
     </section>
   </main>
 
