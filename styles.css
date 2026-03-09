@@ -77,22 +77,35 @@ a{color:inherit}
 .detailBlock p{margin:0;color:var(--ivory-soft)}
 @media (max-width:860px){.detailGrid{grid-template-columns:1fr}}
 
+
+.is-reading-quiet .particles{opacity:.32;filter:saturate(.75)}
+.readingHeader.is-quiet,.arcanaRail.is-quiet,.readingCard.is-quiet{opacity:.36;filter:blur(.6px) saturate(.8);transition:opacity .8s ease,filter .8s ease}
+
 .closingScene{margin:22px auto 0;max-width:920px;padding:40px 28px 150px;text-align:center;position:relative;overflow:hidden;isolation:isolate}
 .closingScene[hidden]{display:none}
 .closingScene::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,.62),rgba(0,0,0,.24) 52%,transparent 100%);z-index:2;pointer-events:none}
 .closingScene__veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),transparent 42%);z-index:2;pointer-events:none}
-.closingScene__text{position:relative;z-index:10;max-width:700px;margin:0 auto}
+.closingScene__text{position:relative;z-index:12;max-width:760px;margin:0 auto}
 .closingScene h2{margin:16px 0 18px;font-size:clamp(24px,3.5vw,38px)}
 .closingScene__text p{color:var(--ivory-soft)}
-.closingScene__candles{position:absolute;left:0;bottom:0;width:100%;height:145px;pointer-events:auto;z-index:1;opacity:0;transform:translateY(8px);transition:opacity .9s ease,transform .9s ease}
+.closingScene__candles{position:absolute;left:0;bottom:0;width:100%;height:116px;pointer-events:auto;z-index:4;opacity:0;transform:translateY(8px);transition:opacity .9s ease,transform .9s ease}
 .closingScene.is-revealed .closingScene__candles{opacity:1;transform:translateY(0)}
-.closingScene__candles .candle:nth-child(1){left:4%;bottom:8px;height:96px}
-.closingScene__candles .candle:nth-child(2){left:12%;bottom:2px;height:78px}
-.closingScene__candles .candle:nth-child(3){left:22%;bottom:10px;height:88px}
-.closingScene__candles .candle:nth-child(4){left:50%;bottom:0;height:64px;opacity:.55}
-.closingScene__candles .candle:nth-child(5){right:22%;bottom:10px;height:86px}
-.closingScene__candles .candle:nth-child(6){right:12%;bottom:2px;height:80px}
-.closingScene__candles .candle:nth-child(7){right:4%;bottom:8px;height:98px}
+.closingScene__candles .candle:nth-child(1){left:4%;bottom:8px;height:84px}
+.closingScene__candles .candle:nth-child(2){left:12%;bottom:2px;height:70px}
+.closingScene__candles .candle:nth-child(3){left:22%;bottom:10px;height:78px}
+.closingScene__candles .candle:nth-child(4){left:50%;bottom:0;height:54px;opacity:.55}
+.closingScene__candles .candle:nth-child(5){right:22%;bottom:10px;height:76px}
+.closingScene__candles .candle:nth-child(6){right:12%;bottom:2px;height:70px}
+.closingScene__candles .candle:nth-child(7){right:4%;bottom:8px;height:84px}
+
+
+.closingScene[data-phase='summoning']::before{background:radial-gradient(ellipse at center,rgba(0,0,0,.72),rgba(0,0,0,.38) 55%,transparent 100%)}
+.closingScene[data-phase='summoning'] .readingActions,.closingScene[data-phase='summoning'] .subtitle{filter:saturate(.85)}
+.closingScene[data-phase='summoning'] .flame{animation-duration:1.25s;filter:blur(.35px) drop-shadow(0 0 14px rgba(255,178,71,.58))}
+
+.closingPetals{position:absolute;inset:0;pointer-events:none;z-index:5;overflow:hidden}
+.closingPetal{position:absolute;top:-20px;width:12px;height:16px;background:linear-gradient(160deg,rgba(247,213,217,.92),rgba(190,79,95,.84));border-radius:62% 38% 65% 35%;opacity:.74;animation:closingPetalFall linear forwards}
+@keyframes closingPetalFall{from{transform:translateY(-20px) rotate(0deg)}to{transform:translateY(115%) translateX(24px) rotate(280deg);opacity:0}}
 
 .magic-dust{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:3}
 .magic-dust span{position:absolute;width:2px;height:2px;border-radius:50%;background:rgba(255,220,154,.45);animation:floatDust linear infinite}
@@ -111,13 +124,26 @@ a{color:inherit}
 .cardsGrid--spread[data-state='stacked'] .tarot:nth-child(2){--stack-rot:6deg}
 .cardsGrid--spread[data-state='stacked'] .tarot:nth-child(3){--stack-rot:-4deg}
 .cardsGrid--spread[data-state='stacked'] .tarot:nth-child(n+4){opacity:0}
-.cardsGrid--spread[data-state='spread'] .tarot{opacity:1;transform:translateY(0) rotate(0);animation:dealCard 500ms cubic-bezier(.22,.61,.36,1) both;animation-delay:calc(var(--i) * 55ms)}
+.cardsGrid--spread[data-state='shuffling'] .tarot{grid-area:1/1;opacity:.78;animation:stackShuffle 1500ms ease-in-out infinite;animation-delay:calc(var(--i) * 70ms)}
+.cardsGrid--spread[data-state='shuffling'] .tarot:nth-child(1){--sx:-12px;--sy:-8px;--sr:-8deg}
+.cardsGrid--spread[data-state='shuffling'] .tarot:nth-child(2){--sx:10px;--sy:5px;--sr:9deg}
+.cardsGrid--spread[data-state='shuffling'] .tarot:nth-child(3){--sx:-7px;--sy:11px;--sr:-5deg}
+.cardsGrid--spread[data-state='shuffling'] .tarot:nth-child(4){--sx:8px;--sy:-10px;--sr:7deg}
+.cardsGrid--spread[data-state='shuffling'] .tarot:nth-child(5){--sx:-11px;--sy:3px;--sr:-7deg}
+.cardsGrid--spread[data-state='shuffling'] .tarot:nth-child(6){--sx:12px;--sy:9px;--sr:6deg}
+.cardsGrid--spread[data-state='shuffling'] .tarot:nth-child(7){--sx:-5px;--sy:-12px;--sr:-4deg}
+.cardsGrid--spread[data-state='shuffling'] .tarot:nth-child(8){--sx:6px;--sy:7px;--sr:5deg}
+.cardsGrid--spread[data-state='shuffling'] .tarot:nth-child(9){--sx:0px;--sy:-5px;--sr:-2deg}
+.cardsGrid--spread[data-state='spread'] .tarot{opacity:1;transform:translateY(0) rotate(0);animation:dealCard 580ms cubic-bezier(.22,.61,.36,1) both;animation-delay:calc(var(--i) * 55ms)}
 @keyframes dealCard{from{opacity:0;transform:translateY(-24px) scale(.93)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes stackShuffle{0%{transform:translate(0,0) rotate(0deg) scale(1)}50%{transform:translate(var(--sx,8px),var(--sy,-6px)) rotate(var(--sr,5deg)) scale(1.01)}100%{transform:translate(calc(var(--sx,8px) * -0.6),calc(var(--sy,-6px) * -0.5)) rotate(calc(var(--sr,5deg) * -0.45)) scale(.995)}}
 
 .page--spread .tarot{aspect-ratio:3/5;border:1px solid rgba(198,166,91,.38);border-radius:16px;padding:0;position:relative;overflow:visible;cursor:pointer;box-shadow:0 22px 75px rgba(0,0,0,.58);background:linear-gradient(145deg,rgba(84,23,35,.7),rgba(9,2,4,.95));transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-.page--spread .tarot::before{content:"";position:absolute;inset:9px;border-radius:12px;border:1px solid rgba(198,166,91,.24);background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.08),transparent 42%),radial-gradient(circle at 80% 86%,rgba(198,166,91,.19),transparent 48%),linear-gradient(160deg,rgba(12,2,5,.35),rgba(0,0,0,.64))}
+.page--spread .tarot::before{content:"";position:absolute;inset:9px;border-radius:12px;border:1px solid rgba(198,166,91,.24);background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.08),transparent 42%),radial-gradient(circle at 80% 86%,rgba(198,166,91,.19),transparent 48%),linear-gradient(160deg,rgba(12,2,5,.35),rgba(0,0,0,.64));transition:filter .25s ease,opacity .25s ease}
 .page--spread .tarot::after{content:attr(data-whisper);position:absolute;left:50%;bottom:calc(100% + 12px);transform:translateX(-50%);min-width:220px;max-width:290px;padding:8px 10px;background:rgba(9,4,5,.95);border:1px solid rgba(198,166,91,.38);border-radius:10px;color:var(--ivory-soft);font-size:11px;line-height:1.35;letter-spacing:.02em;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;box-shadow:0 15px 40px rgba(0,0,0,.45);z-index:6}
-.page--spread .tarot:hover,.page--spread .tarot:focus-visible{transform:translateY(-6px);box-shadow:0 28px 95px rgba(0,0,0,.68),0 0 28px rgba(198,166,91,.2);border-color:rgba(198,166,91,.66);outline:none}
+.page--spread .tarot:hover,.page--spread .tarot:focus-visible{transform:translateY(-8px) scale(1.02);box-shadow:0 30px 98px rgba(0,0,0,.68),0 0 34px rgba(198,166,91,.28);border-color:rgba(198,166,91,.7);outline:none}
+.page--spread .tarot:hover::before,.page--spread .tarot:focus-visible::before{filter:brightness(1.06) saturate(1.08)}
+.page--spread .tarot:hover .tarot__sigil,.page--spread .tarot:focus-visible .tarot__sigil{text-shadow:0 0 10px rgba(198,166,91,.45)}
 .page--spread .tarot:hover::after,.page--spread .tarot:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(-2px)}
 .page--spread .tarot.has-img{background-size:cover;background-position:center;background-color:#1a070d}
 .page--spread .tarot.has-img::before{background:linear-gradient(to bottom,rgba(0,0,0,.02),rgba(0,0,0,.68));border-color:rgba(198,166,91,.2)}
@@ -144,7 +170,9 @@ a{color:inherit}
   .cardsGrid--spread[data-state='stacked'] .tarot:nth-child(n+2){opacity:0}
   .page--spread .tarot::after{min-width:170px;max-width:220px;font-size:10px}
   .closingScene{padding:28px 16px 130px}
-  .closingScene__candles{height:128px}
+  .closingScene__candles{height:98px}
+  .hiddenCard{min-height:380px}
+  .hiddenCard__face{padding:18px 16px}
 }
 
 .coverWhisper{margin-top:16px}
@@ -156,8 +184,8 @@ a{color:inherit}
 
 .page--spread .tarot--chosen{animation:chosenPulse 1.5s ease-in-out infinite}
 @keyframes chosenPulse{0%,100%{box-shadow:0 22px 75px rgba(0,0,0,.58)}50%{box-shadow:0 28px 95px rgba(0,0,0,.68),0 0 28px rgba(198,166,91,.32)}}
-.page--spread .tarot--flipping{animation:cardFlip 420ms cubic-bezier(.22,.61,.36,1) both}
-@keyframes cardFlip{0%{transform:translateY(-6px) rotateY(0deg)}100%{transform:translateY(-12px) rotateY(80deg);opacity:.12}}
+.page--spread .tarot--flipping{animation:cardFlip 860ms cubic-bezier(.22,.61,.36,1) both;z-index:8}
+@keyframes cardFlip{0%{transform:translateY(-8px) scale(1.02) rotateY(0deg);opacity:1}55%{transform:translateY(-16px) scale(1.08) rotateY(88deg);opacity:.86}100%{transform:translateY(-20px) scale(1.1) rotateY(175deg);opacity:.12}}
 
 .progressDots{display:flex;gap:7px;margin:8px 0 14px}
 .progressDots span{width:10px;height:10px;border-radius:999px;border:1px solid rgba(198,166,91,.42);background:rgba(255,255,255,.05)}
@@ -167,11 +195,49 @@ a{color:inherit}
 .lensToggle .btn.is-active{border-color:rgba(198,166,91,.76);box-shadow:0 12px 35px rgba(0,0,0,.35)}
 
 .candleWhisper{min-height:22px;position:relative;z-index:11;margin-top:6px}
-.oracleCard{position:relative;z-index:10;max-width:680px;margin:20px auto 0;padding:18px;border:1px solid rgba(198,166,91,.32);border-radius:16px;background:rgba(6,2,3,.76);box-shadow:0 24px 60px rgba(0,0,0,.42)}
-.oracleCard h3{margin:6px 0 10px;font-size:clamp(22px,3vw,32px)}
-.oracleCard p{margin:8px 0;color:var(--ivory-soft)}
+
+.hiddenPrelude{min-height:24px;font-style:italic;color:rgba(244,234,223,.86);opacity:0;transform:translateY(6px);transition:opacity .7s ease,transform .7s ease}
+.closingScene[data-phase='revealed'] .hiddenPrelude,.closingScene[data-phase='complete'] .hiddenPrelude{opacity:1;transform:translateY(0)}
+
+.hiddenCard{margin:20px auto 0;width:min(540px,100%);min-height:340px;border:1px solid rgba(198,166,91,.45);border-radius:18px;background:transparent;position:relative;display:block;cursor:pointer;perspective:1400px;box-shadow:0 26px 80px rgba(0,0,0,.5);opacity:0;transform:translateY(34px) scale(.95);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.22,.61,.36,1)}
+.hiddenCard::before{content:"";position:absolute;inset:-16px;border-radius:26px;background:radial-gradient(circle at 50% 40%,rgba(198,166,91,.2),transparent 68%);opacity:0;transition:opacity .8s ease;pointer-events:none}
+.hiddenCard.is-risen{opacity:1;transform:translateY(0) scale(1)}
+.hiddenCard.is-risen::before{opacity:1}
+.hiddenCard__inner{position:relative;display:block;min-height:340px;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.22,.61,.36,1)}
+.hiddenCard__face{position:absolute;inset:0;padding:24px 22px;border-radius:18px;backface-visibility:hidden;background:linear-gradient(160deg,rgba(14,3,6,.92),rgba(44,10,18,.86));color:var(--ivory);text-align:left}
+.hiddenCard__face--back{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;text-align:center;letter-spacing:.06em;text-transform:uppercase}
+.hiddenCard__face--front{transform:rotateY(180deg);overflow:auto}
+.hiddenCard__face h3{margin:8px 0 10px;font-size:clamp(20px,2.5vw,28px)}
+.hiddenCard.is-flipping .hiddenCard__inner,.hiddenCard.is-opened .hiddenCard__inner{transform:rotateY(180deg)}
+
+.hiddenCardNote{margin:16px auto 0;font-style:italic;color:rgba(244,234,223,.88)}
+.finalLastWhisper{margin:18px 0 6px;font-style:italic;color:rgba(244,234,223,.9);opacity:0;transform:translateY(5px);transition:opacity .55s ease,transform .55s ease}
+.finalLastWhisper.is-visible{opacity:1;transform:translateY(0)}
+.finalReading{margin:24px auto 0;max-width:860px;padding:20px;border:1px solid rgba(198,166,91,.3);border-radius:16px;background:rgba(5,2,3,.66);opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease}
+.finalReading.is-visible{opacity:1;transform:translateY(0)}
+.finalReading h3{margin:2px 0 10px;font-size:clamp(24px,3vw,34px)}
+.finalReading__cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;justify-content:center;margin:14px auto 8px;max-width:760px}
+.finalReading__miniCard{padding:10px 8px;border-radius:12px;border:1px solid rgba(198,166,91,.34);background:linear-gradient(150deg,rgba(30,8,13,.9),rgba(8,2,4,.9));font-size:10px;letter-spacing:.04em;text-transform:uppercase;min-height:92px;display:flex;flex-direction:column;justify-content:center;gap:6px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.finalReading__miniSigil{margin:0;color:var(--gold);font-size:11px;letter-spacing:.2em}
+.finalReading__miniCard p{margin:0;color:rgba(244,234,223,.88)}
+.finalReading__miniCard--row2:nth-child(6){grid-column:2}
+.finalReading__miniCard--row2:nth-child(7){grid-column:3}
+.finalReading__miniCard--row2:nth-child(8){grid-column:4}
+.finalReading__miniCard--row2:nth-child(9){grid-column:5}
+.finalReading__miniCard--x{grid-column:3;border-color:rgba(198,166,91,.82);box-shadow:0 0 22px rgba(198,166,91,.3),0 12px 35px rgba(0,0,0,.45);transform:translateY(2px)}
+.finalReading__closingWhisper{margin:14px 0 8px;font-style:italic;color:rgba(244,234,223,.82)}
+.finalReading__signature{margin-top:14px;font-size:13px;opacity:.85}
 
 @media (max-width:620px){
   .lensToggle .btn{font-size:12px;padding:9px 14px}
   .progressDots span{width:8px;height:8px}
+}
+
+@media (max-width:840px){
+  .finalReading__cards{grid-template-columns:repeat(4,minmax(0,1fr));max-width:620px}
+  .finalReading__miniCard--x{grid-column:2 / span 2}
+}
+@media (max-width:620px){
+  .finalReading__cards{grid-template-columns:repeat(2,minmax(0,1fr));max-width:360px}
+  .finalReading__miniCard--x{grid-column:1 / -1;max-width:220px;justify-self:center}
 }
