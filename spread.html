@@ -145,6 +145,82 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
   :root{--cw:92px;--ch:152px}
   .cards-grid{gap:8px 6px}
 }
+
+/* ══════════════════════════════════════
+   THE SUMMONING OVERLAY
+══════════════════════════════════════ */
+.summoning-overlay{position:fixed;inset:0;z-index:200;background:#06020f;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.25rem;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity 0.8s ease}
+.summoning-overlay.active{opacity:1;pointer-events:auto}
+#summonStars{position:fixed;inset:0;z-index:0;pointer-events:none}
+.summon-phase{position:relative;z-index:1;text-align:center;max-width:680px;width:100%}
+.summon-phase-text{display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.summon-eyebrow{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-dim)}
+.summon-orn{font-size:13px;letter-spacing:.5em;color:rgba(201,168,76,.45)}
+.summon-phase-title{font-family:'Cinzel Decorative',serif;font-size:clamp(20px,4vw,32px);color:var(--gold);letter-spacing:.08em;line-height:1.2}
+.summon-phase-sub{font-family:'IM Fell English',serif;font-style:italic;color:var(--parch-dim);font-size:clamp(13px,1.8vw,15px)}
+.summon-ring-wrap{position:relative;width:340px;height:340px;margin:0 auto;flex-shrink:0}
+#sigilCanvas{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2}
+.summon-ring-label{text-align:center;margin-top:1.5rem;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.4);font-family:'IM Fell English',serif;font-style:italic}
+.ring-card{position:absolute;width:40px;height:64px;border-radius:7px;border:1px solid rgba(201,168,76,.3);background:linear-gradient(160deg,#130830,#0c0520);display:flex;align-items:center;justify-content:center;opacity:0;transform-origin:170px 170px;transition:opacity .6s ease,box-shadow .6s ease}
+.ring-card.visible{opacity:1}
+.ring-card.lit{border-color:rgba(201,168,76,.6);box-shadow:0 0 14px rgba(201,168,76,.22)}
+.ring-card svg{width:16px;height:16px}
+.summon-final{display:flex;flex-direction:column;align-items:center;gap:2rem;max-width:720px;width:100%}
+.tenth-card{width:200px;height:330px;perspective:1200px;cursor:pointer;flex-shrink:0}
+.tenth-card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.34,1.08,.64,1);border-radius:14px}
+.tenth-card.flipped .tenth-card-inner{transform:rotateY(180deg)}
+.tenth-face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.tenth-back{background:#0b0520;border:1px solid rgba(201,168,76,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;animation:tenthPulse 2s ease-in-out infinite}
+@keyframes tenthPulse{0%,100%{box-shadow:0 0 0 0 transparent}50%{box-shadow:0 0 40px rgba(201,168,76,.3),0 0 0 1px rgba(201,168,76,.15)}}
+.tc-frame{position:absolute;inset:8px;border:1px solid rgba(201,168,76,.12);border-radius:9px;background:repeating-linear-gradient(45deg,transparent,transparent 9px,rgba(201,168,76,.02) 9px,rgba(201,168,76,.02) 10px),repeating-linear-gradient(-45deg,transparent,transparent 9px,rgba(201,168,76,.02) 9px,rgba(201,168,76,.02) 10px)}
+.tc-corner{position:absolute;width:18px;height:18px;border-color:rgba(201,168,76,.5);border-style:solid;border-width:0}
+.tc-corner.tl{top:12px;left:12px;border-top-width:1px;border-left-width:1px}
+.tc-corner.tr{top:12px;right:12px;border-top-width:1px;border-right-width:1px}
+.tc-corner.bl{bottom:12px;left:12px;border-bottom-width:1px;border-left-width:1px}
+.tc-corner.br{bottom:12px;right:12px;border-bottom-width:1px;border-right-width:1px}
+.tc-roman{position:relative;z-index:2;font-family:'Cinzel Decorative',serif;font-size:14px;color:var(--gold-dim);letter-spacing:.2em}
+.tc-whisper{position:relative;z-index:2;font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:rgba(201,168,76,.3);text-align:center;padding:0 16px;line-height:1.4}
+.tenth-front{transform:rotateY(180deg);background:#08031a;border:1px solid rgba(201,168,76,.55);display:flex;flex-direction:column;box-shadow:0 0 60px rgba(201,168,76,.15)}
+.tc-front-top{padding:8px 12px 6px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--div);flex-shrink:0}
+.tc-arcana-num{font-family:'Cinzel Decorative',serif;font-size:12px;color:var(--gold);letter-spacing:.15em}
+.tc-arcana-label{font-family:'Cinzel Decorative',serif;font-size:8px;color:var(--gold-dim);letter-spacing:.12em}
+.tc-art{flex:1;overflow:hidden;position:relative;min-height:0}
+.tc-art svg{width:100%;height:100%;display:block}
+.tc-art::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(201,168,76,.08) 0%,transparent 65%);pointer-events:none;z-index:1}
+.tc-front-bottom{padding:7px 12px 9px;border-top:1px solid var(--div);flex-shrink:0}
+.tc-mystical{font-family:'Cinzel Decorative',serif;font-size:8px;color:var(--gold-lt);letter-spacing:.1em;margin-bottom:2px}
+.tc-real{font-family:'IM Fell English',serif;font-style:italic;font-size:9px;color:var(--parch-dim)}
+.oracle-reading{background:var(--surface);border:1px solid var(--div);border-radius:16px;overflow:hidden;width:100%;max-width:680px}
+.oracle-reading>*{padding:0 2rem}
+.or-eyebrow{padding-top:1.5rem;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
+.or-name{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3vw,26px);color:var(--gold);line-height:1.2;margin-bottom:3px;background:linear-gradient(135deg,#e8c97a 0%,#c9a84c 40%,#f0e6cc 55%,#c9a84c 70%,#e8c97a 100%);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmerText 4s ease-in-out infinite}
+@keyframes shimmerText{0%{background-position:100% 0}50%{background-position:0% 0}100%{background-position:100% 0}}
+.or-arcana{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--mist);margin-bottom:0}
+.or-divider{width:calc(100% - 4rem);margin:1rem 2rem;height:1px;background:var(--div);position:relative;display:flex;align-items:center;justify-content:center}
+.or-divider::after{content:'\2726';position:absolute;font-size:10px;color:var(--gold-dim);background:var(--surface);padding:0 8px}
+.or-tarot-block{background:rgba(201,168,76,.055);border:1px solid rgba(201,168,76,.18);border-radius:10px;padding:1rem 1.25rem;margin:0 2rem 1rem}
+.or-tarot-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px}
+.or-tarot-text{font-family:'IM Fell English',serif;font-style:italic;font-size:12px;color:var(--parch-dim);line-height:1.65}
+.or-oracle-text{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;margin-left:2rem;margin-right:2rem;line-height:1.75;margin-bottom:1rem}
+.or-def{font-size:14px;line-height:1.78;color:var(--parch);margin-bottom:.9rem}
+.or-pm-note{font-family:'IM Fell English',serif;font-style:italic;font-size:13px;color:var(--parch-dim);line-height:1.7}
+.or-tags{display:flex;flex-wrap:wrap;gap:6px;padding:1rem 2rem}
+.or-tag{font-size:10px;letter-spacing:.08em;padding:3px 11px;border-radius:20px;border:1px solid var(--div);color:var(--parch-dim)}
+.or-buttons{display:flex;gap:12px;flex-wrap:wrap;padding:1rem 2rem 1.75rem;justify-content:flex-start}
+.or-btn-share{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:10px 20px;border-radius:8px;cursor:pointer;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.06));border:1px solid rgba(201,168,76,.5);color:var(--gold);transition:background .2s}
+.or-btn-share:hover{background:rgba(201,168,76,.22)}
+.or-btn-again{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 20px;border-radius:8px;cursor:pointer;background:transparent;border:1px solid rgba(201,168,76,.25);color:rgba(201,168,76,.55);transition:background .2s}
+.or-btn-again:hover{background:rgba(201,168,76,.08)}
+@media(max-width:640px){
+  .tenth-card{width:160px;height:264px}
+  .summon-ring-wrap{width:280px;height:280px}
+  #sigilCanvas{width:120px!important;height:120px!important}
+  .oracle-reading>*{padding:0 1.25rem}
+  .or-tarot-block{margin:0 1.25rem 1rem}
+  .or-oracle-text{margin-left:1.25rem;margin-right:1.25rem}
+  .or-tags{padding:1rem 1.25rem}
+  .or-buttons{padding:1rem 1.25rem 1.5rem}
+}
 </style>
 </head>
 <body>
@@ -196,10 +272,144 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
       <div class="d-tags" id="dTags"></div>
     </div>
   </div>
-  <div class="complete-msg" id="completeMsg">
-    <div class="complete-title">The Reading is Complete</div>
-    <p class="complete-sub">The nine mysteries of the craft have been laid bare before you. Go forth and build.</p>
-    <button class="btn-again" onclick="resetSpread()">Draw Again</button>
+  <!-- THE SUMMONING — full screen overlay, hidden until all 9 cards flipped -->
+  <div id="summoningOverlay" class="summoning-overlay">
+    <canvas id="summonStars"></canvas>
+
+    <!-- Phase 1: title appears -->
+    <div class="summon-phase" id="sPhase1">
+      <div class="summon-phase-text">
+        <div class="summon-eyebrow">The Spread is Complete</div>
+        <div class="summon-orn">&#10022; &#10022; &#10022;</div>
+        <div class="summon-phase-title">The Nine Are Gathered</div>
+        <div class="summon-phase-sub">One final mystery remains. The circle must be cast.</div>
+      </div>
+    </div>
+
+    <!-- Phase 2: circular ring of cards + sigil -->
+    <div class="summon-phase" id="sPhase2" style="display:none">
+      <div class="summon-ring-wrap" id="summonRing">
+        <canvas id="sigilCanvas" width="160" height="160"></canvas>
+      </div>
+      <div class="summon-ring-label" id="summonRingLabel">&#8212; the circle is cast &#8212;</div>
+    </div>
+
+    <!-- Phase 3: sigil complete + oracle message -->
+    <div class="summon-phase" id="sPhase3" style="display:none">
+      <div class="summon-final">
+
+        <!-- The 10th card — large, central, SVG -->
+        <div class="tenth-card" id="tenthCard">
+          <div class="tenth-card-inner" id="tenthCardInner">
+
+            <!-- card back -->
+            <div class="tenth-face tenth-back">
+              <div class="tc-frame"></div>
+              <div class="tc-corner tl"></div>
+              <div class="tc-corner tr"></div>
+              <div class="tc-corner bl"></div>
+              <div class="tc-corner br"></div>
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="32" stroke="#c9a84c" stroke-width="0.9" opacity="0.45"/>
+                <circle cx="40" cy="40" r="20" stroke="#c9a84c" stroke-width="0.8" opacity="0.35" stroke-dasharray="3 3"/>
+                <path d="M40 8v64M8 40h64M17 17l46 46M63 17L17 63" stroke="#c9a84c" stroke-width="0.6" opacity="0.2"/>
+                <circle cx="40" cy="40" r="6" stroke="#c9a84c" stroke-width="1" opacity="0.6"/>
+                <circle cx="40" cy="40" r="2.5" fill="#c9a84c" opacity="0.7"/>
+                <circle cx="40" cy="8" r="2.5" fill="#c9a84c" opacity="0.6"/>
+                <circle cx="40" cy="72" r="2.5" fill="#c9a84c" opacity="0.6"/>
+                <circle cx="8" cy="40" r="2.5" fill="#c9a84c" opacity="0.6"/>
+                <circle cx="72" cy="40" r="2.5" fill="#c9a84c" opacity="0.6"/>
+              </svg>
+              <div class="tc-roman">X</div>
+              <div class="tc-whisper">Touch to complete the reading</div>
+            </div>
+
+            <!-- card front — Judgement illustration -->
+            <div class="tenth-face tenth-front">
+              <div class="tc-front-top">
+                <span class="tc-arcana-num">X</span>
+                <span class="tc-arcana-label">Judgement</span>
+              </div>
+              <div class="tc-art">
+                <svg viewBox="0 0 160 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="160" height="220" fill="#08031a"/>
+                  <ellipse cx="80" cy="50" rx="70" ry="55" fill="rgba(201,168,76,0.05)"/>
+                  <circle cx="80" cy="35" r="14" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".7"/>
+                  <ellipse cx="80" cy="62" rx="16" ry="18" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".6"/>
+                  <path d="M64 52 Q48 40 42 55 Q50 65 64 60" fill="none" stroke="#a897d8" stroke-width="1" opacity=".6"/>
+                  <path d="M96 52 Q112 40 118 55 Q110 65 96 60" fill="none" stroke="#a897d8" stroke-width="1" opacity=".6"/>
+                  <line x1="80" y1="48" x2="110" y2="30" stroke="#c9a84c" stroke-width="1.5" opacity=".65" stroke-linecap="round"/>
+                  <path d="M108 26 Q114 28 112 34 Q106 34 108 26" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".6"/>
+                  <rect x="96" y="26" width="10" height="8" rx="1" fill="none" stroke="#c9a84c" stroke-width=".8" opacity=".5"/>
+                  <path d="M96 30 l10 0" stroke="#c9a84c" stroke-width=".6" opacity=".4"/>
+                  <line x1="101" y1="27" x2="101" y2="33" stroke="#c9a84c" stroke-width=".7" opacity=".5"/>
+                  <line x1="98" y1="30" x2="104" y2="30" stroke="#c9a84c" stroke-width=".7" opacity=".5"/>
+                  <circle cx="40" cy="148" r="9" fill="none" stroke="#c9a84c" stroke-width=".9" opacity=".65"/>
+                  <ellipse cx="40" cy="168" rx="11" ry="14" fill="none" stroke="#c9a84c" stroke-width=".8" opacity=".55"/>
+                  <circle cx="80" cy="135" r="11" fill="none" stroke="#c9a84c" stroke-width="1.1" opacity=".78"/>
+                  <ellipse cx="80" cy="158" rx="13" ry="16" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".65"/>
+                  <circle cx="120" cy="148" r="9" fill="none" stroke="#c9a84c" stroke-width=".9" opacity=".65"/>
+                  <ellipse cx="120" cy="168" rx="11" ry="14" fill="none" stroke="#c9a84c" stroke-width=".8" opacity=".55"/>
+                  <path d="M40 144 Q32 130 28 118" fill="none" stroke="#c9a84c" stroke-width=".9" opacity=".5" stroke-linecap="round"/>
+                  <path d="M40 144 Q48 130 52 118" fill="none" stroke="#c9a84c" stroke-width=".9" opacity=".5" stroke-linecap="round"/>
+                  <path d="M80 130 Q70 115 65 100" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".6" stroke-linecap="round"/>
+                  <path d="M80 130 Q90 115 95 100" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".6" stroke-linecap="round"/>
+                  <path d="M120 144 Q112 130 108 118" fill="none" stroke="#c9a84c" stroke-width=".9" opacity=".5" stroke-linecap="round"/>
+                  <path d="M120 144 Q128 130 132 118" fill="none" stroke="#c9a84c" stroke-width=".9" opacity=".5" stroke-linecap="round"/>
+                  <path d="M20 188 Q40 182 60 188 Q80 194 100 188 Q120 182 140 188" fill="none" stroke="#a897d8" stroke-width=".9" opacity=".4"/>
+                  <path d="M20 196 Q40 190 60 196 Q80 202 100 196 Q120 190 140 196" fill="none" stroke="#a897d8" stroke-width=".7" opacity=".3"/>
+                  <line x1="80" y1="20" x2="80" y2="8" stroke="#c9a84c" stroke-width=".8" opacity=".4"/>
+                  <line x1="60" y1="24" x2="54" y2="14" stroke="#c9a84c" stroke-width=".8" opacity=".35"/>
+                  <line x1="100" y1="24" x2="106" y2="14" stroke="#c9a84c" stroke-width=".8" opacity=".35"/>
+                  <line x1="48" y1="35" x2="40" y2="28" stroke="#c9a84c" stroke-width=".7" opacity=".3"/>
+                  <line x1="112" y1="35" x2="120" y2="28" stroke="#c9a84c" stroke-width=".7" opacity=".3"/>
+                  <circle cx="20" cy="18" r="1.5" fill="#c9a84c" opacity=".5"/>
+                  <circle cx="140" cy="15" r="1.5" fill="#c9a84c" opacity=".5"/>
+                  <circle cx="155" cy="35" r="1" fill="#c9a84c" opacity=".4"/>
+                  <circle cx="8" cy="40" r="1" fill="#c9a84c" opacity=".4"/>
+                </svg>
+              </div>
+              <div class="tc-front-bottom">
+                <div class="tc-mystical">The Oracle Awakens</div>
+                <div class="tc-real">Judgement &#8212; Major Arcana XX</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Oracle reading (appears after card flip) -->
+        <div class="oracle-reading" id="oracleReading" style="opacity:0;transition:opacity 1.2s ease">
+          <div class="or-eyebrow">Arcana X &#183; The Oracle&#8217;s Final Reading</div>
+          <div class="or-name">You Are the Oracle</div>
+          <div class="or-arcana">Judgement &#8212; Major Arcana XX</div>
+          <div class="or-divider"></div>
+          <div class="or-tarot-block">
+            <div class="or-tarot-label">The Tarot Speaks</div>
+            <div class="or-tarot-text">Judgement depicts the angel sounding the final trumpet &#8212; and the dead rising, arms outstretched, answering the call. It is not the card of ending. It is the card of awakening. Of being summoned to your full purpose. Of hearing the call and rising to meet it.</div>
+          </div>
+          <div class="or-divider"></div>
+          <p class="or-oracle-text">&#8220;The nine paths have been walked. The memory has been mastered. The fog has been read by lantern. The guild has been briefed, the trial endured, the worlds crossed. Judgement does not ask whether you are ready. It announces that you already are.&#8221;</p>
+          <p class="or-def">You have moved through the complete arc of localization project management &#8212; from the foundational alchemy of Translation Memory to the highest craft of Transcreation. Each card was a discipline. Together they are a programme. And a programme needs a keeper.</p>
+          <p class="or-pm-note">The complete localization PM does not merely manage tasks &#8212; they hold the whole: the cost and the craft, the machine and the human, the brief and the delivery, the asset and the relationship. The Oracle&#8217;s counsel is this: you have seen all nine faces. Trust what you know.</p>
+          <div class="or-tags">
+            <span class="or-tag">Full Programme Ownership</span>
+            <span class="or-tag">Strategic PM</span>
+            <span class="or-tag">End-to-End Localization</span>
+            <span class="or-tag">The Complete Craft</span>
+          </div>
+          <div class="or-buttons">
+            <button class="or-btn-share" onclick="shareReading()">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M12 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm8 4a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" stroke="currentColor" stroke-width="1.3"/><path d="M6 7.5l4-3M6 8.5l4 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              Share This Reading
+            </button>
+            <button class="or-btn-again" onclick="closeSummoningAndReset()">Begin Again</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>
 <div class="modal-overlay" id="modalOverlay" onclick="closeOutside(event)">
@@ -492,7 +702,6 @@ function buildGrid(){
   flippedCount = 0;
   activeIdx = null;
   document.getElementById('detailPanel').classList.remove('visible');
-  document.getElementById('completeMsg').classList.remove('show');
 
   CARDS.forEach((_,i)=>{
     const p = document.createElement('div');
@@ -560,7 +769,7 @@ function reveal(slot,i){
     document.getElementById('pip-'+i).classList.add('lit');
     flippedCount++;
     if(flippedCount === CARDS.length){
-      setTimeout(()=>document.getElementById('completeMsg').classList.add('show'),1400);
+      setTimeout(()=>triggerSummoning(),800);
     }
   }
   setTimeout(()=>showDetail(i), wasFlipped ? 0 : 440);
@@ -623,6 +832,197 @@ function closeOutside(e){
 }
 
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+/* ═══════════════════════════════════════
+   THE SUMMONING — 10th card ending
+═══════════════════════════════════════ */
+
+function triggerSummoning(){
+  const overlay=document.getElementById('summoningOverlay');
+  overlay.classList.add('active');
+  document.body.style.overflow='hidden';
+  initSummonStars();
+  setTimeout(()=>transitionToPhase2(),2800);
+}
+
+// ── Summoning stars ──
+let sStars=[],sSW,sSH,sSAnimId;
+function initSummonStars(){
+  const sc=document.getElementById('summonStars');
+  sSW=sc.width=window.innerWidth;
+  sSH=sc.height=window.innerHeight;
+  sStars=Array.from({length:200},()=>({
+    x:Math.random()*sSW,y:Math.random()*sSH,
+    r:Math.random()*1.5+0.15,o:Math.random()*0.6+0.08,
+    sp:Math.random()*0.12+0.02,tw:Math.random()*Math.PI*2,
+    g:Math.random()<0.1
+  }));
+  function drawSS(t){
+    const sc2=document.getElementById('summonStars');
+    const sctx=sc2.getContext('2d');
+    sctx.clearRect(0,0,sSW,sSH);
+    sStars.forEach(s=>{
+      const f=0.4+0.6*Math.sin(t*0.001+s.tw);
+      sctx.beginPath();sctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      sctx.fillStyle=s.g
+        ?`rgba(201,168,76,${(s.o*f*0.8).toFixed(3)})`
+        :`rgba(232,218,195,${(s.o*f).toFixed(3)})`;
+      sctx.fill();
+      s.y-=s.sp;
+      if(s.y<-2){s.y=sSH+2;s.x=Math.random()*sSW;}
+    });
+    sSAnimId=requestAnimationFrame(drawSS);
+  }
+  sSAnimId=requestAnimationFrame(drawSS);
+}
+
+// ── Phase 2: circular ring of 9 cards ──
+const RING_SIGILS=[
+  `<polygon points="9,1 11,6 17,6 12,9.5 14,15 9,11.5 4,15 6,9.5 1,6 7,6" stroke="#c9a84c" stroke-width=".7" fill="none" opacity=".55"/>`,
+  `<circle cx="9" cy="9" r="7" stroke="#c9a84c" stroke-width=".7" fill="none" opacity=".5"/><line x1="9" y1="2" x2="9" y2="16" stroke="#c9a84c" stroke-width=".5" opacity=".35"/><line x1="2" y1="9" x2="16" y2="9" stroke="#c9a84c" stroke-width=".5" opacity=".35"/>`,
+  `<path d="M9 1L17 16H1Z" stroke="#c9a84c" stroke-width=".7" fill="none" opacity=".55"/>`,
+  `<rect x="3" y="3" width="12" height="12" stroke="#c9a84c" stroke-width=".7" fill="none" opacity=".5" transform="rotate(45 9 9)"/>`,
+  `<circle cx="9" cy="9" r="7" stroke="#c9a84c" stroke-width=".7" fill="none" stroke-dasharray="2 2" opacity=".5"/><circle cx="9" cy="9" r="3" stroke="#c9a84c" stroke-width=".7" fill="none" opacity=".6"/>`,
+  `<path d="M9 1L17 14H1Z" stroke="#c9a84c" stroke-width=".7" fill="none" opacity=".45"/><path d="M9 17L1 4H17Z" stroke="#c9a84c" stroke-width=".7" fill="none" opacity=".45"/>`,
+  `<polygon points="9,1 17,9 9,17 1,9" stroke="#c9a84c" stroke-width=".7" fill="none" opacity=".55"/>`,
+  `<circle cx="9" cy="9" r="7" stroke="#c9a84c" stroke-width=".7" fill="none" opacity=".4"/><path d="M9 2a7 7 0 0 0 0 14" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" opacity=".65"/>`,
+  `<circle cx="9" cy="9" r="7" stroke="#c9a84c" stroke-width=".7" fill="none" opacity=".4"/><ellipse cx="9" cy="9" rx="4" ry="7" stroke="#c9a84c" stroke-width=".7" fill="none" opacity=".5"/>`
+];
+
+function transitionToPhase2(){
+  document.getElementById('sPhase1').style.display='none';
+  const p2=document.getElementById('sPhase2');
+  p2.style.display='block';p2.style.opacity='0';
+  p2.style.transition='opacity 0.8s ease';
+  setTimeout(()=>p2.style.opacity='1',50);
+  buildRingCards();
+  setTimeout(()=>{
+    for(let i=0;i<9;i++){
+      setTimeout(()=>{
+        const c=document.getElementById(`ringCard-${i}`);
+        if(c){c.classList.add('visible');setTimeout(()=>c.classList.add('lit'),200);}
+      },i*160);
+    }
+    setTimeout(()=>{
+      document.getElementById('summonRingLabel').textContent='\u2014 the sigil awakens \u2014';
+      animateSummonSigil();
+      setTimeout(()=>transitionToPhase3(),4000);
+    },9*160+400);
+  },600);
+}
+
+function buildRingCards(){
+  const ring=document.getElementById('summonRing');
+  const isSmall=window.innerWidth<=640;
+  const cx=isSmall?140:170;
+  const cy=isSmall?140:170;
+  const radius=isSmall?108:130;
+  for(let i=0;i<9;i++){
+    const angle=(i/9)*Math.PI*2-Math.PI/2;
+    const x=cx+radius*Math.cos(angle)-20;
+    const y=cy+radius*Math.sin(angle)-32;
+    const card=document.createElement('div');
+    card.className='ring-card';card.id=`ringCard-${i}`;
+    card.style.left=x+'px';card.style.top=y+'px';
+    card.innerHTML=`<svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">${RING_SIGILS[i]}</svg>`;
+    ring.appendChild(card);
+  }
+}
+
+// ── Sigil draw steps ──
+const SIGIL_DRAW_STEPS=[
+  (sctx,s)=>{sctx.beginPath();sctx.arc(s/2,s/2,s*0.43,0,Math.PI*2);sctx.stroke();},
+  (sctx,s)=>{sctx.beginPath();sctx.arc(s/2,s/2,s*0.28,0,Math.PI*2);sctx.stroke();},
+  (sctx,s)=>{sctx.beginPath();sctx.moveTo(s/2,s*0.05);sctx.lineTo(s/2,s*0.95);sctx.stroke();},
+  (sctx,s)=>{sctx.beginPath();sctx.moveTo(s*0.05,s/2);sctx.lineTo(s*0.95,s/2);sctx.stroke();},
+  (sctx,s)=>{sctx.beginPath();sctx.moveTo(s*0.18,s*0.18);sctx.lineTo(s*0.82,s*0.82);sctx.stroke();},
+  (sctx,s)=>{sctx.beginPath();sctx.moveTo(s*0.82,s*0.18);sctx.lineTo(s*0.18,s*0.82);sctx.stroke();},
+  (sctx,s)=>{
+    const pts=[];
+    for(let i=0;i<8;i++){
+      const a=i*Math.PI/4-Math.PI/2;
+      const r=i%2===0?s*0.2:s*0.11;
+      pts.push([s/2+r*Math.cos(a),s/2+r*Math.sin(a)]);
+    }
+    sctx.beginPath();sctx.moveTo(pts[0][0],pts[0][1]);
+    pts.slice(1).forEach(p=>sctx.lineTo(p[0],p[1]));
+    sctx.closePath();sctx.stroke();
+  },
+  (sctx,s)=>{
+    sctx.beginPath();sctx.arc(s/2,s/2,s*0.09,0,Math.PI*2);
+    sctx.fillStyle='rgba(201,168,76,0.6)';sctx.fill();
+  }
+];
+
+function animateSummonSigil(){
+  const canvas=document.getElementById('sigilCanvas');
+  const sctx=canvas.getContext('2d');
+  const s=canvas.width;
+  let step=0;
+  const interval=setInterval(()=>{
+    sctx.clearRect(0,0,s,s);
+    sctx.strokeStyle=`rgba(201,168,76,${(0.25+step*0.09).toFixed(3)})`;
+    sctx.lineWidth=0.9;
+    for(let i=0;i<=step&&i<SIGIL_DRAW_STEPS.length;i++){
+      SIGIL_DRAW_STEPS[i](sctx,s);
+    }
+    step++;
+    if(step>=SIGIL_DRAW_STEPS.length)clearInterval(interval);
+  },320);
+}
+
+// ── Phase 3: 10th card + oracle reading ──
+function transitionToPhase3(){
+  document.getElementById('sPhase2').style.display='none';
+  const p3=document.getElementById('sPhase3');
+  p3.style.display='block';p3.style.opacity='0';
+  p3.style.transition='opacity 1s ease';
+  setTimeout(()=>p3.style.opacity='1',50);
+  document.getElementById('tenthCard').addEventListener('click',flipTenthCard,{once:true});
+}
+
+let tenthFlipped=false;
+function flipTenthCard(){
+  if(tenthFlipped)return;
+  tenthFlipped=true;
+  document.getElementById('tenthCard').classList.add('flipped');
+  setTimeout(()=>{
+    const reading=document.getElementById('oracleReading');
+    reading.style.opacity='1';
+    setTimeout(()=>reading.scrollIntoView({behavior:'smooth',block:'start'}),200);
+  },900);
+}
+
+// ── Share reading ──
+function shareReading(){
+  const text=`I just completed The Localization Oracle \u2014 nine cards revealing the hidden craft of Localization PM, ending with The Summoning. The tenth card: Judgement. \u2726\n\nhttps://duyiyi05.github.io/The-Localization-Oracle/\n\n#LocalizationPM #Portfolio #Tarot`;
+  const linkedInUrl=`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://duyiyi05.github.io/The-Localization-Oracle/')}`;
+  navigator.clipboard.writeText(text).catch(()=>{});
+  window.open(linkedInUrl,'_blank');
+}
+
+// ── Close + reset ──
+function closeSummoningAndReset(){
+  const overlay=document.getElementById('summoningOverlay');
+  overlay.style.opacity='0';
+  setTimeout(()=>{
+    overlay.classList.remove('active');
+    overlay.style.opacity='';
+    document.body.style.overflow='';
+    tenthFlipped=false;
+    document.getElementById('sPhase1').style.display='block';
+    document.getElementById('sPhase2').style.display='none';
+    document.getElementById('sPhase3').style.display='none';
+    document.getElementById('oracleReading').style.opacity='0';
+    document.getElementById('tenthCard').classList.remove('flipped');
+    const ring=document.getElementById('summonRing');
+    ring.querySelectorAll('.ring-card').forEach(c=>c.remove());
+    const sc2=document.getElementById('sigilCanvas');
+    sc2.getContext('2d').clearRect(0,0,sc2.width,sc2.height);
+    if(sSAnimId)cancelAnimationFrame(sSAnimId);
+    resetSpread();
+  },800);
+}
 
 function resetSpread(){ buildGrid(); }
 
