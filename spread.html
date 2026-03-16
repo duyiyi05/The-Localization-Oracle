@@ -3,6 +3,15 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://duyiyi05.github.io/The-Localization-Oracle/spread.html">
+<meta property="og:title" content="The Spread — The Localization Oracle">
+<meta property="og:description" content="Nine cards. Three stages. Flip each card to reveal the hidden craft of Localization Project Management.">
+<meta property="og:image" content="https://duyiyi05.github.io/The-Localization-Oracle/images/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Spread — The Localization Oracle">
+<meta name="twitter:description" content="Nine cards. Three stages. The complete craft of Localization PM — revealed through the Major Arcana.">
+<meta name="twitter:image" content="https://duyiyi05.github.io/The-Localization-Oracle/images/og-preview.jpg">
 <title>The Nine-Card Spread — The Localization Oracle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -32,7 +41,11 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .stage-legend{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:1.75rem}
 .legend-item{display:flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.12em;color:var(--parch-dim);text-transform:uppercase}
 .legend-dot{width:8px;height:8px;border-radius:50%}
-.progress-row{display:flex;justify-content:center;gap:7px;margin-bottom:2.25rem}
+.progress-area{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:2.25rem}
+.progress-row{display:flex;justify-content:center;gap:7px}
+.progress-counter{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.35);transition:color 0.4s}
+.progress-counter.all-revealed{color:rgba(201,168,76,0.7);animation:counterPulse 1.5s ease-in-out 3}
+@keyframes counterPulse{0%,100%{opacity:0.7}50%{opacity:1;color:var(--gold)}}
 .pip{width:5px;height:5px;border-radius:50%;background:rgba(201,168,76,.18);transition:background .4s,transform .3s,box-shadow .3s}
 .pip.lit{background:var(--gold);transform:scale(1.5);box-shadow:0 0 8px rgba(201,168,76,.5)}
 .cards-grid{display:grid;grid-template-columns:repeat(3,var(--cw));gap:22px 16px;justify-content:center;margin-bottom:2.5rem}
@@ -42,6 +55,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.34,1.08,.64,1);border-radius:14px}
 .card-slot.flipped .card-inner{transform:rotateY(180deg)}
 .card-slot:not(.flipped):hover .card-inner{transform:translateY(-6px) rotateY(7deg)}
+.card-slot:not(.flipped):hover .card-back{border-color:var(--stage-color,rgba(201,168,76,0.5));box-shadow:0 0 24px var(--stage-glow,rgba(201,168,76,0.15));transition:border-color 0.3s,box-shadow 0.3s}
 .card-slot.active-card .card-front{box-shadow:0 0 0 2px var(--gold),0 0 36px rgba(201,168,76,.2)}
 .card-face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
 .card-back{background:var(--card-bg);border:1px solid rgba(201,168,76,.28);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
@@ -133,6 +147,10 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .complete-sub{font-family:'IM Fell English',serif;font-style:italic;color:var(--parch-dim);font-size:14px;margin-bottom:1.25rem}
 .btn-again{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:.15em;text-transform:uppercase;padding:10px 26px;border:1px solid rgba(201,168,76,.38);border-radius:8px;background:transparent;color:var(--gold);cursor:pointer}
 .btn-again:hover{background:var(--gold-faint)}
+.sound-toggle{position:fixed;top:1.25rem;right:9rem;z-index:50;background:rgba(11,5,32,0.85);border:1px solid rgba(201,168,76,0.22);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(201,168,76,0.5);transition:color 0.2s,border-color 0.2s;backdrop-filter:blur(4px)}
+.sound-toggle:hover{color:var(--gold);border-color:rgba(201,168,76,0.5)}
+.sound-toggle.active{color:var(--gold);border-color:rgba(201,168,76,0.5)}
+.sound-toggle.muted{color:rgba(201,168,76,0.25)}
 .zoom-controls{display:flex;align-items:center;gap:8px;position:fixed;top:1.25rem;right:1.5rem;z-index:50;background:rgba(11,5,32,0.85);border:1px solid rgba(201,168,76,0.22);border-radius:20px;padding:5px 10px;backdrop-filter:blur(4px)}
 .zoom-btn{background:transparent;border:none;color:rgba(201,168,76,0.65);font-size:18px;line-height:1;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s,background 0.2s;font-family:'Raleway',sans-serif;font-weight:300}
 .zoom-btn:hover{color:var(--gold);background:rgba(201,168,76,0.08)}
@@ -279,12 +297,35 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
   .card-modal-overlay{padding:0.75rem}
   .card-modal-box{max-height:92vh}
 }
+
+/* ── RECRUITER EASTER EGG ── */
+.easter-overlay{position:fixed;inset:0;z-index:300;background:rgba(6,2,15,0.94);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.4s ease}
+.easter-overlay.open{opacity:1;pointer-events:auto}
+.easter-box{background:var(--surface2);border:1px solid rgba(201,168,76,0.5);border-radius:18px;max-width:520px;width:100%;padding:2rem 2rem 1.75rem;position:relative;text-align:center;box-shadow:0 0 60px rgba(201,168,76,0.12)}
+.easter-close{position:absolute;top:14px;right:16px;background:transparent;border:1px solid var(--div);border-radius:50%;width:30px;height:30px;cursor:pointer;color:var(--parch-dim);font-size:16px;display:flex;align-items:center;justify-content:center;transition:color 0.2s,border-color 0.2s}
+.easter-close:hover{color:var(--gold);border-color:var(--gold)}
+.easter-sigil{font-size:28px;color:rgba(201,168,76,0.4);margin-bottom:0.5rem;animation:easterPulse 2s ease-in-out infinite}
+@keyframes easterPulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:0.8;transform:scale(1.15)}}
+.easter-eyebrow{font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px}
+.easter-title{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3vw,24px);color:var(--gold);margin-bottom:1rem;line-height:1.2}
+.easter-text{font-family:'Raleway',sans-serif;font-size:14px;line-height:1.75;color:var(--parch-dim);margin-bottom:0.75rem;text-align:left}
+.easter-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:1.25rem 0}
+.easter-link{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;padding:10px 18px;border:1px solid rgba(201,168,76,0.38);border-radius:8px;color:var(--gold);background:rgba(201,168,76,0.06);text-decoration:none;transition:background 0.2s,border-color 0.2s}
+.easter-link:hover{background:rgba(201,168,76,0.14);border-color:var(--gold)}
+.easter-footer{font-family:'IM Fell English',serif;font-style:italic;font-size:13px;color:rgba(201,168,76,0.28);margin-top:0.5rem}
 </style>
 </head>
 <body>
 <canvas id="starCanvas" aria-hidden="true"></canvas>
 <div class="page">
   <a class="back-link" href="index.html">Return to the Oracle</a>
+  <button class="sound-toggle" id="soundToggle" onclick="toggleSound()" title="Toggle sound">
+    <svg id="soundIcon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M3 5.5H1v5h2l4 3V2.5L3 5.5z" fill="currentColor" opacity="0.7"/>
+      <path id="soundWave1" d="M11 4a5 5 0 0 1 0 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      <path id="soundWave2" d="M9.5 6a2.5 2.5 0 0 1 0 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>
+  </button>
   <div class="zoom-controls" id="zoomControls">
     <button class="zoom-btn" id="zoomOut" onclick="adjustZoom(-0.1)" title="Zoom out">−</button>
     <span class="zoom-level" id="zoomLevel">100%</span>
@@ -299,7 +340,10 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
       <div class="legend-item"><div class="legend-dot" style="background:#3aacac"></div>Technical Process</div>
       <div class="legend-item"><div class="legend-dot" style="background:#c05580"></div>Management &amp; Delivery</div>
     </div>
-    <div class="progress-row" id="progressRow"></div>
+    <div class="progress-area">
+      <div class="progress-row" id="progressRow"></div>
+      <div class="progress-counter" id="progressCounter">0 of 9 revealed</div>
+    </div>
   </div>
   <div class="cards-grid" id="cardsGrid"></div>
   <!-- CARD DETAIL MODAL -->
@@ -410,7 +454,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
             <!-- card front — Judgement illustration -->
             <div class="tenth-face tenth-front">
               <div class="tc-front-top">
-                <span class="tc-arcana-num">X</span>
+                <span class="tc-arcana-num" onclick="handleEasterClick()" style="cursor:pointer" title="">X</span>
                 <span class="tc-arcana-label">Judgement</span>
               </div>
               <div class="tc-art">
@@ -563,6 +607,122 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
   init();
   requestAnimationFrame(draw);
 })();
+
+/* ── Sound System ── */
+let audioCtx = null;
+let soundEnabled = false;
+
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  const btn = document.getElementById('soundToggle');
+  const w1 = document.getElementById('soundWave1');
+  const w2 = document.getElementById('soundWave2');
+  if (soundEnabled) {
+    btn.classList.add('active');
+    btn.classList.remove('muted');
+    if (w1) w1.style.display = '';
+    if (w2) w2.style.display = '';
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  } else {
+    btn.classList.remove('active');
+    btn.classList.add('muted');
+    if (w1) w1.style.display = 'none';
+    if (w2) w2.style.display = 'none';
+  }
+}
+
+function playCardFlip() {
+  if (!soundEnabled) return;
+  const ctx = getAudioCtx();
+  const t = ctx.currentTime;
+
+  const bufLen = ctx.sampleRate * 0.25;
+  const buf = ctx.createBuffer(1, bufLen, ctx.sampleRate);
+  const data = buf.getChannelData(0);
+  for (let i = 0; i < bufLen; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / bufLen);
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  const filter = ctx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.frequency.setValueAtTime(1200, t);
+  filter.frequency.exponentialRampToValueAtTime(400, t + 0.2);
+  filter.Q.value = 0.8;
+  const gainNode = ctx.createGain();
+  gainNode.gain.setValueAtTime(0.18, t);
+  gainNode.gain.exponentialRampToValueAtTime(0.001, t + 0.25);
+  src.connect(filter); filter.connect(gainNode); gainNode.connect(ctx.destination);
+  src.start(t); src.stop(t + 0.25);
+
+  setTimeout(() => {
+    const ct = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, ct);
+    osc.frequency.exponentialRampToValueAtTime(660, ct + 0.4);
+    g.gain.setValueAtTime(0.12, ct);
+    g.gain.exponentialRampToValueAtTime(0.001, ct + 0.5);
+    osc.connect(g); g.connect(ctx.destination);
+    osc.start(ct); osc.stop(ct + 0.5);
+  }, 120);
+}
+
+function playCardHover() {
+  if (!soundEnabled) return;
+  const ctx = getAudioCtx();
+  const t = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const g = ctx.createGain();
+  osc.type = 'sine';
+  osc.frequency.value = 528;
+  g.gain.setValueAtTime(0.04, t);
+  g.gain.exponentialRampToValueAtTime(0.001, t + 0.15);
+  osc.connect(g); g.connect(ctx.destination);
+  osc.start(t); osc.stop(t + 0.15);
+}
+
+function playSummoningChime() {
+  if (!soundEnabled) return;
+  const ctx = getAudioCtx();
+  const notes = [392, 494, 587, 740, 880];
+  notes.forEach((freq, i) => {
+    const t = ctx.currentTime + i * 0.3;
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    g.gain.setValueAtTime(0.1, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.8);
+    osc.connect(g); g.connect(ctx.destination);
+    osc.start(t); osc.stop(t + 0.8);
+  });
+}
+
+/* ── Recruiter Easter Egg ── */
+let easterClickCount = 0;
+let easterTimeout = null;
+
+function handleEasterClick() {
+  easterClickCount++;
+  clearTimeout(easterTimeout);
+  easterTimeout = setTimeout(() => { easterClickCount = 0; }, 2000);
+  if (easterClickCount >= 3) {
+    easterClickCount = 0;
+    document.getElementById('easterOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeEaster(e) {
+  if (e && e.target !== document.getElementById('easterOverlay')) return;
+  document.getElementById('easterOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
 /* ── Zoom controls ── */
 let currentZoom = parseFloat(localStorage.getItem('oracleZoom') || '1.0');
@@ -831,6 +991,8 @@ function buildGrid(){
       const slot = document.createElement('div');
       slot.className = 'card-slot';
       slot.style.setProperty('--delay', i*0.22+'s');
+      slot.style.setProperty('--stage-color', st.color);
+      slot.style.setProperty('--stage-glow', st.glow);
 
       const artHTML = `<div class="cf-art" id="art-${i}">
         <img src="images/${c.imgFile}" alt="${c.arcanaTitle}" loading="lazy"
@@ -865,6 +1027,7 @@ function buildGrid(){
         </div>`;
 
       slot.addEventListener('click', ()=>reveal(slot,i));
+      slot.addEventListener('mouseenter', () => playCardHover());
       grid.appendChild(slot);
     });
   });
@@ -876,8 +1039,17 @@ function reveal(slot,i){
   const wasFlipped = slot.classList.contains('flipped');
   if(!wasFlipped){
     slot.classList.add('flipped');
+    playCardFlip();
     document.getElementById('pip-'+i).classList.add('lit');
     flippedCount++;
+    const counter = document.getElementById('progressCounter');
+    if (counter) {
+      counter.textContent = `${flippedCount} of ${CARDS.length} revealed`;
+      if (flippedCount === CARDS.length) {
+        counter.classList.add('all-revealed');
+        counter.textContent = 'All nine revealed — the circle is complete';
+      }
+    }
     if(flippedCount === CARDS.length){
       setTimeout(()=>showFinishButton(),1000);
     }
@@ -947,6 +1119,10 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
     closeModal();
     closeCardModal();
+    document.getElementById('easterOverlay')?.classList.remove('open');
+    if(document.getElementById('easterOverlay')?.classList.contains('open') === false){
+      document.body.style.overflow='';
+    }
   }
 });
 
@@ -1008,6 +1184,7 @@ function drawConstellationLines() {
 }
 
 function triggerSummoning(){
+  playSummoningChime();
   const overlay=document.getElementById('summoningOverlay');
   overlay.classList.add('active');
   document.body.style.overflow='hidden';
@@ -1196,6 +1373,11 @@ function closeSummoningAndReset(){
 }
 
 function resetSpread(){
+  const counter = document.getElementById('progressCounter');
+  if (counter) {
+    counter.textContent = '0 of 9 revealed';
+    counter.classList.remove('all-revealed');
+  }
   const wrap = document.getElementById('finishWrap');
   if (wrap) {
     wrap.classList.remove('visible');
@@ -1252,5 +1434,31 @@ buildGrid();
   draw();
 })();
 </script>
+<!-- RECRUITER EASTER EGG -->
+<div class="easter-overlay" id="easterOverlay" onclick="closeEaster(event)">
+  <div class="easter-box">
+    <button class="easter-close" onclick="document.getElementById('easterOverlay').classList.remove('open')">×</button>
+    <div class="easter-sigil">✦</div>
+    <div class="easter-eyebrow">You found the hidden chamber</div>
+    <h2 class="easter-title">Hello, Recruiter</h2>
+    <p class="easter-text">If you made it to the tenth card and clicked three times — you have walked all nine paths of the localization craft and gone further still. That is exactly the kind of attention to detail this work is about.</p>
+    <p class="easter-text">I am a Localization Project Manager with hands-on experience across TM leverage, LQA, MTPE, vendor management, and cultural adaptation. I built this oracle to show, not just tell.</p>
+    <div class="easter-links" id="easterLinks">
+      <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="easter-link">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 6v5M5 4v.5M8 11V8c0-1 .5-2 2-2s2 1 2 2v3M8 6v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        LinkedIn Profile
+      </a>
+      <a href="mailto:YOUR-EMAIL" class="easter-link">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        Send Email
+      </a>
+      <a href="about.html" class="easter-link">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        About Me
+      </a>
+    </div>
+    <p class="easter-footer">✦ The Oracle rewards the persistent ✦</p>
+  </div>
+</div>
 </body>
 </html>
