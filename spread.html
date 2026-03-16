@@ -649,6 +649,13 @@ function toggleSound() {
   const w2  = document.getElementById('soundWave2');
 
   if (soundEnabled) {
+    /* Create / unlock AudioContext here — inside a click handler,
+       guaranteed user-gesture context, so it starts 'running'. */
+    if (!_audioCtx) {
+      _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    } else if (_audioCtx.state === 'suspended') {
+      _audioCtx.resume();
+    }
     btn.classList.add('active');
     btn.classList.remove('muted');
     if (w1) w1.style.display = '';
