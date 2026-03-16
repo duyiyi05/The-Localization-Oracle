@@ -63,7 +63,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .card-front{transform:rotateY(180deg);display:flex;flex-direction:column;border:1px solid rgba(201,168,76,.38)}
 .cf-top{padding:7px 10px 5px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--div);flex-shrink:0}
 .cf-roman{font-family:'Cinzel Decorative',serif;font-size:10px;color:var(--gold);letter-spacing:.15em}
-.cf-arcana-name{font-family:'Cinzel Decorative',serif;font-size:7px;color:var(--gold-dim);letter-spacing:.12em;text-align:right;line-height:1.3;max-width:90px}
+.cf-arcana-name{font-family:'Raleway',sans-serif;font-style:normal;font-size:8px;color:var(--gold-dim);letter-spacing:.12em;text-align:right;line-height:1.3;max-width:90px}
 .cf-art{flex:1;display:flex;align-items:center;justify-content:center;padding:0;position:relative;overflow:hidden;min-height:0}
 .cf-art::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,var(--art-glow,rgba(168,151,216,.22)) 0%,transparent 70%);pointer-events:none;z-index:1}
 .cf-art img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;filter:sepia(18%) contrast(1.05) brightness(.92) saturate(.9);transition:filter .5s ease}
@@ -72,7 +72,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .cf-art.has-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,2,15,.35) 0%,transparent 30%,transparent 65%,rgba(6,2,15,.55) 100%);z-index:2;pointer-events:none}
 .cf-bottom{padding:6px 10px 8px;border-top:1px solid var(--div);flex-shrink:0}
 .cf-mystical{font-family:'Cinzel Decorative',serif;font-size:7.5px;color:var(--gold-lt);letter-spacing:.1em;margin-bottom:2px;line-height:1.35}
-.cf-real{font-family:'IM Fell English',serif;font-style:italic;font-size:9px;color:var(--parch-dim);line-height:1.3}
+.cf-real{font-family:'Raleway',sans-serif;font-style:normal;font-size:10px;color:var(--parch-dim);line-height:1.3}
 .detail-panel{background:var(--surface);border:1px solid var(--div);border-radius:16px;max-width:740px;margin:0 auto 2rem;overflow:hidden;opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s;pointer-events:none}
 .detail-panel.visible{opacity:1;transform:translateY(0);pointer-events:auto}
 .d-stripe{height:4px;width:100%}
@@ -84,7 +84,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .d-stage{font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 9px;border-radius:20px;font-weight:600;border:1px solid}
 .d-arcana-title{font-family:'Cinzel Decorative',serif;font-size:13px;color:rgba(201,168,76,.55);letter-spacing:.08em;margin-bottom:1px}
 .d-name{font-family:'Cinzel Decorative',serif;font-size:clamp(15px,2.5vw,21px);color:var(--gold);margin-bottom:3px;line-height:1.2}
-.d-real{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--mist)}
+.d-real{font-family:'Raleway',sans-serif;font-style:normal;font-size:14px;color:var(--mist);font-weight:300}
 .btn-example{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:9px 18px;border-radius:8px;cursor:pointer;background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.04));border:1px solid rgba(201,168,76,.42);color:var(--gold);transition:background .2s,border-color .2s;white-space:nowrap;flex-shrink:0;align-self:flex-start}
 .btn-example:hover{background:rgba(201,168,76,.18);border-color:var(--gold)}
 .btn-example:active{transform:scale(.97)}
@@ -92,9 +92,9 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .tarot-sigil-sm{flex-shrink:0;width:48px;height:48px;opacity:.85}
 .tarot-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:3px}
 .tarot-card-name{font-family:'Cinzel Decorative',serif;font-size:12px;color:var(--gold-lt);margin-bottom:4px}
-.tarot-meaning{font-family:'IM Fell English',serif;font-style:italic;font-size:12px;color:var(--parch-dim);line-height:1.6}
+.tarot-meaning{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--parch-dim);line-height:1.6}
 .d-hr{width:48px;height:1px;background:var(--div);margin:1rem 0}
-.d-oracle{font-family:'IM Fell English',serif;font-style:italic;font-size:13.5px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;line-height:1.7;margin-bottom:.9rem}
+.d-oracle{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;line-height:1.7;margin-bottom:.9rem}
 .d-def{font-family:'Raleway',sans-serif;font-size:14px;color:var(--parch);line-height:1.78;margin-bottom:.9rem}
 .d-pm{font-family:'Raleway',sans-serif;font-size:13px;color:var(--parch-dim);line-height:1.72}
 .d-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.1rem}
@@ -109,7 +109,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .modal-close:hover{color:var(--gold);border-color:var(--gold)}
 .m-eyebrow{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
 .m-title{font-family:'Cinzel Decorative',serif;font-size:clamp(14px,2.5vw,19px);color:var(--gold);margin-bottom:3px;line-height:1.2}
-.m-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:13px;color:var(--mist);margin-bottom:1.25rem}
+.m-sub{font-family:'Raleway',sans-serif;font-style:normal;font-size:14px;color:var(--mist);font-weight:300;margin-bottom:1.25rem}
 .scenario-block{background:rgba(255,255,255,.025);border:1px solid var(--div);border-radius:10px;padding:1.1rem 1.25rem;margin-bottom:1rem}
 .scenario-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px}
 .scenario-text{font-size:13px;line-height:1.72;color:var(--parch)}
@@ -124,7 +124,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .outcome-text{font-size:12px;line-height:1.65;color:var(--parch-dim)}
 .pm-tip{background:linear-gradient(135deg,rgba(201,168,76,.07),rgba(201,168,76,.02));border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:1rem 1.25rem}
 .pm-tip-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px}
-.pm-tip-text{font-family:'IM Fell English',serif;font-style:italic;font-size:13px;color:var(--parch);line-height:1.7}
+.pm-tip-text{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--parch);line-height:1.7}
 .complete-msg{text-align:center;padding:2rem 1rem;opacity:0;transition:opacity .8s}
 .complete-msg.show{opacity:1}
 .complete-title{font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--gold);margin-bottom:.5rem}
@@ -135,7 +135,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
   :root{--cw:108px;--ch:178px}
   .cards-grid{gap:10px 8px}
   .cf-mystical{font-size:6.5px}
-  .cf-real{font-size:8px}
+  .cf-real{font-size:9px}
   .d-body{padding:1.25rem}
   .m-body{padding:1.25rem}
   .outcome-row{grid-template-columns:1fr}
@@ -149,7 +149,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 /* ══════════════════════════════════════
    THE SUMMONING OVERLAY
 ══════════════════════════════════════ */
-.summoning-overlay{position:fixed;inset:0;z-index:200;background:#06020f;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.25rem;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity 0.8s ease}
+.summoning-overlay{position:fixed;inset:0;z-index:200;background:#06020f;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:2rem 1.25rem 4rem;overflow-y:auto;overflow-x:hidden;opacity:0;pointer-events:none;transition:opacity 0.8s ease}
 .summoning-overlay.active{opacity:1;pointer-events:auto}
 #summonStars{position:fixed;inset:0;z-index:0;pointer-events:none}
 .summon-phase{position:relative;z-index:1;text-align:center;max-width:680px;width:100%}
@@ -165,8 +165,8 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .ring-card.visible{opacity:1}
 .ring-card.lit{border-color:rgba(201,168,76,.6);box-shadow:0 0 14px rgba(201,168,76,.22)}
 .ring-card svg{width:16px;height:16px}
-.summon-final{display:flex;flex-direction:column;align-items:center;gap:2rem;max-width:720px;width:100%}
-.tenth-card{width:200px;height:330px;perspective:1200px;cursor:pointer;flex-shrink:0}
+.summon-final{display:flex;flex-direction:column;align-items:center;gap:2rem;max-width:720px;width:100%;padding-top:1rem;padding-bottom:2rem}
+.tenth-card{width:180px;height:298px;perspective:1200px;cursor:pointer;flex-shrink:0}
 .tenth-card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.34,1.08,.64,1);border-radius:14px}
 .tenth-card.flipped .tenth-card-inner{transform:rotateY(180deg)}
 .tenth-face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
@@ -221,6 +221,42 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
   .or-tags{padding:1rem 1.25rem}
   .or-buttons{padding:1rem 1.25rem 1.5rem}
 }
+
+/* ── CARD DETAIL MODAL ── */
+.card-modal-overlay{position:fixed;inset:0;z-index:150;background:rgba(6,2,15,0.85);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+.card-modal-overlay.open{opacity:1;pointer-events:auto}
+.card-modal-box{background:var(--surface);border:1px solid var(--div);border-radius:16px;width:100%;max-width:680px;max-height:88vh;overflow-y:auto;overflow-x:hidden;transform:scale(0.95) translateY(10px);transition:transform 0.3s ease;position:relative}
+.card-modal-overlay.open .card-modal-box{transform:scale(1) translateY(0)}
+.cmd-stripe{height:4px;width:100%;border-radius:16px 16px 0 0;flex-shrink:0}
+.cmd-body{padding:1.75rem 2rem 2rem;position:relative}
+.cmd-close{position:absolute;top:14px;right:16px;background:transparent;border:1px solid var(--div);border-radius:50%;width:32px;height:32px;cursor:pointer;color:var(--parch-dim);font-size:18px;display:flex;align-items:center;justify-content:center;transition:color 0.2s,border-color 0.2s;z-index:1}
+.cmd-close:hover{color:var(--gold);border-color:var(--gold)}
+.cmd-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:1.25rem;padding-right:2rem}
+.cmd-left{flex:1;min-width:200px}
+.cmd-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:5px}
+.cmd-roman{font-family:'Cinzel Decorative',serif;font-size:10px;color:var(--gold-dim);letter-spacing:0.25em}
+.cmd-stage{font-family:'Raleway',sans-serif;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;padding:2px 9px;border-radius:20px;font-weight:600;border:1px solid}
+.cmd-arcana-title{font-family:'Cinzel Decorative',serif;font-size:13px;color:rgba(201,168,76,0.5);letter-spacing:0.08em;margin-bottom:2px}
+.cmd-name{font-family:'Cinzel Decorative',serif;font-size:clamp(16px,2.8vw,22px);color:var(--gold);margin-bottom:4px;line-height:1.2}
+.cmd-real{font-family:'Raleway',sans-serif;font-size:14px;color:var(--mist);font-weight:300}
+.cmd-example-btn{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;padding:9px 16px;border-radius:8px;cursor:pointer;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.4);color:var(--gold);transition:background 0.2s;white-space:nowrap;flex-shrink:0;align-self:flex-start}
+.cmd-example-btn:hover{background:rgba(201,168,76,0.16)}
+.cmd-tarot-block{background:rgba(201,168,76,0.055);border:1px solid rgba(201,168,76,0.18);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem}
+.cmd-tarot-label{font-family:'Raleway',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
+.cmd-tarot-name{font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold-lt);margin-bottom:6px}
+.cmd-tarot-meaning{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--parch-dim);line-height:1.68}
+.cmd-divider{width:48px;height:1px;background:var(--div);margin:1.1rem 0}
+.cmd-oracle{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;line-height:1.72;margin-bottom:1rem}
+.cmd-def{font-family:'Raleway',sans-serif;font-size:14px;line-height:1.78;color:var(--parch);margin-bottom:0.9rem;font-weight:300}
+.cmd-pm{font-family:'Raleway',sans-serif;font-size:13px;line-height:1.72;color:var(--parch-dim);font-weight:300}
+.cmd-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.1rem;padding-bottom:0.25rem}
+.cmd-tag{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.08em;padding:4px 12px;border-radius:20px;border:1px solid var(--div);color:var(--parch-dim)}
+@media(max-width:640px){
+  .cmd-body{padding:1.25rem}
+  .cmd-header{flex-direction:column;padding-right:2.5rem}
+  .card-modal-overlay{padding:0.75rem}
+  .card-modal-box{max-height:92vh}
+}
 </style>
 </head>
 <body>
@@ -239,37 +275,41 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
     <div class="progress-row" id="progressRow"></div>
   </div>
   <div class="cards-grid" id="cardsGrid"></div>
-  <div class="detail-panel" id="detailPanel">
-    <div class="d-stripe" id="dStripe"></div>
-    <div class="d-body">
-      <div class="d-meta">
-        <div class="d-left">
-          <div class="d-eyebrow">
-            <span class="d-roman" id="dRoman"></span>
-            <span class="d-stage" id="dStage"></span>
+  <!-- CARD DETAIL MODAL -->
+  <div class="card-modal-overlay" id="cardModalOverlay" onclick="closeCardModal(event)">
+    <div class="card-modal-box" id="cardModalBox">
+      <div class="cmd-stripe" id="cmdStripe"></div>
+      <div class="cmd-body">
+        <button class="cmd-close" onclick="closeCardModal()">&#215;</button>
+        <div class="cmd-header">
+          <div class="cmd-left">
+            <div class="cmd-eyebrow">
+              <span class="cmd-roman" id="cmdRoman"></span>
+              <span class="cmd-stage" id="cmdStage"></span>
+            </div>
+            <div class="cmd-arcana-title" id="cmdArcanaTitle"></div>
+            <div class="cmd-name" id="cmdName"></div>
+            <div class="cmd-real" id="cmdReal"></div>
           </div>
-          <div class="d-arcana-title" id="dArcanaTitle"></div>
-          <div class="d-name" id="dName"></div>
-          <div class="d-real" id="dReal"></div>
+          <button class="cmd-example-btn" id="cmdExampleBtn" onclick="openModal()">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.3"/>
+              <path d="M8 7v5M8 5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Real-Life Example
+          </button>
         </div>
-        <button class="btn-example" onclick="openModal()">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7" cy="7" r="6"/><circle cx="7" cy="4.5" r=".7" fill="currentColor" stroke="none"/><line x1="7" y1="6.5" x2="7" y2="10.5"/></svg>
-          Real-Life Example
-        </button>
-      </div>
-      <div class="tarot-block">
-        <svg class="tarot-sigil-sm" id="tarotSigil" viewBox="0 0 64 64" fill="none"></svg>
-        <div>
-          <div class="tarot-label">Tarot Correspondence</div>
-          <div class="tarot-card-name" id="tarotCardName"></div>
-          <div class="tarot-meaning" id="tarotMeaning"></div>
+        <div class="cmd-tarot-block">
+          <div class="cmd-tarot-label">Tarot Correspondence</div>
+          <div class="cmd-tarot-name" id="cmdTarotName"></div>
+          <div class="cmd-tarot-meaning" id="cmdTarotMeaning"></div>
         </div>
+        <div class="cmd-divider"></div>
+        <p class="cmd-oracle" id="cmdOracle"></p>
+        <p class="cmd-def" id="cmdDef"></p>
+        <p class="cmd-pm" id="cmdPm"></p>
+        <div class="cmd-tags" id="cmdTags"></div>
       </div>
-      <div class="d-hr"></div>
-      <p class="d-oracle" id="dOracle"></p>
-      <p class="d-def" id="dDef"></p>
-      <p class="d-pm" id="dPm"></p>
-      <div class="d-tags" id="dTags"></div>
     </div>
   </div>
   <!-- THE SUMMONING — full screen overlay, hidden until all 9 cards flipped -->
@@ -701,7 +741,7 @@ function buildGrid(){
   prog.innerHTML = '';
   flippedCount = 0;
   activeIdx = null;
-  document.getElementById('detailPanel').classList.remove('visible');
+  document.getElementById('cardModalOverlay').classList.remove('open');
 
   CARDS.forEach((_,i)=>{
     const p = document.createElement('div');
@@ -779,30 +819,32 @@ function showDetail(i){
   const c = CARDS[i], st = ST[c.stage];
   activeIdx = i;
 
-  document.getElementById('dStripe').style.background = st.stripe;
-  document.getElementById('dRoman').textContent = 'Arcana '+c.roman;
+  document.getElementById('cmdStripe').style.background = st.stripe;
+  document.getElementById('cmdRoman').textContent = 'Arcana '+c.roman;
 
-  const stEl = document.getElementById('dStage');
+  const stEl = document.getElementById('cmdStage');
   stEl.textContent = st.label;
   stEl.style.cssText = `color:${st.color};border-color:${st.color}44;background:${st.color}14`;
 
-  document.getElementById('dArcanaTitle').textContent = c.arcanaTitle;
-  document.getElementById('dName').textContent = c.mystical;
-  document.getElementById('dReal').textContent = c.real;
-  document.getElementById('tarotCardName').textContent = c.tarotCard;
-  document.getElementById('tarotMeaning').textContent = c.tarotMeaning;
-  document.getElementById('tarotSigil').innerHTML = SIGILS[i]
-    .replace(/class="[^"]*"/, '').replace(/width="[^"]*"/, '').replace(/height="[^"]*"/, '');
-  document.getElementById('dOracle').textContent = c.oracle;
-  document.getElementById('dDef').textContent = c.def;
-  document.getElementById('dPm').textContent = c.pm;
-  document.getElementById('dTags').innerHTML = c.tags.map(t=>`<span class="d-tag">${t}</span>`).join('');
+  document.getElementById('cmdArcanaTitle').textContent = c.arcanaTitle;
+  document.getElementById('cmdName').textContent = c.mystical;
+  document.getElementById('cmdReal').textContent = c.real;
+  document.getElementById('cmdTarotName').textContent = c.tarotCard;
+  document.getElementById('cmdTarotMeaning').textContent = c.tarotMeaning;
+  document.getElementById('cmdOracle').textContent = c.oracle;
+  document.getElementById('cmdDef').textContent = c.def;
+  document.getElementById('cmdPm').textContent = c.pm;
+  document.getElementById('cmdTags').innerHTML = c.tags.map(t=>`<span class="cmd-tag">${t}</span>`).join('');
 
-  const panel = document.getElementById('detailPanel');
-  panel.classList.remove('visible');
-  void panel.offsetWidth;
-  panel.classList.add('visible');
-  setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'nearest'}),80);
+  const overlay = document.getElementById('cardModalOverlay');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCardModal(e){
+  if(e && e.target !== document.getElementById('cardModalOverlay')) return;
+  document.getElementById('cardModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 function openModal(){
@@ -831,7 +873,12 @@ function closeOutside(e){
   if(e.target===document.getElementById('modalOverlay')) closeModal();
 }
 
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    closeModal();
+    closeCardModal();
+  }
+});
 
 /* ═══════════════════════════════════════
    THE SUMMONING — 10th card ending
@@ -978,6 +1025,7 @@ function transitionToPhase3(){
   p3.style.display='block';p3.style.opacity='0';
   p3.style.transition='opacity 1s ease';
   setTimeout(()=>p3.style.opacity='1',50);
+  setTimeout(()=>{ document.getElementById('summoningOverlay').scrollTop = 0; },100);
   document.getElementById('tenthCard').addEventListener('click',flipTenthCard,{once:true});
 }
 
@@ -1027,6 +1075,48 @@ function closeSummoningAndReset(){
 function resetSpread(){ buildGrid(); }
 
 buildGrid();
+</script>
+<!-- STARDUST CURSOR -->
+<canvas id="dustCanvas" style="position:fixed;inset:0;z-index:9999;pointer-events:none;"></canvas>
+<script>
+(function(){
+  if(window.matchMedia('(hover:none)').matches) return;
+  const cv = document.getElementById('dustCanvas');
+  const cx = cv.getContext('2d');
+  let W, H, particles = [];
+  function resize() { W = cv.width = window.innerWidth; H = cv.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  document.addEventListener('mousemove', e => {
+    for (let i = 0; i < 3; i++) {
+      particles.push({
+        x: e.clientX + (Math.random() - 0.5) * 6,
+        y: e.clientY + (Math.random() - 0.5) * 6,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: -(Math.random() * 1.6 + 0.4),
+        life: 1.0,
+        decay: Math.random() * 0.018 + 0.012,
+        r: Math.random() * 2.2 + 0.4,
+        gold: Math.random() < 0.55
+      });
+    }
+  });
+  function draw() {
+    cx.clearRect(0, 0, W, H);
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.vx; p.y += p.vy; p.vy -= 0.015; p.life -= p.decay;
+      if (p.life <= 0) { particles.splice(i, 1); continue; }
+      cx.beginPath(); cx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2);
+      cx.fillStyle = p.gold
+        ? `rgba(201,168,76,${p.life * 0.85})`
+        : `rgba(240,228,200,${p.life * 0.55})`;
+      cx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 </script>
 </body>
 </html>
