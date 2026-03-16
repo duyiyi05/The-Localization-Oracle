@@ -317,6 +317,24 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .easter-link{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;padding:10px 18px;border:1px solid rgba(201,168,76,0.38);border-radius:8px;color:var(--gold);background:rgba(201,168,76,0.06);text-decoration:none;transition:background 0.2s,border-color 0.2s}
 .easter-link:hover{background:rgba(201,168,76,0.14);border-color:var(--gold)}
 .easter-footer{font-family:'IM Fell English',serif;font-style:italic;font-size:13px;color:rgba(201,168,76,0.28);margin-top:0.5rem}
+/* ── GO DEEPER / ORACLE'S LIBRARY ── */
+.go-deeper{width:100%;padding:0 2rem 2rem}
+.gd-divider{width:100%;height:1px;background:var(--div);position:relative;display:flex;align-items:center;justify-content:center;margin:1.25rem 0 1.5rem}
+.gd-divider::after{content:'✦';position:absolute;font-size:10px;color:var(--gold-dim);background:var(--surface);padding:0 8px}
+.gd-eyebrow{font-family:'Cinzel Decorative',serif;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px}
+.gd-title{font-family:'Cinzel Decorative',serif;font-size:clamp(14px,2vw,18px);color:var(--gold);margin-bottom:7px;line-height:1.2}
+.gd-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:var(--parch-dim);line-height:1.65;margin-bottom:1.5rem}
+.gd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.gd-card{background:var(--card-bg);border:1px solid rgba(201,168,76,0.12);border-radius:10px;padding:14px 16px;text-decoration:none;display:block;transition:border-color 0.2s,transform 0.15s}
+.gd-card:hover{border-color:rgba(201,168,76,0.38);transform:translateY(-2px)}
+.gd-card-featured{border-color:rgba(192,85,128,0.28);background:linear-gradient(135deg,rgba(192,85,128,0.07),var(--card-bg))}
+.gd-card-featured:hover{border-color:rgba(192,85,128,0.55);transform:translateY(-2px)}
+.gd-card-featured .gd-card-name{color:#e8a0b8}
+.gd-card-name{font-family:'Cinzel Decorative',serif;font-size:11px;color:var(--gold-lt);letter-spacing:0.06em;margin-bottom:6px;line-height:1.3}
+.gd-card-desc{font-family:'Raleway',sans-serif;font-size:12px;color:rgba(240,230,204,0.52);line-height:1.58;margin-bottom:10px;font-weight:400}
+.gd-card-tag{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-dim);padding:2px 8px;border:1px solid rgba(201,168,76,0.18);border-radius:20px;display:inline-block}
+.gd-tag-rose{color:#c05580;border-color:rgba(192,85,128,0.3)}
+@media(max-width:640px){.go-deeper{padding:0 1.25rem 1.5rem}.gd-grid{grid-template-columns:1fr}.gd-sub{font-size:14px}}
 </style>
 </head>
 <body>
@@ -506,6 +524,63 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
             </button>
             <button class="or-btn-again" onclick="closeSummoningAndReset()">Begin Again</button>
             <a href="about.html" class="or-btn-about">Meet the Oracle's Keeper →</a>
+          </div>
+          <!-- THE ORACLE'S LIBRARY — Go Deeper -->
+          <div class="go-deeper">
+            <div class="gd-divider"></div>
+            <div class="gd-eyebrow">The Oracle's Library</div>
+            <h3 class="gd-title">Go Deeper into the Craft</h3>
+            <p class="gd-sub">The cards have named the disciplines. These are the voices who map the territory.</p>
+            <div class="gd-grid">
+              <!-- Women in Localization — featured -->
+              <a href="https://womeninlocalization.com" target="_blank" class="gd-card gd-card-featured">
+                <div class="gd-card-name">Women in Localization</div>
+                <div class="gd-card-desc">The leading nonprofit for women and their allies in the localization industry. Mentoring, upskilling, global chapters, and MentorEase — a platform pairing experienced PMs with those starting out. A Turkey chapter is in development.</div>
+                <div class="gd-card-tag gd-tag-rose">Community &amp; Mentorship</div>
+              </a>
+              <!-- Slator -->
+              <a href="https://slator.com" target="_blank" class="gd-card">
+                <div class="gd-card-name">Slator</div>
+                <div class="gd-card-desc">Market intelligence for the language industry. If you want to know where MT, AI, and LSP pricing are heading — this is the primary source. The 2025 Pro Guide on Translation AI is essential reading.</div>
+                <div class="gd-card-tag">Industry Intelligence</div>
+              </a>
+              <!-- Nimdzi -->
+              <a href="https://www.nimdzi.com" target="_blank" class="gd-card">
+                <div class="gd-card-name">Nimdzi Insights</div>
+                <div class="gd-card-desc">Research, rankings, and analysis of the global localization market. The Nimdzi 100 is the annual census of the industry's largest LSPs. Free to access.</div>
+                <div class="gd-card-tag">Research &amp; Data</div>
+              </a>
+              <!-- MultiLingual -->
+              <a href="https://multilingual.com" target="_blank" class="gd-card">
+                <div class="gd-card-name">MultiLingual Magazine</div>
+                <div class="gd-card-desc">The industry's trade publication since 1987. Every March they dedicate an issue to women leading localization — from OpenAI's head of internationalization to independent specialists reshaping the craft.</div>
+                <div class="gd-card-tag">Industry Press</div>
+              </a>
+              <!-- LocWorld -->
+              <a href="https://locworld.com" target="_blank" class="gd-card">
+                <div class="gd-card-name">LocWorld</div>
+                <div class="gd-card-desc">The conference where localization programme leaders meet. If you want to understand enterprise-level localization from the buyer's side — and meet the people running it — start here.</div>
+                <div class="gd-card-tag">Community &amp; Events</div>
+              </a>
+              <!-- GALA -->
+              <a href="https://www.gala-global.org" target="_blank" class="gd-card">
+                <div class="gd-card-name">GALA</div>
+                <div class="gd-card-desc">The Globalization and Localization Association. Training, certification paths, and a professional network for everyone in the language services ecosystem.</div>
+                <div class="gd-card-tag">Professional Association</div>
+              </a>
+              <!-- ATA -->
+              <a href="https://www.atanet.org" target="_blank" class="gd-card">
+                <div class="gd-card-name">ATA</div>
+                <div class="gd-card-desc">The American Translators Association — the credential that bridges the linguistic and project management sides of the craft. Recognised globally.</div>
+                <div class="gd-card-tag">Certification</div>
+              </a>
+              <!-- LinkedIn Group -->
+              <a href="https://www.linkedin.com/groups/2662483/" target="_blank" class="gd-card">
+                <div class="gd-card-name">Localization World — LinkedIn</div>
+                <div class="gd-card-desc">Where working localization PMs share problems, solutions, and opportunities. The real conversation that happens between conferences.</div>
+                <div class="gd-card-tag">Community</div>
+              </a>
+            </div>
           </div>
         </div>
 
