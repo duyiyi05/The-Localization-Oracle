@@ -111,7 +111,7 @@ body {
 
 /* ── Ornament ── */
 .orn {
-  color: rgba(201,168,76,0.48);
+  color: rgba(201,168,76,0.65);
   font-size: 13px;
   letter-spacing: 0.65em;
   opacity: 0.75;
@@ -149,8 +149,9 @@ body {
   font-family: 'IM Fell English', serif;
   font-style: italic;
   font-size: clamp(16px, 2.5vw, 20px);
-  color: rgba(240,230,204,0.75);
+  color: rgba(240,230,204,0.82);
   line-height: 1.65;
+  font-weight: 400;
 }
 
 /* ── Gold divider ── */
@@ -178,7 +179,7 @@ body {
   font-family: 'IM Fell English', serif;
   font-style: italic;
   font-size: clamp(15px, 2vw, 18px);
-  color: rgba(240,230,204,0.7);
+  color: rgba(240,230,204,0.78);
   line-height: 1.8;
   max-width: 440px;
   font-weight: 400;
@@ -277,50 +278,35 @@ body {
   font-family: 'IM Fell English', serif;
   font-style: italic;
   font-size: 14px;
-  color: rgba(201,168,76,0.48);
+  color: rgba(201,168,76,0.55);
   letter-spacing: 0.04em;
-}
-
-/* ── Scroll hint ── */
-.scroll-hint {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 7px;
-  animation: scrollBob 2s ease-in-out infinite;
-}
-.scroll-hint span {
-  font-family: 'Raleway', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(201,168,76,0.45);
-}
-.scroll-arrow {
-  width: 10px; height: 10px;
-  border-right: 1px solid rgba(201,168,76,0.45);
-  border-bottom: 1px solid rgba(201,168,76,0.45);
-  transform: rotate(45deg);
-}
-@keyframes scrollBob {
-  0%, 100% { opacity: 0.3; transform: translateY(0); }
-  50%       { opacity: 0.6; transform: translateY(5px); }
+  font-weight: 400;
 }
 
 /* ── About corner link ── */
 .about-corner-link {
   position: fixed;
-  bottom: 1.5rem; right: 1.75rem;
+  bottom: 1.5rem;
+  right: 1.75rem;
   font-family: 'Raleway', sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(201,168,76,0.22);
+  color: rgba(201,168,76,0.7);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s, background 0.2s;
   z-index: 10;
+  background: rgba(16,8,40,0.85);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
 }
-.about-corner-link:hover { color: rgba(201,168,76,0.6); }
+.about-corner-link:hover {
+  color: var(--gold);
+  border-color: rgba(201,168,76,0.6);
+  background: rgba(16,8,40,0.95);
+}
 
 /* ── Responsive ── */
 @media (max-width: 500px) {
@@ -370,14 +356,17 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1;
+  color: rgba(201,168,76,0.72);
+  font-weight: 500;
 }
 .ctrl-zoom-level {
   font-family: 'Raleway', sans-serif;
   font-size: 12px;
-  color: rgba(201,168,76,0.6);
+  color: rgba(201,168,76,0.75);
   min-width: 40px;
   text-align: center;
   letter-spacing: 0.05em;
+  font-weight: 500;
 }
 @media (max-width: 500px) {
   .ctrl-label { display: none; }
@@ -477,11 +466,6 @@ body {
     <!-- 9. Whisper text -->
     <p class="whisper" style="margin-bottom:2rem;">The cards rarely reveal their meaning to those who rush.</p>
 
-    <!-- 10. Scroll hint -->
-    <div class="scroll-hint">
-      <div class="scroll-arrow"></div>
-      <span>scroll to see the nine</span>
-    </div>
 
   </div>
 
