@@ -171,7 +171,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 }
 
 /* ── FINISH READING BUTTON ── */
-.finish-wrap{max-width:600px;margin:0 auto 2rem;text-align:center;opacity:0;transform:translateY(20px);transition:opacity 0.8s ease,transform 0.8s ease;pointer-events:none;position:relative}
+.finish-wrap{max-width:600px;margin:0 auto 2rem;text-align:center;opacity:1;transform:translateY(0);pointer-events:auto;position:relative}
 .finish-wrap.visible{opacity:1;transform:translateY(0);pointer-events:auto}
 .finish-constellation{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity 1.5s ease}
 .finish-constellation.show{opacity:1}
@@ -386,7 +386,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
     </div>
   </div>
   <!-- FINISH READING BUTTON — shown after all 9 cards flipped -->
-  <div class="finish-wrap" id="finishWrap">
+  <div class="finish-wrap visible" id="finishWrap">
     <div class="finish-constellation" id="finishConstellation">
       <!-- constellation SVG injected by JS -->
     </div>
@@ -1136,7 +1136,7 @@ function reveal(slot,i){
       }
     }
     if(flippedCount === CARDS.length){
-      setTimeout(()=>showFinishButton(),1000);
+      setTimeout(()=>drawConstellationLines(),1000);
     }
   }
   setTimeout(()=>showDetail(i), wasFlipped ? 0 : 440);
@@ -1214,13 +1214,6 @@ document.addEventListener('keydown',e=>{
 /* ═══════════════════════════════════════
    THE SUMMONING — 10th card ending
 ═══════════════════════════════════════ */
-
-function showFinishButton() {
-  const wrap = document.getElementById('finishWrap');
-  wrap.classList.add('visible');
-  setTimeout(() => wrap.scrollIntoView({ behavior: 'smooth', block: 'center' }), 200);
-  setTimeout(() => drawConstellationLines(), 1500);
-}
 
 function beginSummoning() {
   const wrap = document.getElementById('finishWrap');
@@ -1465,7 +1458,6 @@ function resetSpread(){
   }
   const wrap = document.getElementById('finishWrap');
   if (wrap) {
-    wrap.classList.remove('visible');
     wrap.style.display = '';
     wrap.style.opacity = '';
     wrap.style.transition = '';
