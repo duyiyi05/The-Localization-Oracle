@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://duyiyi05.github.io/The-Localization-Oracle/spread.html">
-<meta property="og:title" content="The Spread — The Localization Oracle">
+<meta property="og:title" content="The Spread: The Localization Oracle">
 <meta property="og:description" content="Nine cards. Three stages. Flip each card to reveal the hidden craft of Localization Project Management.">
 <meta property="og:image" content="https://duyiyi05.github.io/The-Localization-Oracle/images/og-preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Spread — The Localization Oracle">
-<meta name="twitter:description" content="Nine cards. Three stages. The complete craft of Localization PM — revealed through the Major Arcana.">
+<meta name="twitter:title" content="The Spread: The Localization Oracle">
+<meta name="twitter:description" content="Nine cards. Three stages. The complete craft of Localization PM, revealed through the Major Arcana.">
 <meta name="twitter:image" content="https://duyiyi05.github.io/The-Localization-Oracle/images/og-preview.jpg">
-<title>The Nine-Card Spread — The Localization Oracle</title>
+<title>The Nine-Card Spread: The Localization Oracle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -438,7 +438,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
       </div>
     </div>
   </div>
-  <!-- FINISH READING BUTTON — shown after all 9 cards flipped -->
+  <!-- FINISH READING BUTTON: shown after all 9 cards flipped -->
   <div class="finish-wrap visible" id="finishWrap">
     <div class="finish-constellation" id="finishConstellation">
       <!-- constellation SVG injected by JS -->
@@ -454,7 +454,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
       <p class="finish-whisper">Step forward when you are ready.</p>
     </div>
   </div>
-  <!-- THE SUMMONING — full screen overlay, hidden until all 9 cards flipped -->
+  <!-- THE SUMMONING: full screen overlay, hidden until all 9 cards flipped -->
   <div id="summoningOverlay" class="summoning-overlay">
     <canvas id="summonStars"></canvas>
 
@@ -473,14 +473,14 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
       <div class="summon-ring-wrap" id="summonRing">
         <canvas id="sigilCanvas" width="160" height="160"></canvas>
       </div>
-      <div class="summon-ring-label" id="summonRingLabel">&#8212; the circle is cast &#8212;</div>
+      <div class="summon-ring-label" id="summonRingLabel">&middot; the circle is cast &middot;</div>
     </div>
 
     <!-- Phase 3: sigil complete + oracle message -->
     <div class="summon-phase" id="sPhase3" style="display:none">
       <div class="summon-final">
 
-        <!-- The 10th card — large, central, SVG -->
+        <!-- The 10th card, large, central SVG -->
         <div class="tenth-card" id="tenthCard">
           <div class="tenth-card-inner" id="tenthCardInner">
 
@@ -506,7 +506,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
               <div class="tc-whisper">Touch to complete the reading</div>
             </div>
 
-            <!-- card front — Judgement illustration -->
+            <!-- card front: Judgement illustration -->
             <div class="tenth-face tenth-front">
               <div class="tc-front-top">
                 <span class="tc-arcana-num" onclick="handleEasterClick()" style="cursor:pointer" title="">X</span>
@@ -515,7 +515,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
               <div class="tc-art">
                 <img
                   src="images/judgement.jpg"
-                  alt="Judgement — Major Arcana XX"
+                  alt="Judgement: Major Arcana XX"
                   loading="lazy"
                   style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;filter:sepia(15%) contrast(1.05) brightness(0.9);"
                   onerror="this.style.display='none'"
@@ -523,7 +523,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
               </div>
               <div class="tc-front-bottom">
                 <div class="tc-mystical">The Oracle Awakens</div>
-                <div class="tc-real">Judgement &#8212; Major Arcana XX</div>
+                <div class="tc-real">Judgement: Major Arcana XX</div>
               </div>
             </div>
 
@@ -534,16 +534,16 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
         <div class="oracle-reading" id="oracleReading" style="opacity:0;transition:opacity 1.2s ease">
           <div class="or-eyebrow">Arcana X &#183; The Oracle&#8217;s Final Reading</div>
           <div class="or-name">You Are the Oracle</div>
-          <div class="or-arcana">Judgement &#8212; Major Arcana XX</div>
+          <div class="or-arcana">Judgement: Major Arcana XX</div>
           <div class="or-divider"></div>
           <div class="or-tarot-block">
             <div class="or-tarot-label">The Tarot Speaks</div>
-            <div class="or-tarot-text">Judgement depicts the angel sounding the final trumpet &#8212; and the dead rising, arms outstretched, answering the call. It is not the card of ending. It is the card of awakening. Of being summoned to your full purpose. Of hearing the call and rising to meet it.</div>
+            <div class="or-tarot-text">Judgement depicts the angel sounding the final trumpet, and the dead rising, arms outstretched, answering the call. It is not the card of ending. It is the card of awakening. Of being summoned to your full purpose. Of hearing the call and rising to meet it.</div>
           </div>
           <div class="or-divider"></div>
           <p class="or-oracle-text">&#8220;The nine paths have been walked. The memory has been mastered. The fog has been read by lantern. The guild has been briefed, the trial endured, the worlds crossed. Judgement does not ask whether you are ready. It announces that you already are.&#8221;</p>
-          <p class="or-def">You have moved through the complete arc of localization project management &#8212; from the foundational alchemy of Translation Memory to the highest craft of Transcreation. Each card was a discipline. Together they are a programme. And a programme needs a keeper.</p>
-          <p class="or-pm-note">The complete localization PM does not merely manage tasks &#8212; they hold the whole: the cost and the craft, the machine and the human, the brief and the delivery, the asset and the relationship. The Oracle&#8217;s counsel is this: you have seen all nine faces. Trust what you know.</p>
+          <p class="or-def">You have moved through the complete arc of localization project management: from the foundational alchemy of Translation Memory to the highest craft of Transcreation. Each card was a discipline. Together they are a programme. And a programme needs a keeper.</p>
+          <p class="or-pm-note">The complete localization PM does not merely manage tasks; they hold the whole: the cost and the craft, the machine and the human, the brief and the delivery, the asset and the relationship. The Oracle&#8217;s counsel is this: you have seen all nine faces. Trust what you know.</p>
           <div class="or-tags">
             <span class="or-tag">The Nine Paths Walked</span>
             <span class="or-tag">The Craft Made Whole</span>
@@ -558,7 +558,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
             <button class="or-btn-again" onclick="closeSummoningAndReset()">Begin Again</button>
             <a href="about.html" class="or-btn-about">Meet the Oracle's Keeper →</a>
           </div>
-          <!-- THE ORACLE'S LIBRARY — Go Deeper -->
+          <!-- THE ORACLE'S LIBRARY: Go Deeper -->
           <div class="go-deeper">
             <div class="gd-divider"></div>
             <div class="gd-eyebrow">The Oracle's Library</div>
@@ -579,14 +579,14 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
                 <div class="gd-card-type">Course</div>
                 <div class="gd-card-name">Lokalise Academy</div>
                 <div class="gd-card-source">Lokalise · 22 free courses</div>
-                <div class="gd-card-desc">22 free on-demand localization courses taught by working industry professionals — from crash courses for beginners to workflow design for senior PMs. Includes certification. No excuse not to start.</div>
+                <div class="gd-card-desc">22 free on-demand localization courses taught by working industry professionals: from crash courses for beginners to workflow design for senior PMs. Includes certification. No excuse not to start.</div>
                 <div class="gd-card-tag">Free &amp; Certified</div>
               </a>
               <a href="https://www.nimdzi.com/courses/how-to-set-up-your-localization-metrics-program-advancing-your-strategy-and-explaining-the-business-impact/" target="_blank" class="gd-card gd-card-learn">
                 <div class="gd-card-type">Course</div>
                 <div class="gd-card-name">Localization Metrics Programme</div>
                 <div class="gd-card-source">Nimdzi Insights</div>
-                <div class="gd-card-desc">How to set up, measure, and communicate localization's business impact to leadership. The skill that gets PMs a seat at the table — and keeps them there. Essential for anyone moving toward programme ownership.</div>
+                <div class="gd-card-desc">How to set up, measure, and communicate localization's business impact to leadership. The skill that gets PMs a seat at the table, and keeps them there. Essential for anyone moving toward programme ownership.</div>
                 <div class="gd-card-tag">Strategy</div>
               </a>
               <a href="https://www.localizationinstitute.com/course/localization-project-management-certification/" target="_blank" class="gd-card gd-card-learn">
@@ -605,14 +605,14 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
                 <div class="gd-card-type">YouTube</div>
                 <div class="gd-card-name">Localization Academy</div>
                 <div class="gd-card-source">YouTube · Andrej Zito</div>
-                <div class="gd-card-desc">Interviews, tutorials, and honest career advice for localization PMs at every level. The most consistent free video resource in the industry — covering TMS tools, workflows, job hunting, and what the job actually looks like day to day.</div>
+                <div class="gd-card-desc">Interviews, tutorials, and honest career advice for localization PMs at every level. The most consistent free video resource in the industry, covering TMS tools, workflows, job hunting, and what the job actually looks like day to day.</div>
                 <div class="gd-card-tag gd-tag-video">▶ YouTube</div>
               </a>
               <a href="https://www.youtube.com/@SlatorTV" target="_blank" class="gd-card gd-card-watch">
                 <div class="gd-card-type">YouTube</div>
                 <div class="gd-card-name">Slator TV</div>
                 <div class="gd-card-source">YouTube · Slator</div>
-                <div class="gd-card-desc">Industry interviews and analysis from the team behind Slator. LSP market trends, AI in translation, enterprise localization strategy — the bigger picture of where the industry is heading, in conversation format.</div>
+                <div class="gd-card-desc">Industry interviews and analysis from the team behind Slator. LSP market trends, AI in translation, enterprise localization strategy: the bigger picture of where the industry is heading, in conversation format.</div>
                 <div class="gd-card-tag gd-tag-video">▶ YouTube</div>
               </a>
             </div>
@@ -631,42 +631,42 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
                 <div class="gd-card-type">Research</div>
                 <div class="gd-card-name">Nimdzi Insights</div>
                 <div class="gd-card-source">nimdzi.com · Free Nimdzi 100 annual report</div>
-                <div class="gd-card-desc">Research, rankings, and analysis of the global localization market. The Nimdzi 100 is the annual census of the world's largest LSPs. Free to access — required reading for anyone serious about understanding the industry landscape.</div>
+                <div class="gd-card-desc">Research, rankings, and analysis of the global localization market. The Nimdzi 100 is the annual census of the world's largest LSPs. Free to access: required reading for anyone serious about understanding the industry landscape.</div>
                 <div class="gd-card-tag">Research &amp; Data</div>
               </a>
               <a href="https://slator.com" target="_blank" class="gd-card gd-card-community">
                 <div class="gd-card-type">News</div>
                 <div class="gd-card-name">Slator</div>
                 <div class="gd-card-source">slator.com · Daily industry news</div>
-                <div class="gd-card-desc">Market intelligence for the language industry. MT, AI, M&amp;A, pricing trends — if something shifts in the industry, Slator reports it first. The 2025 Pro Guide on Translation AI is essential reading for any PM working with MT.</div>
+                <div class="gd-card-desc">Market intelligence for the language industry. MT, AI, M&amp;A, pricing trends. If something shifts in the industry, Slator reports it first. The 2025 Pro Guide on Translation AI is essential reading for any PM working with MT.</div>
                 <div class="gd-card-tag">Industry Intelligence</div>
               </a>
               <a href="https://multilingual.com" target="_blank" class="gd-card gd-card-community">
                 <div class="gd-card-type">Magazine</div>
                 <div class="gd-card-name">MultiLingual Magazine</div>
                 <div class="gd-card-source">multilingual.com · Since 1987</div>
-                <div class="gd-card-desc">The industry's trade publication. Every March they dedicate an issue to women leading localization. A record of the industry's evolution and the people shaping it — from OpenAI's head of internationalization to independent specialists.</div>
+                <div class="gd-card-desc">The industry's trade publication. Every March they dedicate an issue to women leading localization. A record of the industry's evolution and the people shaping it: from OpenAI's head of internationalization to independent specialists.</div>
                 <div class="gd-card-tag">Industry Press</div>
               </a>
               <a href="https://locworld.com" target="_blank" class="gd-card gd-card-community">
                 <div class="gd-card-type">Conference</div>
                 <div class="gd-card-name">LocWorld</div>
                 <div class="gd-card-source">locworld.com · Annual</div>
-                <div class="gd-card-desc">The conference where enterprise localization programme leaders meet. If you want to understand the buyer's side — and meet the people running global programmes at Spotify, Amazon, and Adobe — this is the room to be in.</div>
+                <div class="gd-card-desc">The conference where enterprise localization programme leaders meet. If you want to understand the buyer's side, and meet the people running global programmes at Spotify, Amazon, and Adobe, this is the room to be in.</div>
                 <div class="gd-card-tag">Events</div>
               </a>
               <a href="https://www.gala-global.org" target="_blank" class="gd-card gd-card-community">
                 <div class="gd-card-type">Association</div>
                 <div class="gd-card-name">GALA</div>
                 <div class="gd-card-source">gala-global.org</div>
-                <div class="gd-card-desc">The Globalization and Localization Association. Training, certification paths, and a professional network for everyone in the language services ecosystem — from freelancers to enterprise programme managers.</div>
+                <div class="gd-card-desc">The Globalization and Localization Association. Training, certification paths, and a professional network for everyone in the language services ecosystem: from freelancers to enterprise programme managers.</div>
                 <div class="gd-card-tag">Professional Association</div>
               </a>
               <a href="https://www.linkedin.com/groups/2662483/" target="_blank" class="gd-card gd-card-community">
                 <div class="gd-card-type">LinkedIn</div>
                 <div class="gd-card-name">Localization World Group</div>
                 <div class="gd-card-source">LinkedIn · Active community</div>
-                <div class="gd-card-desc">Where working localization PMs share problems, solutions, job opportunities, and opinions between conferences. The real conversation — unfiltered and useful.</div>
+                <div class="gd-card-desc">Where working localization PMs share problems, solutions, job opportunities, and opinions between conferences. The real conversation, unfiltered and useful.</div>
                 <div class="gd-card-tag">Community</div>
               </a>
             </div>
@@ -1155,7 +1155,7 @@ function reveal(slot,i){
       counter.textContent = `${flippedCount} of ${CARDS.length} revealed`;
       if (flippedCount === CARDS.length) {
         counter.classList.add('all-revealed');
-        counter.textContent = 'All nine revealed — the circle is complete';
+        counter.textContent = 'All nine revealed. The circle is complete.';
       }
     }
     if(flippedCount === CARDS.length){
@@ -1235,7 +1235,7 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ═══════════════════════════════════════
-   THE SUMMONING — 10th card ending
+   THE SUMMONING: 10th card ending
 ═══════════════════════════════════════ */
 
 function beginSummoning() {
@@ -1541,7 +1541,7 @@ buildGrid();
     <div class="easter-sigil">✦</div>
     <div class="easter-eyebrow">You found the hidden chamber</div>
     <h2 class="easter-title">Hello, Recruiter</h2>
-    <p class="easter-text">If you made it to the tenth card and clicked three times — you have walked all nine paths of the localization craft and gone further still. That is exactly the kind of attention to detail this work is about.</p>
+    <p class="easter-text">If you made it to the tenth card and clicked three times: you have walked all nine paths of the localization craft and gone further still. That is exactly the kind of attention to detail this work is about.</p>
     <p class="easter-text">I am a Localization Project Manager with hands-on experience across TM leverage, LQA, MTPE, vendor management, and cultural adaptation. I built this oracle to show, not just tell.</p>
     <div class="easter-links" id="easterLinks">
       <a href="https://www.linkedin.com/in/duygu-ta%C5%9F-%E6%9D%9C%E4%BE%9D%E4%BE%9D/" target="_blank" class="easter-link">
