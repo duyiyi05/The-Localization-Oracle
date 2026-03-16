@@ -318,23 +318,38 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .easter-link:hover{background:rgba(201,168,76,0.14);border-color:var(--gold)}
 .easter-footer{font-family:'IM Fell English',serif;font-style:italic;font-size:13px;color:rgba(201,168,76,0.28);margin-top:0.5rem}
 /* ── GO DEEPER / ORACLE'S LIBRARY ── */
-.go-deeper{width:100%;padding:0 2rem 2rem}
+.go-deeper{width:100%;padding:0 2rem 2.5rem}
 .gd-divider{width:100%;height:1px;background:var(--div);position:relative;display:flex;align-items:center;justify-content:center;margin:1.25rem 0 1.5rem}
 .gd-divider::after{content:'✦';position:absolute;font-size:10px;color:var(--gold-dim);background:var(--surface);padding:0 8px}
 .gd-eyebrow{font-family:'Cinzel Decorative',serif;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px}
 .gd-title{font-family:'Cinzel Decorative',serif;font-size:clamp(14px,2vw,18px);color:var(--gold);margin-bottom:7px;line-height:1.2}
 .gd-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:var(--parch-dim);line-height:1.65;margin-bottom:1.5rem}
-.gd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
-.gd-card{background:var(--card-bg);border:1px solid rgba(201,168,76,0.12);border-radius:10px;padding:14px 16px;text-decoration:none;display:block;transition:border-color 0.2s,transform 0.15s}
+.gd-section-label{font-family:'Cinzel Decorative',serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,168,76,0.35);margin-bottom:10px;margin-top:1.5rem}
+.gd-section-label:first-of-type{margin-top:0}
+.gd-grid{display:grid;gap:10px;margin-bottom:0.5rem}
+.gd-grid-learn{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.gd-grid-watch{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.gd-grid-community{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.gd-card{border-radius:10px;padding:14px 16px;text-decoration:none;display:block;transition:border-color 0.2s,transform 0.15s;border:1px solid rgba(201,168,76,0.12);background:var(--card-bg)}
 .gd-card:hover{border-color:rgba(201,168,76,0.38);transform:translateY(-2px)}
+.gd-card-learn{border-color:rgba(58,172,172,0.15);background:linear-gradient(135deg,rgba(58,172,172,0.04),var(--card-bg))}
+.gd-card-learn:hover{border-color:rgba(58,172,172,0.4)}
+.gd-card-watch{border-color:rgba(168,151,216,0.15);background:linear-gradient(135deg,rgba(168,151,216,0.04),var(--card-bg))}
+.gd-card-watch:hover{border-color:rgba(168,151,216,0.4)}
+.gd-card-community{border-color:rgba(201,168,76,0.12)}
 .gd-card-featured{border-color:rgba(192,85,128,0.28);background:linear-gradient(135deg,rgba(192,85,128,0.07),var(--card-bg))}
-.gd-card-featured:hover{border-color:rgba(192,85,128,0.55);transform:translateY(-2px)}
+.gd-card-featured:hover{border-color:rgba(192,85,128,0.55)}
 .gd-card-featured .gd-card-name{color:#e8a0b8}
-.gd-card-name{font-family:'Cinzel Decorative',serif;font-size:11px;color:var(--gold-lt);letter-spacing:0.06em;margin-bottom:6px;line-height:1.3}
+.gd-card-type{font-family:'Raleway',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.38);margin-bottom:4px}
+.gd-card-learn .gd-card-type{color:rgba(58,172,172,0.6)}
+.gd-card-watch .gd-card-type{color:rgba(168,151,216,0.6)}
+.gd-card-name{font-family:'Cinzel Decorative',serif;font-size:11px;color:var(--gold-lt);letter-spacing:0.06em;margin-bottom:3px;line-height:1.3}
+.gd-card-source{font-family:'Raleway',sans-serif;font-size:10px;color:rgba(240,230,204,0.3);margin-bottom:7px;letter-spacing:0.02em}
 .gd-card-desc{font-family:'Raleway',sans-serif;font-size:12px;color:rgba(240,230,204,0.52);line-height:1.58;margin-bottom:10px;font-weight:400}
 .gd-card-tag{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-dim);padding:2px 8px;border:1px solid rgba(201,168,76,0.18);border-radius:20px;display:inline-block}
 .gd-tag-rose{color:#c05580;border-color:rgba(192,85,128,0.3)}
-@media(max-width:640px){.go-deeper{padding:0 1.25rem 1.5rem}.gd-grid{grid-template-columns:1fr}.gd-sub{font-size:14px}}
+.gd-tag-video{color:var(--mist);border-color:rgba(168,151,216,0.3)}
+@media(max-width:640px){.go-deeper{padding:0 1.25rem 1.5rem}.gd-grid-learn,.gd-grid-watch,.gd-grid-community{grid-template-columns:1fr}.gd-sub{font-size:14px}}
 </style>
 </head>
 <body>
@@ -530,54 +545,110 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
             <div class="gd-divider"></div>
             <div class="gd-eyebrow">The Oracle's Library</div>
             <h3 class="gd-title">Go Deeper into the Craft</h3>
-            <p class="gd-sub">The cards have named the disciplines. These are the voices who map the territory.</p>
-            <div class="gd-grid">
-              <!-- Women in Localization — featured -->
-              <a href="https://womeninlocalization.com" target="_blank" class="gd-card gd-card-featured">
-                <div class="gd-card-name">Women in Localization</div>
-                <div class="gd-card-desc">The leading nonprofit for women and their allies in the localization industry. Mentoring, upskilling, global chapters, and MentorEase — a platform pairing experienced PMs with those starting out. A Turkey chapter is in development.</div>
-                <div class="gd-card-tag gd-tag-rose">Community &amp; Mentorship</div>
+            <p class="gd-sub">The cards have named the disciplines. These are the voices, courses, and communities that map the territory further.</p>
+
+            <!-- SECTION: Learn -->
+            <div class="gd-section-label">✦ Learn</div>
+            <div class="gd-grid gd-grid-learn">
+              <a href="https://localizationacademy.com/localization-project-manager/" target="_blank" class="gd-card gd-card-learn">
+                <div class="gd-card-type">Course</div>
+                <div class="gd-card-name">Localization PM Course</div>
+                <div class="gd-card-source">Localization Academy · Andrej Zito</div>
+                <div class="gd-card-desc">The most recommended hands-on course for becoming a localization PM. Practice-oriented with real exercises, CAT tool exposure, and access to the instructor. Dozens of juniors credit it with landing their first role.</div>
+                <div class="gd-card-tag">Paid Course</div>
               </a>
-              <!-- Slator -->
-              <a href="https://slator.com" target="_blank" class="gd-card">
-                <div class="gd-card-name">Slator</div>
-                <div class="gd-card-desc">Market intelligence for the language industry. If you want to know where MT, AI, and LSP pricing are heading — this is the primary source. The 2025 Pro Guide on Translation AI is essential reading.</div>
-                <div class="gd-card-tag">Industry Intelligence</div>
+              <a href="https://academy.lokalise.com/courses" target="_blank" class="gd-card gd-card-learn">
+                <div class="gd-card-type">Course</div>
+                <div class="gd-card-name">Lokalise Academy</div>
+                <div class="gd-card-source">Lokalise · 22 free courses</div>
+                <div class="gd-card-desc">22 free on-demand localization courses taught by working industry professionals — from crash courses for beginners to workflow design for senior PMs. Includes certification. No excuse not to start.</div>
+                <div class="gd-card-tag">Free &amp; Certified</div>
               </a>
-              <!-- Nimdzi -->
-              <a href="https://www.nimdzi.com" target="_blank" class="gd-card">
-                <div class="gd-card-name">Nimdzi Insights</div>
-                <div class="gd-card-desc">Research, rankings, and analysis of the global localization market. The Nimdzi 100 is the annual census of the industry's largest LSPs. Free to access.</div>
-                <div class="gd-card-tag">Research &amp; Data</div>
+              <a href="https://www.nimdzi.com/courses/how-to-set-up-your-localization-metrics-program-advancing-your-strategy-and-explaining-the-business-impact/" target="_blank" class="gd-card gd-card-learn">
+                <div class="gd-card-type">Course</div>
+                <div class="gd-card-name">Localization Metrics Programme</div>
+                <div class="gd-card-source">Nimdzi Insights</div>
+                <div class="gd-card-desc">How to set up, measure, and communicate localization's business impact to leadership. The skill that gets PMs a seat at the table — and keeps them there. Essential for anyone moving toward programme ownership.</div>
+                <div class="gd-card-tag">Strategy</div>
               </a>
-              <!-- MultiLingual -->
-              <a href="https://multilingual.com" target="_blank" class="gd-card">
-                <div class="gd-card-name">MultiLingual Magazine</div>
-                <div class="gd-card-desc">The industry's trade publication since 1987. Every March they dedicate an issue to women leading localization — from OpenAI's head of internationalization to independent specialists reshaping the craft.</div>
-                <div class="gd-card-tag">Industry Press</div>
-              </a>
-              <!-- LocWorld -->
-              <a href="https://locworld.com" target="_blank" class="gd-card">
-                <div class="gd-card-name">LocWorld</div>
-                <div class="gd-card-desc">The conference where localization programme leaders meet. If you want to understand enterprise-level localization from the buyer's side — and meet the people running it — start here.</div>
-                <div class="gd-card-tag">Community &amp; Events</div>
-              </a>
-              <!-- GALA -->
-              <a href="https://www.gala-global.org" target="_blank" class="gd-card">
-                <div class="gd-card-name">GALA</div>
-                <div class="gd-card-desc">The Globalization and Localization Association. Training, certification paths, and a professional network for everyone in the language services ecosystem.</div>
-                <div class="gd-card-tag">Professional Association</div>
-              </a>
-              <!-- ATA -->
-              <a href="https://www.atanet.org" target="_blank" class="gd-card">
-                <div class="gd-card-name">ATA</div>
-                <div class="gd-card-desc">The American Translators Association — the credential that bridges the linguistic and project management sides of the craft. Recognised globally.</div>
+              <a href="https://www.localizationinstitute.com/course/localization-project-management-certification/" target="_blank" class="gd-card gd-card-learn">
+                <div class="gd-card-type">Certification</div>
+                <div class="gd-card-name">LPM Certification</div>
+                <div class="gd-card-source">The Localization Institute · Updated 2025</div>
+                <div class="gd-card-desc">38-topic rigorous certification covering PM methodology, MT, AI in localization, Agile workflows, and ISO 21500. Updated November 2025. The credential that signals serious professional intent.</div>
                 <div class="gd-card-tag">Certification</div>
               </a>
-              <!-- LinkedIn Group -->
-              <a href="https://www.linkedin.com/groups/2662483/" target="_blank" class="gd-card">
-                <div class="gd-card-name">Localization World — LinkedIn</div>
-                <div class="gd-card-desc">Where working localization PMs share problems, solutions, and opportunities. The real conversation that happens between conferences.</div>
+            </div>
+
+            <!-- SECTION: Watch -->
+            <div class="gd-section-label">✦ Watch</div>
+            <div class="gd-grid gd-grid-watch">
+              <a href="https://www.youtube.com/LocalizationAcademy" target="_blank" class="gd-card gd-card-watch">
+                <div class="gd-card-type">YouTube</div>
+                <div class="gd-card-name">Localization Academy</div>
+                <div class="gd-card-source">YouTube · Andrej Zito</div>
+                <div class="gd-card-desc">Interviews, tutorials, and honest career advice for localization PMs at every level. The most consistent free video resource in the industry — covering TMS tools, workflows, job hunting, and what the job actually looks like day to day.</div>
+                <div class="gd-card-tag gd-tag-video">▶ YouTube</div>
+              </a>
+              <a href="https://www.youtube.com/@SlatorTV" target="_blank" class="gd-card gd-card-watch">
+                <div class="gd-card-type">YouTube</div>
+                <div class="gd-card-name">Slator TV</div>
+                <div class="gd-card-source">YouTube · Slator</div>
+                <div class="gd-card-desc">Industry interviews and analysis from the team behind Slator. LSP market trends, AI in translation, enterprise localization strategy — the bigger picture of where the industry is heading, in conversation format.</div>
+                <div class="gd-card-tag gd-tag-video">▶ YouTube</div>
+              </a>
+            </div>
+
+            <!-- SECTION: Community -->
+            <div class="gd-section-label">✦ Community</div>
+            <div class="gd-grid gd-grid-community">
+              <a href="https://womeninlocalization.com" target="_blank" class="gd-card gd-card-featured">
+                <div class="gd-card-type" style="color:rgba(192,85,128,0.7)">Community</div>
+                <div class="gd-card-name">Women in Localization</div>
+                <div class="gd-card-source">womeninlocalization.com · Global + Turkey chapter forming</div>
+                <div class="gd-card-desc">The leading nonprofit for women and their allies in the industry. Mentoring via MentorEase, upskilling programs, global chapters, and a community that has your back through every stage of the career. A Turkey chapter is in development.</div>
+                <div class="gd-card-tag gd-tag-rose">Community &amp; Mentorship</div>
+              </a>
+              <a href="https://www.nimdzi.com" target="_blank" class="gd-card gd-card-community">
+                <div class="gd-card-type">Research</div>
+                <div class="gd-card-name">Nimdzi Insights</div>
+                <div class="gd-card-source">nimdzi.com · Free Nimdzi 100 annual report</div>
+                <div class="gd-card-desc">Research, rankings, and analysis of the global localization market. The Nimdzi 100 is the annual census of the world's largest LSPs. Free to access — required reading for anyone serious about understanding the industry landscape.</div>
+                <div class="gd-card-tag">Research &amp; Data</div>
+              </a>
+              <a href="https://slator.com" target="_blank" class="gd-card gd-card-community">
+                <div class="gd-card-type">News</div>
+                <div class="gd-card-name">Slator</div>
+                <div class="gd-card-source">slator.com · Daily industry news</div>
+                <div class="gd-card-desc">Market intelligence for the language industry. MT, AI, M&amp;A, pricing trends — if something shifts in the industry, Slator reports it first. The 2025 Pro Guide on Translation AI is essential reading for any PM working with MT.</div>
+                <div class="gd-card-tag">Industry Intelligence</div>
+              </a>
+              <a href="https://multilingual.com" target="_blank" class="gd-card gd-card-community">
+                <div class="gd-card-type">Magazine</div>
+                <div class="gd-card-name">MultiLingual Magazine</div>
+                <div class="gd-card-source">multilingual.com · Since 1987</div>
+                <div class="gd-card-desc">The industry's trade publication. Every March they dedicate an issue to women leading localization. A record of the industry's evolution and the people shaping it — from OpenAI's head of internationalization to independent specialists.</div>
+                <div class="gd-card-tag">Industry Press</div>
+              </a>
+              <a href="https://locworld.com" target="_blank" class="gd-card gd-card-community">
+                <div class="gd-card-type">Conference</div>
+                <div class="gd-card-name">LocWorld</div>
+                <div class="gd-card-source">locworld.com · Annual</div>
+                <div class="gd-card-desc">The conference where enterprise localization programme leaders meet. If you want to understand the buyer's side — and meet the people running global programmes at Spotify, Amazon, and Adobe — this is the room to be in.</div>
+                <div class="gd-card-tag">Events</div>
+              </a>
+              <a href="https://www.gala-global.org" target="_blank" class="gd-card gd-card-community">
+                <div class="gd-card-type">Association</div>
+                <div class="gd-card-name">GALA</div>
+                <div class="gd-card-source">gala-global.org</div>
+                <div class="gd-card-desc">The Globalization and Localization Association. Training, certification paths, and a professional network for everyone in the language services ecosystem — from freelancers to enterprise programme managers.</div>
+                <div class="gd-card-tag">Professional Association</div>
+              </a>
+              <a href="https://www.linkedin.com/groups/2662483/" target="_blank" class="gd-card gd-card-community">
+                <div class="gd-card-type">LinkedIn</div>
+                <div class="gd-card-name">Localization World Group</div>
+                <div class="gd-card-source">LinkedIn · Active community</div>
+                <div class="gd-card-desc">Where working localization PMs share problems, solutions, job opportunities, and opinions between conferences. The real conversation — unfiltered and useful.</div>
                 <div class="gd-card-tag">Community</div>
               </a>
             </div>
