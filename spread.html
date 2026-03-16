@@ -615,6 +615,14 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 let soundEnabled = false;
 const sounds = {};
 
+/* Shared AudioContext — created once on first use */
+let _audioCtx = null;
+function getAudioCtx() {
+  if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (_audioCtx.state === 'suspended') _audioCtx.resume();
+  return _audioCtx;
+}
+
 function loadSounds() {
   const files = {
     flip:      'sounds/card-flip.mp3',
@@ -625,6 +633,8 @@ function loadSounds() {
     const audio = new Audio(src);
     audio.preload = 'auto';
     audio.volume = key === 'flip' ? 0.5 : key === 'chime' ? 0.4 : 0.35;
+    /* Mark as ready only if the file actually loads */
+    audio.addEventListener('canplaythrough', () => { audio._ready = true; }, { once: true });
     sounds[key] = audio;
   });
 }
@@ -643,11 +653,11 @@ function toggleSound() {
     btn.classList.remove('muted');
     if (w1) w1.style.display = '';
     if (w2) w2.style.display = '';
-    // start ambient
+    /* start ambient if file is available */
     if (!ambientAudio) {
       ambientAudio = new Audio('sounds/ambient.mp3');
       ambientAudio.loop   = true;
-      ambientAudio.volume = 0.18; /* very quiet — background only */
+      ambientAudio.volume = 0.18;
     }
     ambientAudio.play().catch(() => {});
   } else {
@@ -656,7 +666,6 @@ function toggleSound() {
     if (w1) w1.style.display = 'none';
     if (w2) w2.style.display = 'none';
     if (ambientAudio) {
-      /* fade out gracefully over 1.5s */
       const fadeOut = setInterval(() => {
         if (ambientAudio.volume > 0.01) {
           ambientAudio.volume = Math.max(0, ambientAudio.volume - 0.015);
@@ -670,18 +679,73 @@ function toggleSound() {
   }
 }
 
+/* ── Web Audio fallbacks (used when MP3 files are not yet present) ── */
+function _synthFlip() {
+  const ctx = getAudioCtx();
+  const t = ctx.currentTime;
+  const bufLen = ctx.sampleRate * 0.25;
+  const buf = ctx.createBuffer(1, bufLen, ctx.sampleRate);
+  const data = buf.getChannelData(0);
+  for (let i = 0; i < bufLen; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / bufLen);
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  const filter = ctx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.frequency.setValueAtTime(1200, t);
+  filter.frequency.exponentialRampToValueAtTime(400, t + 0.2);
+  filter.Q.value = 0.8;
+  const gain = ctx.createGain();
+  gain.gain.setValueAtTime(0.18, t);
+  gain.gain.exponentialRampToValueAtTime(0.001, t + 0.25);
+  src.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
+  src.start(t); src.stop(t + 0.25);
+}
+
+function _synthChime() {
+  const ctx = getAudioCtx();
+  const t = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const g = ctx.createGain();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(880, t);
+  osc.frequency.exponentialRampToValueAtTime(660, t + 0.4);
+  g.gain.setValueAtTime(0.12, t);
+  g.gain.exponentialRampToValueAtTime(0.001, t + 0.5);
+  osc.connect(g); g.connect(ctx.destination);
+  osc.start(t); osc.stop(t + 0.5);
+}
+
+function _synthSummoning() {
+  const ctx = getAudioCtx();
+  [392, 494, 587, 740, 880].forEach((freq, i) => {
+    const t = ctx.currentTime + i * 0.3;
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    g.gain.setValueAtTime(0.1, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.8);
+    osc.connect(g); g.connect(ctx.destination);
+    osc.start(t); osc.stop(t + 0.8);
+  });
+}
+
+/* ── Public play functions — MP3 first, synth fallback ── */
 function playCardFlip() {
-  if (!soundEnabled || !sounds.flip) return;
-  const s = sounds.flip.cloneNode(); /* clone so overlapping plays work */
-  s.volume = 0.45;
-  s.play().catch(() => {});
+  if (!soundEnabled) return;
+  if (sounds.flip && sounds.flip._ready) {
+    const s = sounds.flip.cloneNode();
+    s.volume = 0.45;
+    s.play().catch(() => _synthFlip());
+  } else {
+    _synthFlip();
+  }
 }
 
 function playCardHover() {
-  /* keep hover subtle — Web Audio for a tiny soft tick, no file needed */
   if (!soundEnabled) return;
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const ctx = getAudioCtx();
     const o = ctx.createOscillator();
     const g = ctx.createGain();
     o.type = 'sine'; o.frequency.value = 528;
@@ -693,17 +757,25 @@ function playCardHover() {
 }
 
 function playRevealChime() {
-  if (!soundEnabled || !sounds.chime) return;
-  const s = sounds.chime.cloneNode();
-  s.volume = 0.38;
-  s.play().catch(() => {});
+  if (!soundEnabled) return;
+  if (sounds.chime && sounds.chime._ready) {
+    const s = sounds.chime.cloneNode();
+    s.volume = 0.38;
+    s.play().catch(() => _synthChime());
+  } else {
+    _synthChime();
+  }
 }
 
 function playSummoningChime() {
-  if (!soundEnabled || !sounds.summoning) return;
-  sounds.summoning.currentTime = 0;
-  sounds.summoning.volume = 0.4;
-  sounds.summoning.play().catch(() => {});
+  if (!soundEnabled) return;
+  if (sounds.summoning && sounds.summoning._ready) {
+    sounds.summoning.currentTime = 0;
+    sounds.summoning.volume = 0.4;
+    sounds.summoning.play().catch(() => _synthSummoning());
+  } else {
+    _synthSummoning();
+  }
 }
 
 loadSounds();
