@@ -612,99 +612,101 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 })();
 
 /* ── Sound System ── */
-let audioCtx = null;
 let soundEnabled = false;
+const sounds = {};
 
-function getAudioCtx() {
-  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  return audioCtx;
+function loadSounds() {
+  const files = {
+    flip:      'sounds/card-flip.mp3',
+    chime:     'sounds/chime.mp3',
+    summoning: 'sounds/summoning.mp3',
+  };
+  Object.entries(files).forEach(([key, src]) => {
+    const audio = new Audio(src);
+    audio.preload = 'auto';
+    audio.volume = key === 'flip' ? 0.5 : key === 'chime' ? 0.4 : 0.35;
+    sounds[key] = audio;
+  });
 }
+
+/* Ambient music — loops */
+let ambientAudio = null;
 
 function toggleSound() {
   soundEnabled = !soundEnabled;
   const btn = document.getElementById('soundToggle');
-  const w1 = document.getElementById('soundWave1');
-  const w2 = document.getElementById('soundWave2');
+  const w1  = document.getElementById('soundWave1');
+  const w2  = document.getElementById('soundWave2');
+
   if (soundEnabled) {
     btn.classList.add('active');
     btn.classList.remove('muted');
     if (w1) w1.style.display = '';
     if (w2) w2.style.display = '';
-    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    // start ambient
+    if (!ambientAudio) {
+      ambientAudio = new Audio('sounds/ambient.mp3');
+      ambientAudio.loop   = true;
+      ambientAudio.volume = 0.18; /* very quiet — background only */
+    }
+    ambientAudio.play().catch(() => {});
   } else {
     btn.classList.remove('active');
     btn.classList.add('muted');
     if (w1) w1.style.display = 'none';
     if (w2) w2.style.display = 'none';
+    if (ambientAudio) {
+      /* fade out gracefully over 1.5s */
+      const fadeOut = setInterval(() => {
+        if (ambientAudio.volume > 0.01) {
+          ambientAudio.volume = Math.max(0, ambientAudio.volume - 0.015);
+        } else {
+          ambientAudio.pause();
+          ambientAudio.volume = 0.18;
+          clearInterval(fadeOut);
+        }
+      }, 50);
+    }
   }
 }
 
 function playCardFlip() {
-  if (!soundEnabled) return;
-  const ctx = getAudioCtx();
-  const t = ctx.currentTime;
-
-  const bufLen = ctx.sampleRate * 0.25;
-  const buf = ctx.createBuffer(1, bufLen, ctx.sampleRate);
-  const data = buf.getChannelData(0);
-  for (let i = 0; i < bufLen; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / bufLen);
-  const src = ctx.createBufferSource();
-  src.buffer = buf;
-  const filter = ctx.createBiquadFilter();
-  filter.type = 'bandpass';
-  filter.frequency.setValueAtTime(1200, t);
-  filter.frequency.exponentialRampToValueAtTime(400, t + 0.2);
-  filter.Q.value = 0.8;
-  const gainNode = ctx.createGain();
-  gainNode.gain.setValueAtTime(0.18, t);
-  gainNode.gain.exponentialRampToValueAtTime(0.001, t + 0.25);
-  src.connect(filter); filter.connect(gainNode); gainNode.connect(ctx.destination);
-  src.start(t); src.stop(t + 0.25);
-
-  setTimeout(() => {
-    const ct = ctx.currentTime;
-    const osc = ctx.createOscillator();
-    const g = ctx.createGain();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(880, ct);
-    osc.frequency.exponentialRampToValueAtTime(660, ct + 0.4);
-    g.gain.setValueAtTime(0.12, ct);
-    g.gain.exponentialRampToValueAtTime(0.001, ct + 0.5);
-    osc.connect(g); g.connect(ctx.destination);
-    osc.start(ct); osc.stop(ct + 0.5);
-  }, 120);
+  if (!soundEnabled || !sounds.flip) return;
+  const s = sounds.flip.cloneNode(); /* clone so overlapping plays work */
+  s.volume = 0.45;
+  s.play().catch(() => {});
 }
 
 function playCardHover() {
+  /* keep hover subtle — Web Audio for a tiny soft tick, no file needed */
   if (!soundEnabled) return;
-  const ctx = getAudioCtx();
-  const t = ctx.currentTime;
-  const osc = ctx.createOscillator();
-  const g = ctx.createGain();
-  osc.type = 'sine';
-  osc.frequency.value = 528;
-  g.gain.setValueAtTime(0.04, t);
-  g.gain.exponentialRampToValueAtTime(0.001, t + 0.15);
-  osc.connect(g); g.connect(ctx.destination);
-  osc.start(t); osc.stop(t + 0.15);
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = 'sine'; o.frequency.value = 528;
+    g.gain.setValueAtTime(0.03, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(); o.stop(ctx.currentTime + 0.12);
+  } catch(e) {}
+}
+
+function playRevealChime() {
+  if (!soundEnabled || !sounds.chime) return;
+  const s = sounds.chime.cloneNode();
+  s.volume = 0.38;
+  s.play().catch(() => {});
 }
 
 function playSummoningChime() {
-  if (!soundEnabled) return;
-  const ctx = getAudioCtx();
-  const notes = [392, 494, 587, 740, 880];
-  notes.forEach((freq, i) => {
-    const t = ctx.currentTime + i * 0.3;
-    const osc = ctx.createOscillator();
-    const g = ctx.createGain();
-    osc.type = 'sine';
-    osc.frequency.value = freq;
-    g.gain.setValueAtTime(0.1, t);
-    g.gain.exponentialRampToValueAtTime(0.001, t + 0.8);
-    osc.connect(g); g.connect(ctx.destination);
-    osc.start(t); osc.stop(t + 0.8);
-  });
+  if (!soundEnabled || !sounds.summoning) return;
+  sounds.summoning.currentTime = 0;
+  sounds.summoning.volume = 0.4;
+  sounds.summoning.play().catch(() => {});
 }
+
+loadSounds();
 
 /* ── Recruiter Easter Egg ── */
 let easterClickCount = 0;
@@ -1043,6 +1045,7 @@ function reveal(slot,i){
   if(!wasFlipped){
     slot.classList.add('flipped');
     playCardFlip();
+    setTimeout(() => playRevealChime(), 650);
     document.getElementById('pip-'+i).classList.add('lit');
     flippedCount++;
     const counter = document.getElementById('progressCounter');
