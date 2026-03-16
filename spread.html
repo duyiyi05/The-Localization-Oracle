@@ -14,19 +14,21 @@
   --parch:#f0e6cc;--parch-dim:rgba(240,230,204,0.48);
   --mist:#a897d8;--rose:#c05580;--teal:#3aacac;
   --div:rgba(201,168,76,0.16);--cw:178px;--ch:295px;
+  --font-body:16px;--font-body-sm:15px;--font-italic:16px;--font-italic-lg:17px;
+  --font-label:12px;--font-tag:11px;--font-card-real:11px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{background:var(--deep);overflow-x:hidden;font-family:'Raleway',sans-serif;color:var(--parch)}
 #starCanvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
 .page{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:2.5rem 1.25rem 6rem}
-.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold-dim);font-size:10px;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;margin-bottom:2rem;transition:color .2s}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold-dim);font-size:12px;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;margin-bottom:2rem;transition:color .2s}
 .back-link:hover{color:var(--gold)}
 .back-link::before{content:'←';font-size:12px}
 .header{text-align:center}
 .ornament{font-size:13px;color:var(--gold-dim);letter-spacing:.6em;opacity:.55;margin-bottom:1rem}
 h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:var(--gold);letter-spacing:.08em;margin-bottom:.5rem}
-.subtitle{font-family:'IM Fell English',serif;font-style:italic;color:var(--parch-dim);font-size:clamp(12px,1.8vw,15px);margin-bottom:.75rem}
+.subtitle{font-family:'IM Fell English',serif;font-style:italic;color:var(--parch-dim);font-size:clamp(14px,2vw,17px);margin-bottom:.75rem}
 .stage-legend{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:1.75rem}
 .legend-item{display:flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.12em;color:var(--parch-dim);text-transform:uppercase}
 .legend-dot{width:8px;height:8px;border-radius:50%}
@@ -34,7 +36,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .pip{width:5px;height:5px;border-radius:50%;background:rgba(201,168,76,.18);transition:background .4s,transform .3s,box-shadow .3s}
 .pip.lit{background:var(--gold);transform:scale(1.5);box-shadow:0 0 8px rgba(201,168,76,.5)}
 .cards-grid{display:grid;grid-template-columns:repeat(3,var(--cw));gap:22px 16px;justify-content:center;margin-bottom:2.5rem}
-.stage-row-label{grid-column:1/-1;display:flex;align-items:center;gap:12px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dim);margin-top:6px;margin-bottom:-8px}
+.stage-row-label{grid-column:1/-1;display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dim);margin-top:6px;margin-bottom:-8px}
 .stage-row-label::before,.stage-row-label::after{content:'';flex:1;height:1px;background:var(--div)}
 .card-slot{width:var(--cw);height:var(--ch);perspective:1100px;cursor:pointer}
 .card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.34,1.08,.64,1);border-radius:14px}
@@ -54,7 +56,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .cb-corner.br{bottom:12px;right:12px;border-width:0 1px 1px 0;border-radius:0 0 3px 0}
 .cb-sigil{position:relative;z-index:2;width:68px;height:68px}
 .cb-roman{position:relative;z-index:2;font-family:'Cinzel Decorative',serif;font-size:11px;color:var(--gold-dim);letter-spacing:.22em}
-.cb-whisper{position:relative;z-index:2;font-family:'IM Fell English',serif;font-style:italic;font-size:9px;color:rgba(201,168,76,.26);text-align:center;padding:0 14px;line-height:1.4}
+.cb-whisper{position:relative;z-index:2;font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:rgba(201,168,76,.26);text-align:center;padding:0 14px;line-height:1.4}
 @keyframes breathe{
   0%,100%{box-shadow:0 4px 24px rgba(0,0,0,.6)}
   50%{box-shadow:0 4px 32px rgba(201,168,76,.09),0 0 0 1px rgba(201,168,76,.06)}
@@ -71,8 +73,8 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .cf-art svg{width:100%;height:100%;max-width:148px;max-height:162px;display:block}
 .cf-art.has-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,2,15,.35) 0%,transparent 30%,transparent 65%,rgba(6,2,15,.55) 100%);z-index:2;pointer-events:none}
 .cf-bottom{padding:6px 10px 8px;border-top:1px solid var(--div);flex-shrink:0}
-.cf-mystical{font-family:'Cinzel Decorative',serif;font-size:7.5px;color:var(--gold-lt);letter-spacing:.1em;margin-bottom:2px;line-height:1.35}
-.cf-real{font-family:'Raleway',sans-serif;font-style:normal;font-size:10px;color:var(--parch-dim);line-height:1.3}
+.cf-mystical{font-family:'Cinzel Decorative',serif;font-size:9px;color:var(--gold-lt);letter-spacing:.1em;margin-bottom:2px;line-height:1.35}
+.cf-real{font-family:'Raleway',sans-serif;font-style:normal;font-size:11px;color:var(--parch-dim);line-height:1.3}
 .detail-panel{background:var(--surface);border:1px solid var(--div);border-radius:16px;max-width:740px;margin:0 auto 2rem;overflow:hidden;opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s;pointer-events:none}
 .detail-panel.visible{opacity:1;transform:translateY(0);pointer-events:auto}
 .d-stripe{height:4px;width:100%}
@@ -81,7 +83,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .d-left{flex:1;min-width:200px}
 .d-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:5px}
 .d-roman{font-family:'Cinzel Decorative',serif;font-size:10px;color:var(--gold-dim);letter-spacing:.25em}
-.d-stage{font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 9px;border-radius:20px;font-weight:600;border:1px solid}
+.d-stage{font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:2px 9px;border-radius:20px;font-weight:600;border:1px solid}
 .d-arcana-title{font-family:'Cinzel Decorative',serif;font-size:13px;color:rgba(201,168,76,.55);letter-spacing:.08em;margin-bottom:1px}
 .d-name{font-family:'Cinzel Decorative',serif;font-size:clamp(15px,2.5vw,21px);color:var(--gold);margin-bottom:3px;line-height:1.2}
 .d-real{font-family:'Raleway',sans-serif;font-style:normal;font-size:14px;color:var(--mist);font-weight:300}
@@ -90,15 +92,15 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .btn-example:active{transform:scale(.97)}
 .tarot-block{background:rgba(201,168,76,.055);border:1px solid rgba(201,168,76,.18);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem;display:flex;gap:14px;align-items:flex-start}
 .tarot-sigil-sm{flex-shrink:0;width:48px;height:48px;opacity:.85}
-.tarot-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:3px}
+.tarot-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:3px}
 .tarot-card-name{font-family:'Cinzel Decorative',serif;font-size:12px;color:var(--gold-lt);margin-bottom:4px}
-.tarot-meaning{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--parch-dim);line-height:1.6}
+.tarot-meaning{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:var(--parch-dim);line-height:1.6}
 .d-hr{width:48px;height:1px;background:var(--div);margin:1rem 0}
-.d-oracle{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;line-height:1.7;margin-bottom:.9rem}
-.d-def{font-family:'Raleway',sans-serif;font-size:14px;color:var(--parch);line-height:1.78;margin-bottom:.9rem}
-.d-pm{font-family:'Raleway',sans-serif;font-size:13px;color:var(--parch-dim);line-height:1.72}
+.d-oracle{font-family:'IM Fell English',serif;font-style:italic;font-size:16px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;line-height:1.7;margin-bottom:.9rem}
+.d-def{font-family:'Raleway',sans-serif;font-size:16px;color:var(--parch);line-height:1.78;margin-bottom:.9rem}
+.d-pm{font-family:'Raleway',sans-serif;font-size:15px;color:var(--parch-dim);line-height:1.72}
 .d-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.1rem}
-.d-tag{font-size:10px;letter-spacing:.08em;padding:3px 11px;border-radius:20px;border:1px solid var(--div);color:var(--parch-dim)}
+.d-tag{font-size:12px;letter-spacing:.08em;padding:5px 14px;border-radius:20px;border:1px solid var(--div);color:var(--parch-dim)}
 .modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(6,2,15,.92);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s}
 .modal-overlay.open{opacity:1;pointer-events:auto}
 .modal-box{background:var(--surface2);border:1px solid rgba(201,168,76,.36);border-radius:18px;max-width:620px;width:100%;max-height:90vh;overflow-y:auto;transform:scale(.95) translateY(12px);transition:transform .3s;position:relative}
@@ -109,10 +111,10 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .modal-close:hover{color:var(--gold);border-color:var(--gold)}
 .m-eyebrow{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
 .m-title{font-family:'Cinzel Decorative',serif;font-size:clamp(14px,2.5vw,19px);color:var(--gold);margin-bottom:3px;line-height:1.2}
-.m-sub{font-family:'Raleway',sans-serif;font-style:normal;font-size:14px;color:var(--mist);font-weight:300;margin-bottom:1.25rem}
+.m-sub{font-family:'Raleway',sans-serif;font-style:normal;font-size:15px;color:var(--mist);font-weight:300;margin-bottom:1.25rem}
 .scenario-block{background:rgba(255,255,255,.025);border:1px solid var(--div);border-radius:10px;padding:1.1rem 1.25rem;margin-bottom:1rem}
 .scenario-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px}
-.scenario-text{font-size:13px;line-height:1.72;color:var(--parch)}
+.scenario-text{font-size:14px;line-height:1.72;color:var(--parch)}
 .scenario-text strong{color:var(--gold-lt);font-weight:600}
 .outcome-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
 .outcome-card{border-radius:10px;padding:.9rem 1rem;border:1px solid}
@@ -121,7 +123,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .outcome-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:5px;font-weight:600}
 .outcome-card.good .outcome-label{color:var(--teal)}
 .outcome-card.bad .outcome-label{color:var(--rose)}
-.outcome-text{font-size:12px;line-height:1.65;color:var(--parch-dim)}
+.outcome-text{font-size:13px;line-height:1.65;color:var(--parch-dim)}
 .pm-tip{background:linear-gradient(135deg,rgba(201,168,76,.07),rgba(201,168,76,.02));border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:1rem 1.25rem}
 .pm-tip-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px}
 .pm-tip-text{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--parch);line-height:1.7}
@@ -131,6 +133,10 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .complete-sub{font-family:'IM Fell English',serif;font-style:italic;color:var(--parch-dim);font-size:14px;margin-bottom:1.25rem}
 .btn-again{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:.15em;text-transform:uppercase;padding:10px 26px;border:1px solid rgba(201,168,76,.38);border-radius:8px;background:transparent;color:var(--gold);cursor:pointer}
 .btn-again:hover{background:var(--gold-faint)}
+.zoom-controls{display:flex;align-items:center;gap:8px;position:fixed;top:1.25rem;right:1.5rem;z-index:50;background:rgba(11,5,32,0.85);border:1px solid rgba(201,168,76,0.22);border-radius:20px;padding:5px 10px;backdrop-filter:blur(4px)}
+.zoom-btn{background:transparent;border:none;color:rgba(201,168,76,0.65);font-size:18px;line-height:1;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s,background 0.2s;font-family:'Raleway',sans-serif;font-weight:300}
+.zoom-btn:hover{color:var(--gold);background:rgba(201,168,76,0.08)}
+.zoom-level{font-family:'Raleway',sans-serif;font-size:11px;color:rgba(201,168,76,0.45);letter-spacing:0.1em;min-width:36px;text-align:center}
 @media(max-width:640px){
   :root{--cw:108px;--ch:178px}
   .cards-grid{gap:10px 8px}
@@ -145,6 +151,22 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
   :root{--cw:92px;--ch:152px}
   .cards-grid{gap:8px 6px}
 }
+
+/* ── FINISH READING BUTTON ── */
+.finish-wrap{max-width:600px;margin:0 auto 2rem;text-align:center;opacity:0;transform:translateY(20px);transition:opacity 0.8s ease,transform 0.8s ease;pointer-events:none;position:relative}
+.finish-wrap.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.finish-constellation{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity 1.5s ease}
+.finish-constellation.show{opacity:1}
+.finish-content{position:relative;z-index:1;padding:2rem 1.5rem;background:linear-gradient(135deg,rgba(11,5,32,0.6),rgba(16,8,40,0.4));border:1px solid rgba(201,168,76,0.2);border-radius:16px}
+.finish-eyebrow{font-family:'Cinzel Decorative',serif;font-size:10px;color:var(--gold-dim);letter-spacing:0.28em;text-transform:uppercase;margin-bottom:0.75rem}
+.finish-text{font-family:'IM Fell English',serif;font-style:italic;font-size:16px;color:var(--parch-dim);line-height:1.75;margin-bottom:1.75rem;max-width:420px;margin-left:auto;margin-right:auto}
+.finish-btn{display:inline-flex;align-items:center;gap:14px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(201,168,76,0.04));border:1px solid rgba(201,168,76,0.5);border-radius:10px;padding:16px 44px;cursor:pointer;position:relative;overflow:hidden;transition:background 0.3s,border-color 0.3s;animation:finishGlow 2.5s ease-in-out infinite;margin-bottom:1rem}
+@keyframes finishGlow{0%,100%{box-shadow:0 0 0 0 transparent}50%{box-shadow:0 0 32px rgba(201,168,76,0.25),0 0 0 1px rgba(201,168,76,0.12)}}
+.finish-btn::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.14),transparent);animation:finishSweep 3.5s ease-in-out infinite;animation-delay:0.8s}
+@keyframes finishSweep{0%,100%{left:-100%}50%{left:150%}}
+.finish-btn:hover{background:rgba(201,168,76,0.16);border-color:var(--gold)}
+.finish-btn-orn{font-size:11px;opacity:0.6}
+.finish-whisper{font-family:'IM Fell English',serif;font-style:italic;font-size:13px;color:rgba(201,168,76,0.25);letter-spacing:0.04em}
 
 /* ══════════════════════════════════════
    THE SUMMONING OVERLAY
@@ -199,13 +221,13 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .or-divider{width:calc(100% - 4rem);margin:1rem 2rem;height:1px;background:var(--div);position:relative;display:flex;align-items:center;justify-content:center}
 .or-divider::after{content:'\2726';position:absolute;font-size:10px;color:var(--gold-dim);background:var(--surface);padding:0 8px}
 .or-tarot-block{background:rgba(201,168,76,.055);border:1px solid rgba(201,168,76,.18);border-radius:10px;padding:1rem 1.25rem;margin:0 2rem 1rem}
-.or-tarot-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px}
+.or-tarot-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px}
 .or-tarot-text{font-family:'IM Fell English',serif;font-style:italic;font-size:12px;color:var(--parch-dim);line-height:1.65}
-.or-oracle-text{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;margin-left:2rem;margin-right:2rem;line-height:1.75;margin-bottom:1rem}
-.or-def{font-size:14px;line-height:1.78;color:var(--parch);margin-bottom:.9rem}
-.or-pm-note{font-family:'IM Fell English',serif;font-style:italic;font-size:13px;color:var(--parch-dim);line-height:1.7}
+.or-oracle-text{font-family:'IM Fell English',serif;font-style:italic;font-size:17px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;margin-left:2rem;margin-right:2rem;line-height:1.75;margin-bottom:1rem}
+.or-def{font-size:16px;line-height:1.78;color:var(--parch);margin-bottom:.9rem}
+.or-pm-note{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:var(--parch-dim);line-height:1.7}
 .or-tags{display:flex;flex-wrap:wrap;gap:6px;padding:1rem 2rem}
-.or-tag{font-size:10px;letter-spacing:.08em;padding:3px 11px;border-radius:20px;border:1px solid var(--div);color:var(--parch-dim)}
+.or-tag{font-size:12px;letter-spacing:.08em;padding:5px 14px;border-radius:20px;border:1px solid var(--div);color:var(--parch-dim)}
 .or-buttons{display:flex;gap:12px;flex-wrap:wrap;padding:1rem 2rem 1.75rem;justify-content:flex-start}
 .or-btn-share{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:10px 20px;border-radius:8px;cursor:pointer;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.06));border:1px solid rgba(201,168,76,.5);color:var(--gold);transition:background .2s}
 .or-btn-share:hover{background:rgba(201,168,76,.22)}
@@ -235,22 +257,22 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .cmd-left{flex:1;min-width:200px}
 .cmd-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:5px}
 .cmd-roman{font-family:'Cinzel Decorative',serif;font-size:10px;color:var(--gold-dim);letter-spacing:0.25em}
-.cmd-stage{font-family:'Raleway',sans-serif;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;padding:2px 9px;border-radius:20px;font-weight:600;border:1px solid}
+.cmd-stage{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:2px 9px;border-radius:20px;font-weight:600;border:1px solid}
 .cmd-arcana-title{font-family:'Cinzel Decorative',serif;font-size:13px;color:rgba(201,168,76,0.5);letter-spacing:0.08em;margin-bottom:2px}
 .cmd-name{font-family:'Cinzel Decorative',serif;font-size:clamp(16px,2.8vw,22px);color:var(--gold);margin-bottom:4px;line-height:1.2}
 .cmd-real{font-family:'Raleway',sans-serif;font-size:14px;color:var(--mist);font-weight:300}
 .cmd-example-btn{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;padding:9px 16px;border-radius:8px;cursor:pointer;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.4);color:var(--gold);transition:background 0.2s;white-space:nowrap;flex-shrink:0;align-self:flex-start}
 .cmd-example-btn:hover{background:rgba(201,168,76,0.16)}
 .cmd-tarot-block{background:rgba(201,168,76,0.055);border:1px solid rgba(201,168,76,0.18);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem}
-.cmd-tarot-label{font-family:'Raleway',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
+.cmd-tarot-label{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
 .cmd-tarot-name{font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold-lt);margin-bottom:6px}
-.cmd-tarot-meaning{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--parch-dim);line-height:1.68}
+.cmd-tarot-meaning{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:var(--parch-dim);line-height:1.68}
 .cmd-divider{width:48px;height:1px;background:var(--div);margin:1.1rem 0}
-.cmd-oracle{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;line-height:1.72;margin-bottom:1rem}
-.cmd-def{font-family:'Raleway',sans-serif;font-size:14px;line-height:1.78;color:var(--parch);margin-bottom:0.9rem;font-weight:300}
-.cmd-pm{font-family:'Raleway',sans-serif;font-size:13px;line-height:1.72;color:var(--parch-dim);font-weight:300}
+.cmd-oracle{font-family:'IM Fell English',serif;font-style:italic;font-size:17px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;line-height:1.72;margin-bottom:1rem}
+.cmd-def{font-family:'Raleway',sans-serif;font-size:16px;line-height:1.78;color:var(--parch);margin-bottom:0.9rem;font-weight:300}
+.cmd-pm{font-family:'Raleway',sans-serif;font-size:15px;line-height:1.72;color:var(--parch-dim);font-weight:300}
 .cmd-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.1rem;padding-bottom:0.25rem}
-.cmd-tag{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.08em;padding:4px 12px;border-radius:20px;border:1px solid var(--div);color:var(--parch-dim)}
+.cmd-tag{font-family:'Raleway',sans-serif;font-size:12px;letter-spacing:0.08em;padding:5px 14px;border-radius:20px;border:1px solid var(--div);color:var(--parch-dim)}
 @media(max-width:640px){
   .cmd-body{padding:1.25rem}
   .cmd-header{flex-direction:column;padding-right:2.5rem}
@@ -263,6 +285,11 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 <canvas id="starCanvas" aria-hidden="true"></canvas>
 <div class="page">
   <a class="back-link" href="index.html">Return to the Oracle</a>
+  <div class="zoom-controls" id="zoomControls">
+    <button class="zoom-btn" id="zoomOut" onclick="adjustZoom(-0.1)" title="Zoom out">−</button>
+    <span class="zoom-level" id="zoomLevel">100%</span>
+    <button class="zoom-btn" id="zoomIn" onclick="adjustZoom(0.1)" title="Zoom in">+</button>
+  </div>
   <div class="header">
     <p class="ornament">&#10022; &#10022; &#10022;</p>
     <h1>The Nine-Card Spread</h1>
@@ -310,6 +337,22 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
         <p class="cmd-pm" id="cmdPm"></p>
         <div class="cmd-tags" id="cmdTags"></div>
       </div>
+    </div>
+  </div>
+  <!-- FINISH READING BUTTON — shown after all 9 cards flipped -->
+  <div class="finish-wrap" id="finishWrap">
+    <div class="finish-constellation" id="finishConstellation">
+      <!-- constellation SVG injected by JS -->
+    </div>
+    <div class="finish-content">
+      <div class="finish-eyebrow">The Nine Are Revealed</div>
+      <p class="finish-text">The nine paths have been walked. Memory and fog, guild and trial, the crossing of worlds. One final mystery awaits beyond the veil.</p>
+      <button class="finish-btn" id="finishBtn" onclick="beginSummoning()">
+        <span class="finish-btn-orn">✦</span>
+        Complete the Reading
+        <span class="finish-btn-orn">✦</span>
+      </button>
+      <p class="finish-whisper">Step forward when you are ready.</p>
     </div>
   </div>
   <!-- THE SUMMONING — full screen overlay, hidden until all 9 cards flipped -->
@@ -520,6 +563,33 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
   init();
   requestAnimationFrame(draw);
 })();
+
+/* ── Zoom controls ── */
+let currentZoom = parseFloat(localStorage.getItem('oracleZoom') || '1.0');
+
+function applyZoom() {
+  const grid = document.getElementById('cardsGrid');
+  if (grid) {
+    grid.style.transform = `scale(${currentZoom})`;
+    grid.style.transformOrigin = 'top center';
+    const scale = currentZoom;
+    const gridH = grid.offsetHeight;
+    grid.style.marginBottom = `${(gridH * scale - gridH) * 0.5 + 32}px`;
+  }
+  document.getElementById('zoomLevel').textContent = Math.round(currentZoom * 100) + '%';
+  document.getElementById('zoomIn').disabled = currentZoom >= 1.3;
+  document.getElementById('zoomOut').disabled = currentZoom <= 0.7;
+  document.getElementById('zoomIn').style.opacity = currentZoom >= 1.3 ? '0.3' : '1';
+  document.getElementById('zoomOut').style.opacity = currentZoom <= 0.7 ? '0.3' : '1';
+}
+
+function adjustZoom(delta) {
+  currentZoom = Math.min(1.3, Math.max(0.7, Math.round((currentZoom + delta) * 10) / 10));
+  localStorage.setItem('oracleZoom', currentZoom.toString());
+  applyZoom();
+}
+
+document.addEventListener('DOMContentLoaded', () => setTimeout(applyZoom, 100));
 
 /* ── Stage Config ── */
 const ST = {
@@ -809,7 +879,7 @@ function reveal(slot,i){
     document.getElementById('pip-'+i).classList.add('lit');
     flippedCount++;
     if(flippedCount === CARDS.length){
-      setTimeout(()=>triggerSummoning(),800);
+      setTimeout(()=>showFinishButton(),1000);
     }
   }
   setTimeout(()=>showDetail(i), wasFlipped ? 0 : 440);
@@ -883,6 +953,59 @@ document.addEventListener('keydown',e=>{
 /* ═══════════════════════════════════════
    THE SUMMONING — 10th card ending
 ═══════════════════════════════════════ */
+
+function showFinishButton() {
+  const wrap = document.getElementById('finishWrap');
+  wrap.classList.add('visible');
+  setTimeout(() => wrap.scrollIntoView({ behavior: 'smooth', block: 'center' }), 200);
+  setTimeout(() => drawConstellationLines(), 1500);
+}
+
+function beginSummoning() {
+  const wrap = document.getElementById('finishWrap');
+  wrap.style.opacity = '0';
+  wrap.style.transition = 'opacity 0.5s ease';
+  setTimeout(() => {
+    wrap.style.display = 'none';
+    triggerSummoning();
+  }, 500);
+}
+
+function drawConstellationLines() {
+  const container = document.getElementById('finishConstellation');
+  container.classList.add('show');
+
+  const slots = document.querySelectorAll('.card-slot');
+  if (slots.length < 9) return;
+
+  const positions = Array.from(slots).map(slot => {
+    const r = slot.getBoundingClientRect();
+    const cr = container.getBoundingClientRect();
+    return {
+      x: r.left + r.width / 2 - cr.left,
+      y: r.top + r.height / 2 - cr.top
+    };
+  });
+
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none';
+
+  const connections = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,0],[0,4],[2,6],[1,7]];
+  connections.forEach(([a, b], idx) => {
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', positions[a].x);
+    line.setAttribute('y1', positions[a].y);
+    line.setAttribute('x2', positions[b].x);
+    line.setAttribute('y2', positions[b].y);
+    line.setAttribute('stroke', 'rgba(201,168,76,0.15)');
+    line.setAttribute('stroke-width', '0.8');
+    line.style.cssText = `opacity:0;transition:opacity 0.6s ease;transition-delay:${idx * 0.1}s`;
+    svg.appendChild(line);
+    setTimeout(() => line.style.opacity = '1', 100 + idx * 100);
+  });
+
+  container.appendChild(svg);
+}
 
 function triggerSummoning(){
   const overlay=document.getElementById('summoningOverlay');
@@ -1072,7 +1195,18 @@ function closeSummoningAndReset(){
   },800);
 }
 
-function resetSpread(){ buildGrid(); }
+function resetSpread(){
+  const wrap = document.getElementById('finishWrap');
+  if (wrap) {
+    wrap.classList.remove('visible');
+    wrap.style.display = '';
+    wrap.style.opacity = '';
+    wrap.style.transition = '';
+    document.getElementById('finishConstellation').classList.remove('show');
+    document.getElementById('finishConstellation').innerHTML = '';
+  }
+  buildGrid();
+}
 
 buildGrid();
 </script>
