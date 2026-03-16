@@ -89,7 +89,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .cf-bottom{padding:6px 10px 8px;border-top:1px solid var(--div);flex-shrink:0}
 .cf-mystical{font-family:'Cinzel Decorative',serif;font-size:9px;color:var(--gold-lt);letter-spacing:.1em;margin-bottom:2px;line-height:1.35;font-weight:500}
 .cf-real{font-family:'Raleway',sans-serif;font-style:normal;font-size:11px;color:rgba(240,230,204,0.72);line-height:1.3;font-weight:400}
-.detail-panel{background:var(--surface);border:1px solid var(--div);border-radius:16px;max-width:740px;margin:0 auto 2rem;overflow:hidden;opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s;pointer-events:none}
+.detail-panel{display:none;background:var(--surface);border:1px solid var(--div);border-radius:16px;max-width:740px;margin:0 auto 2rem;overflow:hidden;opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s;pointer-events:none}
 .detail-panel.visible{opacity:1;transform:translateY(0);pointer-events:auto}
 .d-stripe{height:4px;width:100%}
 .d-body{padding:1.75rem 2rem 1.5rem}
@@ -226,6 +226,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .tenth-front{transform:rotateY(180deg);background:#08031a;border:1px solid rgba(201,168,76,.55);display:flex;flex-direction:column;box-shadow:0 0 60px rgba(201,168,76,.15)}
 .tc-front-top{padding:8px 12px 6px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--div);flex-shrink:0}
 .tc-arcana-num{font-family:'Cinzel Decorative',serif;font-size:12px;color:var(--gold);letter-spacing:.15em}
+.cf-roman,.cb-roman,.d-roman,.cmd-roman,.tc-arcana-num{font-variant-numeric:normal;font-feature-settings:normal;-webkit-font-feature-settings:normal;font-style:normal}
 .tc-arcana-label{font-family:'Cinzel Decorative',serif;font-size:8px;color:var(--gold-dim);letter-spacing:.12em}
 .tc-art{flex:1;overflow:hidden;position:relative;min-height:0}
 .tc-art svg{width:100%;height:100%;display:block}
@@ -268,7 +269,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 }
 
 /* ── CARD DETAIL MODAL ── */
-.card-modal-overlay{position:fixed;inset:0;z-index:150;background:rgba(6,2,15,0.85);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+.card-modal-overlay{position:fixed;inset:0;z-index:150;background:rgba(6,2,15,0.88);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
 .card-modal-overlay.open{opacity:1;pointer-events:auto}
 .card-modal-box{background:var(--surface);border:1px solid var(--div);border-radius:16px;width:100%;max-width:680px;max-height:88vh;overflow-y:auto;overflow-x:hidden;transform:scale(0.95) translateY(10px);transition:transform 0.3s ease;position:relative}
 .card-modal-overlay.open .card-modal-box{transform:scale(1) translateY(0)}
@@ -894,17 +895,17 @@ const CARDS = [
     arcanaTitle:'The Magician',
     mystical:'The Memory Keeper',
     real:'Translation Memory & TM Leverage',
-    tarotCard:'The Magician \u2014 Major Arcana I',
-    tarotMeaning:'He stands at his table of tools \u2014 wand, cup, sword, pentacle \u2014 one hand raised to the heavens, one pointing to the earth. As above, so below. He transforms raw material into mastery, channelling infinite potential through disciplined will.',
+    tarotCard:'The Magician: Major Arcana I',
+    tarotMeaning:'He stands at his table of tools, wand, cup, sword, pentacle, one hand raised to the heavens, one pointing to the earth. As above, so below. He transforms raw material into mastery, channelling infinite potential through disciplined will.',
     oracle:'Like the Magician who wastes nothing and wields every instrument at hand, the wise PM mines every word already translated. The past speaks to the present; the memory serves the future.',
-    def:'Translation Memory is a living database of every approved segment \u2014 sentences, headers, UI strings \u2014 ever translated in your programme. When new content arrives, the CAT tool scans the TM and scores similarity: 100% matches cost nothing, 75\u201399% fuzzy matches are discounted, new words pay full rate.',
+    def:'Translation Memory is a living database of every approved segment: sentences, headers, UI strings, ever translated in your programme. When new content arrives, the CAT tool scans the TM and scores similarity: 100% matches cost nothing, 75\u201399% fuzzy matches are discounted, new words pay full rate.',
     pm:'A PM who commands TM leverage can reduce costs by 30\u201360% on versioned content and quote budgets with precision before a single translator opens a file.',
     tags:['CAT Tools','memoQ','Phrase TMS','SDL Trados','Cost Modelling','TM Maintenance'],
     example:{
       scenario:'<strong>Spotify</strong> releases monthly playlist-page copy updates. 70% of strings are unchanged, 20% are fuzzy matches, only 10% are new. The PM runs a TM analysis report before sending to the LSP.',
-      good:'The PM negotiates band discounts \u2014 0% for exact, 30% for fuzzies \u2014 saving \u20ac4,200 on a \u20ac6,000 project. The memory has spoken.',
+      good:'The PM negotiates band discounts, 0% for exact, 30% for fuzzies, saving \u20ac4,200 on a \u20ac6,000 project. The memory has spoken.',
       bad:'No analysis. Full word count sent at full rate. \u20ac6,000 paid for strings the company already owns. The Magician\'s table sits unused.',
-      tip:'"Always run a TM analysis before raising a PO. If your LSP quotes without seeing it, ask why \u2014 and make the analysis report a contractual deliverable."'
+      tip:'"Always run a TM analysis before raising a PO. If your LSP quotes without seeing it, ask why, and make the analysis report a contractual deliverable."'
     },
     svg:`<svg viewBox="0 0 148 162" fill="none"><line x1="74" y1="88" x2="74" y2="32" stroke="#c9a84c" stroke-width="1.5" opacity="0.7"/><line x1="24" y1="88" x2="124" y2="88" stroke="#c9a84c" stroke-width="1" opacity="0.55"/><ellipse cx="60" cy="22" rx="9" ry="6" stroke="#c9a84c" stroke-width="0.9" opacity="0.6"/><ellipse cx="88" cy="22" rx="9" ry="6" stroke="#c9a84c" stroke-width="0.9" opacity="0.6"/><circle cx="74" cy="58" r="12" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/><circle cx="40" cy="80" r="5" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/><rect x="58" y="76" width="10" height="10" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/><polygon points="86,88 80,76 92,76" stroke="#c9a84c" stroke-width="0.8" fill="none" opacity="0.5"/><circle cx="107" cy="80" r="5" stroke="#a897d8" stroke-width="0.8" opacity="0.5"/><line x1="24" y1="88" x2="24" y2="108" stroke="#c9a84c" stroke-width="0.6" opacity="0.3"/><line x1="124" y1="88" x2="124" y2="108" stroke="#c9a84c" stroke-width="0.6" opacity="0.3"/></svg>`
   },
@@ -913,17 +914,17 @@ const CARDS = [
     arcanaTitle:'The High Priestess',
     mystical:'The Quality Sentinel',
     real:'Linguistic Quality Assurance (LQA)',
-    tarotCard:'The High Priestess \u2014 Major Arcana II',
-    tarotMeaning:'She sits between two pillars \u2014 one dark, one light \u2014 guarding the veil between the known and the unknown. The scroll of Torah rests in her lap, half-concealed. She does not give her secrets freely. Wisdom is earned through rigour, not assumption.',
-    oracle:'Between two pillars \u2014 pass and fail \u2014 the Sentinel stands watch. She reads what others miss. She sees the error hiding in the fold of the veil, the terminology broken in the third paragraph, the tone that has drifted from the brand. She does not rush. She sees.',
-    def:'LQA evaluates translated output against defined error categories \u2014 accuracy, fluency, terminology, style, locale conventions \u2014 using frameworks like MQM or LISA QA. Errors are classified by severity (critical, major, minor) and scored against a threshold agreed before the project begins.',
-    pm:'PMs define LQA scope before briefing the LSP, not after delivery. Who reviews, how many words sampled, what threshold triggers rework \u2014 these decisions determine whether LQA is a genuine quality gate or a decorative ceremony.',
+    tarotCard:'The High Priestess: Major Arcana II',
+    tarotMeaning:'She sits between two pillars, one dark, one light, guarding the veil between the known and the unknown. The scroll of Torah rests in her lap, half-concealed. She does not give her secrets freely. Wisdom is earned through rigour, not assumption.',
+    oracle:'Between two pillars, pass and fail, the Sentinel stands watch. She reads what others miss. She sees the error hiding in the fold of the veil, the terminology broken in the third paragraph, the tone that has drifted from the brand. She does not rush. She sees.',
+    def:'LQA evaluates translated output against defined error categories: accuracy, fluency, terminology, style, locale conventions; using frameworks like MQM or LISA QA. Errors are classified by severity (critical, major, minor) and scored against a threshold agreed before the project begins.',
+    pm:'PMs define LQA scope before briefing the LSP, not after delivery. Who reviews, how many words sampled, what threshold triggers rework: these decisions determine whether LQA is a genuine quality gate or a decorative ceremony.',
     tags:['MQM Framework','LISA QA','In-market Review','LSP SLAs','Error Typology','Rework Protocols'],
     example:{
       scenario:'<strong>A global fintech app</strong> launches into 12 languages. The PM sets up MQM-based LQA with in-country reviewers, 2,000-word samples per language, and a threshold of \u22641.5 critical errors per 1,000 words.',
       good:'German reviewer catches a terminology error that would have rendered a legal disclaimer incorrectly. Fixed pre-launch. Zero legal exposure.',
       bad:'No LQA scope defined. LSP self-certifies quality. Brazilian Portuguese ships with \u201cconta\u201d translated three different ways. Support tickets spike 40%.',
-      tip:'"The High Priestess never skips her reading. Write your LQA brief before you brief the LSP \u2014 reviewer profile, sample size, error taxonomy, pass/fail threshold \u2014 all contractual, never improvised."'
+      tip:'"The High Priestess never skips her reading. Write your LQA brief before you brief the LSP: reviewer profile, sample size, error taxonomy, pass/fail threshold. All contractual, never improvised."'
     },
     svg:`<svg viewBox="0 0 148 162" fill="none"><rect x="14" y="28" width="20" height="120" stroke="#a897d8" stroke-width="1" opacity="0.6"/><rect x="114" y="28" width="20" height="120" stroke="#c9a84c" stroke-width="1" opacity="0.6"/><path d="M34,28 Q74,8 114,28" stroke="#c9a84c" stroke-width="0.9" opacity="0.5"/><path d="M74,14 A16,18 0 1 1 74,50 A11,13 0 1 0 74,14 Z" fill="rgba(201,168,76,0.12)" stroke="#c9a84c" stroke-width="0.9" opacity="0.55"/><rect x="56" y="78" width="36" height="44" rx="2" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/><line x1="62" y1="88" x2="88" y2="88" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/><line x1="62" y1="94" x2="88" y2="94" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/><line x1="62" y1="100" x2="84" y2="100" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/><line x1="34" y1="136" x2="114" y2="136" stroke="#c9a84c" stroke-width="0.5" stroke-dasharray="4 3" opacity="0.3"/></svg>`
   },
@@ -932,10 +933,10 @@ const CARDS = [
     arcanaTitle:'The Fool',
     mystical:'The Shadow Test',
     real:'Pseudotranslation',
-    tarotCard:'The Fool \u2014 Major Arcana 0 / XXII',
-    tarotMeaning:'The Fool stands at the cliff\'s edge, one foot already in the air, a white rose in hand, blissfully unafraid of the drop below. He is not ignorant \u2014 he is unlimited. He steps into the unknown to discover what the cautious never will. Test first. Fall safely.',
-    oracle:'Before the journey truly begins, the Fool walks the path in disguise \u2014 wearing false letters, dressed as translation without being translation. The shadow knows what the light has not yet found: the broken doorway, the string chained to its frame, the button that weeps when stretched.',
-    def:'Pseudotranslation substitutes real characters with accented Unicode equivalents (e.g. \u201cSubmit\u201d \u2192 \u201c\u0160\u00fc\u0180\u043c\u00ef\u0167\u201d) to simulate a translated UI without any human translator. It reveals text expansion, clipped buttons, unsupported fonts, hardcoded strings, and RTL layout breaks \u2014 all before a single file is briefed.',
+    tarotCard:'The Fool: Major Arcana 0 / XXII',
+    tarotMeaning:'The Fool stands at the cliff\'s edge, one foot already in the air, a white rose in hand, blissfully unafraid of the drop below. He is not ignorant; he is unlimited. He steps into the unknown to discover what the cautious never will. Test first. Fall safely.',
+    oracle:'Before the journey truly begins, the Fool walks the path in disguise, wearing false letters, dressed as translation without being translation. The shadow knows what the light has not yet found: the broken doorway, the string chained to its frame, the button that weeps when stretched.',
+    def:'Pseudotranslation substitutes real characters with accented Unicode equivalents (e.g. \u201cSubmit\u201d \u2192 \u201c\u0160\u00fc\u0180\u043c\u00ef\u0167\u201d) to simulate a translated UI without any human translator. It reveals text expansion, clipped buttons, unsupported fonts, hardcoded strings, and RTL layout breaks, all before a single file is briefed.',
     pm:'Run pseudotranslation as the very first step of any new product localization. The cost is near-zero; the bugs it catches are the most expensive to fix late in the cycle.',
     tags:['UI/UX Testing','Text Expansion','RTL Layout','i18n Engineering','String Externalization','Pre-Translation QA'],
     example:{
@@ -951,11 +952,11 @@ const CARDS = [
     arcanaTitle:'The Chariot',
     mystical:'The Iron Scribe',
     real:'Machine Translation Post-Editing (MTPE)',
-    tarotCard:'The Chariot \u2014 Major Arcana VII',
-    tarotMeaning:'Two sphinxes \u2014 one black, one white \u2014 pull the chariot in opposite directions. The charioteer does not hold reins but commands through will alone. Opposing forces harnessed correctly become forward motion. Raw machine power directed by human mastery.',
-    oracle:'The Iron Scribe does not translate \u2014 it transcribes at impossible speed, channelling the raw electric voice of the machine through the refining hands of human craft. The black sphinx is velocity. The white sphinx is accuracy. Both must be commanded.',
+    tarotCard:'The Chariot: Major Arcana VII',
+    tarotMeaning:'Two sphinxes, one black, one white, pull the chariot in opposite directions. The charioteer does not hold reins but commands through will alone. Opposing forces harnessed correctly become forward motion. Raw machine power directed by human mastery.',
+    oracle:'The Iron Scribe does not translate; it transcribes at impossible speed, channelling the raw electric voice of the machine through the refining hands of human craft. The black sphinx is velocity. The white sphinx is accuracy. Both must be commanded.',
     def:'MTPE uses neural MT engines (DeepL, ModernMT, Google NMT) to generate raw translations that human post-editors then refine. Light MTPE corrects only critical errors; Full MTPE brings output to publishable quality. The tier must match the content\'s risk level.',
-    pm:'MTPE is a cost and speed lever, not a universal solution. Content tiering \u2014 deciding what gets MT, what gets HT, what gets transcreation \u2014 is a strategic PM decision that must precede any briefing.',
+    pm:'MTPE is a cost and speed lever, not a universal solution. Content tiering, deciding what gets MT, what gets HT, what gets transcreation, is a strategic PM decision that must precede any briefing.',
     tags:['DeepL','ModernMT','Google NMT','MTPE-L / MTPE-F','Content Tiering','Cost Modelling'],
     example:{
       scenario:'<strong>An e-commerce company</strong> localizes 80,000 product descriptions per quarter into 8 languages. The PM tiers: MTPE-F for the top 100 hero products, MTPE-L for long-tail SKUs, raw MT for internal metadata.',
@@ -970,11 +971,11 @@ const CARDS = [
     arcanaTitle:'The Hermit',
     mystical:'The Fog of Similarity',
     real:'Fuzzy Match Thresholds & Word Count Analysis',
-    tarotCard:'The Hermit \u2014 Major Arcana IX',
-    tarotMeaning:'The old man stands alone on a mountain peak, lantern raised in the darkness. He does not wait for daylight \u2014 he brings his own light and reads what others walk past unseen. His staff is patience. His lantern is rigour. He sees every gradation in the fog.',
-    oracle:'In the fog of similarity, only the Hermit\'s lantern reveals the truth: this segment is not new \u2014 it is 87% the same as what came before. Here the fog is 94%. Here it is perfect, and the word costs nothing. The Hermit does not guess. He measures.',
+    tarotCard:'The Hermit: Major Arcana IX',
+    tarotMeaning:'The old man stands alone on a mountain peak, lantern raised in the darkness. He does not wait for daylight; he brings his own light and reads what others walk past unseen. His staff is patience. His lantern is rigour. He sees every gradation in the fog.',
+    oracle:'In the fog of similarity, only the Hermit\'s lantern reveals the truth: this segment is not new: it is 87% the same as what came before. Here the fog is 94%. Here it is perfect, and the word costs nothing. The Hermit does not guess. He measures.',
     def:'Fuzzy matches are TM segments that partially overlap with new source text, scored as percentages (75\u201384%, 85\u201394%, 95\u201399%). Unlike 100% matches which are free, fuzzies are billed at discounted rates by band. Pre-project word count analysis determines the cost forecast and negotiation position.',
-    pm:'Reading a CAT analysis report fluently \u2014 understanding leverage %, new word counts, and fuzzy band distribution \u2014 is foundational PM commercial literacy. It separates PMs who quote confidently from those who accept the LSP\'s word.',
+    pm:'Reading a CAT analysis report fluently, understanding leverage %, new word counts, and fuzzy band distribution, is foundational PM commercial literacy. It separates PMs who quote confidently from those who accept the LSP\'s word.',
     tags:['Word Count Analysis','TM Bands','CAT Tool Reports','Quoting','Vendor Negotiation','Leverage %'],
     example:{
       scenario:'<strong>A legal tech firm</strong> updates its EULA across 18 languages quarterly. The PM runs a TM analysis each cycle. This quarter: 40% exact matches, 35% high fuzzies, 25% new words.',
@@ -989,11 +990,11 @@ const CARDS = [
     arcanaTitle:'The Empress',
     mystical:'The Keeper of Terms',
     real:'Linguistic Asset Management',
-    tarotCard:'The Empress \u2014 Major Arcana III',
-    tarotMeaning:'The Empress sits in a garden of abundant wheat, robed in stars, a crown of twelve stars upon her head. All living things grow from her care. She is abundance through tending \u2014 what is nurtured flourishes, what is neglected withers and dies.',
-    oracle:'The garden of the Keeper is rich with terms precisely named and consistently spelled \u2014 each planted in its proper row, each tended with the same hand, in every language. She knows that a garden untended becomes a wilderness of contradiction, and contradiction is the death of trust.',
+    tarotCard:'The Empress: Major Arcana III',
+    tarotMeaning:'The Empress sits in a garden of abundant wheat, robed in stars, a crown of twelve stars upon her head. All living things grow from her care. She is abundance through tending: what is nurtured flourishes, what is neglected withers and dies.',
+    oracle:'The garden of the Keeper is rich with terms precisely named and consistently spelled, each planted in its proper row, each tended with the same hand, in every language. She knows that a garden untended becomes a wilderness of contradiction, and contradiction is the death of trust.',
     def:'Linguistic assets are the shared foundation of every localization project: termbases (approved translations for key terms), style guides (tone, register, formatting rules), translation memories, and brand voice documentation. Managed centrally, they ensure consistency regardless of which linguist, LSP, or tool is involved.',
-    pm:'Linguistic asset neglect is the root cause of most consistency issues \u2014 and the first thing experienced PMs fix when inheriting a broken programme. A well-maintained termbase reduces review cycles, speeds linguist onboarding, and outlasts any vendor transition.',
+    pm:'Linguistic asset neglect is the root cause of most consistency issues, and the first thing experienced PMs fix when inheriting a broken programme. A well-maintained termbase reduces review cycles, speeds linguist onboarding, and outlasts any vendor transition.',
     tags:['Termbase / Glossary','Style Guide','TM Governance','Crowdin','Phrase TMS','Brand Voice'],
     example:{
       scenario:'<strong>A cloud software company</strong> has grown from 3 to 14 languages over 4 years with 3 different LSPs. No central termbase. The word \u201cDashboard\u201d is translated four different ways across the product.',
@@ -1008,10 +1009,10 @@ const CARDS = [
     arcanaTitle:'The Hierophant',
     mystical:'The Guild Master',
     real:'Vendor Management & LSP Briefing',
-    tarotCard:'The Hierophant \u2014 Major Arcana V',
-    tarotMeaning:'The Hierophant sits between two pillars and raises his hand in the sign of esoteric benediction. Two monks kneel before him. He is the keeper of institutional knowledge \u2014 the bridge between the divine order and those who carry it out. He teaches through ceremony, ritual, and the transmission of tradition.',
-    oracle:'Before the first word crosses the language barrier, the Guild Master has already spoken. The briefing is the ceremony. The glossary is the canon. The SLA is the covenant. Without the Hierophant\'s transmission, the monks guess \u2014 and guessing in twelve languages is expensive.',
-    def:'Vendor management covers the full LSP lifecycle: RFP selection, rate negotiation, onboarding, project briefing, KPI monitoring, and structured feedback loops. The briefing document is the single most important thing a PM produces \u2014 it determines translation quality before the first segment is opened.',
+    tarotCard:'The Hierophant: Major Arcana V',
+    tarotMeaning:'The Hierophant sits between two pillars and raises his hand in the sign of esoteric benediction. Two monks kneel before him. He is the keeper of institutional knowledge, the bridge between the divine order and those who carry it out. He teaches through ceremony, ritual, and the transmission of tradition.',
+    oracle:'Before the first word crosses the language barrier, the Guild Master has already spoken. The briefing is the ceremony. The glossary is the canon. The SLA is the covenant. Without the Hierophant\'s transmission, the monks guess, and guessing in twelve languages is expensive.',
+    def:'Vendor management covers the full LSP lifecycle: RFP selection, rate negotiation, onboarding, project briefing, KPI monitoring, and structured feedback loops. The briefing document is the single most important thing a PM produces: it determines translation quality before the first segment is opened.',
     pm:'Quality ceiling is set by vendor relationships, not just vendor selection. Great PMs invest in the briefing document, run kick-off calls for complex projects, and close feedback loops so LQA errors translate into linguist improvement.',
     tags:['RFP / RFQ','SLA Definition','LSP Onboarding','Preferred Vendor List','Briefing Document','KPI Monitoring'],
     example:{
@@ -1027,10 +1028,10 @@ const CARDS = [
     arcanaTitle:'Justice',
     mystical:'The Trial of Languages',
     real:'Localization Testing (In-context Review)',
-    tarotCard:'Justice \u2014 Major Arcana XI',
+    tarotCard:'Justice: Major Arcana XI',
     tarotMeaning:'The figure sits between pillars with a sword raised in the right hand and scales balanced in the left. There is no mercy here, only exactness. Every word is weighed. Every defect is measured against a standard. The scales do not lie, and the sword does not hesitate.',
-    oracle:'The Trial of Languages weighs each string in the balance of its context. What was correct in the translation memory may be wrong in the UI. What passed in the spreadsheet may overflow the button. The scales must be held \u2014 not at the end of the project, but at every gate along the way.',
-    def:'Localization testing validates translated content in its actual UI environment: checking for linguistic accuracy in context, functional correctness (encoding, broken links), cosmetic defects (text overflow, font rendering), and cultural appropriateness. It catches issues that CAT-tool review cannot \u2014 because context is everything.',
+    oracle:'The Trial of Languages weighs each string in the balance of its context. What was correct in the translation memory may be wrong in the UI. What passed in the spreadsheet may overflow the button. The scales must be held, not at the end of the project, but at every gate along the way.',
+    def:'Localization testing validates translated content in its actual UI environment: checking for linguistic accuracy in context, functional correctness (encoding, broken links), cosmetic defects (text overflow, font rendering), and cultural appropriateness. It catches issues that CAT-tool review cannot, because context is everything.',
     pm:'PMs who integrate testing into sprints rather than treating it as a final gate ship faster with fewer regressions. Mapping bug severity to release-blocking criteria is a PM responsibility, not QA\'s alone.',
     tags:['Functional QA','In-context Review','Bug Severity Matrix','Screenshot Review','Regression Testing','Release Criteria'],
     example:{
@@ -1046,16 +1047,16 @@ const CARDS = [
     arcanaTitle:'The World',
     mystical:'The Crossing of Worlds',
     real:'Cultural Adaptation & Transcreation',
-    tarotCard:'The World \u2014 Major Arcana XXI',
-    tarotMeaning:'A dancing figure at the centre of a laurel wreath, the four creatures of the evangelists at each corner \u2014 eagle, lion, bull, man. The World is the completion of the Great Work. Every element in balance. Every corner of creation acknowledged. This is what it means to be truly global.',
-    oracle:'The Crossing is the final mystery: to carry meaning \u2014 not words \u2014 across the boundary of language and culture. The dancer at the centre knows that a campaign that conquers London may wound Tokyo, and that the heart of the message must arrive in the target tongue, not merely its garments.',
-    def:'Cultural adaptation ensures content resonates authentically \u2014 adapting idioms, humour, metaphors, colour symbolism, imagery, and local conventions. Transcreation is the creative extreme: recreating marketing copy to achieve the same emotional effect in the target culture, even if not a single word translates literally.',
-    pm:'Transcreation is the highest-value, highest-skill service in the localization spectrum. PMs who write transcreation briefs that capture emotional intent \u2014 not just linguistic form \u2014 unlock creative results that literal translation never achieves.',
+    tarotCard:'The World: Major Arcana XXI',
+    tarotMeaning:'A dancing figure at the centre of a laurel wreath, the four creatures of the evangelists at each corner: eagle, lion, bull, man. The World is the completion of the Great Work. Every element in balance. Every corner of creation acknowledged. This is what it means to be truly global.',
+    oracle:'The Crossing is the final mystery: to carry meaning, not words, across the boundary of language and culture. The dancer at the centre knows that a campaign that conquers London may wound Tokyo, and that the heart of the message must arrive in the target tongue, not merely its garments.',
+    def:'Cultural adaptation ensures content resonates authentically, adapting idioms, humour, metaphors, colour symbolism, imagery, and local conventions. Transcreation is the creative extreme: recreating marketing copy to achieve the same emotional effect in the target culture, even if not a single word translates literally.',
+    pm:'Transcreation is the highest-value, highest-skill service in the localization spectrum. PMs who write transcreation briefs that capture emotional intent, not just linguistic form, unlock creative results that literal translation never achieves.',
     tags:['Transcreation Brief','Cultural Consulting','Back-translation','Hreflang','Local SEO','Market Adaptation'],
     example:{
       scenario:'<strong>A sportswear brand</strong> launches \u201cDefy the Limits\u201d across 14 markets. The PM writes a transcreation brief: core emotion (defiance + triumph), target audience (18\u201325 urban athletes), banned phrases, 3 approved back-translations per market.',
-      good:'Japanese team creates \u201c\u9650\u754c\u3092\u5857\u308a\u66ff\u3048\u308d\u201d (Rewrite the limits) \u2014 culturally resonant. The campaign outperforms the English benchmark by 18% in Japan.',
-      bad:'Tagline sent as a translation job. Literal Korean translation reads \u201cDisobey the rules\u201d \u2014 misaligned and risky in a compliance-sensitive market.',
+      good:'Japanese team creates \u201c\u9650\u754c\u3092\u5857\u308a\u66ff\u3048\u308d\u201d (Rewrite the limits), culturally resonant. The campaign outperforms the English benchmark by 18% in Japan.',
+      bad:'Tagline sent as a translation job. Literal Korean translation reads \u201cDisobey the rules\u201d, misaligned and risky in a compliance-sensitive market.',
       tip:'"A transcreation brief is a creative brief. Include: the emotional effect you want, what the brand is NOT, examples of good and bad tone. You are the creative director of a global story."'
     },
     svg:`<svg viewBox="0 0 148 162" fill="none"><ellipse cx="74" cy="82" rx="52" ry="66" stroke="#c9a84c" stroke-width="1" opacity="0.5"/><ellipse cx="74" cy="82" rx="42" ry="54" stroke="#c9a84c" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.35"/><circle cx="74" cy="58" r="8" stroke="#a897d8" stroke-width="0.8" opacity="0.5"/><line x1="74" y1="66" x2="74" y2="92" stroke="#a897d8" stroke-width="1" opacity="0.45"/><line x1="74" y1="76" x2="62" y2="86" stroke="#a897d8" stroke-width="0.9" opacity="0.45"/><line x1="74" y1="76" x2="86" y2="86" stroke="#a897d8" stroke-width="0.9" opacity="0.45"/><line x1="74" y1="92" x2="66" y2="106" stroke="#a897d8" stroke-width="0.9" opacity="0.45"/><line x1="74" y1="92" x2="82" y2="106" stroke="#a897d8" stroke-width="0.9" opacity="0.45"/><circle cx="28" cy="30" r="6" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/><circle cx="120" cy="30" r="6" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/><circle cx="28" cy="134" r="6" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/><circle cx="120" cy="134" r="6" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/></svg>`
@@ -1064,9 +1065,9 @@ const CARDS = [
 
 /* ── Grid ── */
 const ROWS = [
-  { label:'Stage I \u2014 Linguistic Arts',         cards:[0,1,2] },
-  { label:'Stage II \u2014 Technical Process',      cards:[3,4,5] },
-  { label:'Stage III \u2014 Management & Delivery', cards:[6,7,8] }
+  { label:'Stage I: Linguistic Arts',         cards:[0,1,2] },
+  { label:'Stage II: Technical Process',      cards:[3,4,5] },
+  { label:'Stage III: Management & Delivery', cards:[6,7,8] }
 ];
 
 let flippedCount = 0, activeIdx = null;
@@ -1117,12 +1118,12 @@ function buildGrid(){
             <div class="cb-corner bl"></div>
             <div class="cb-corner br"></div>
             ${SIGILS[i]}
-            <div class="cb-roman">${c.roman}</div>
+            <div class="cb-roman" style="font-variant-numeric:normal;font-feature-settings:normal;">${c.roman}</div>
             <div class="cb-whisper">Touch to reveal</div>
           </div>
           <div class="card-face card-front" style="--art-glow:${st.glow};background:${c.bgColor}">
             <div class="cf-top">
-              <span class="cf-roman">${c.roman}</span>
+              <span class="cf-roman" style="font-variant-numeric:normal;">${c.roman}</span>
               <span class="cf-arcana-name">${c.arcanaTitle}</span>
             </div>
             ${artHTML}
@@ -1352,7 +1353,7 @@ function transitionToPhase2(){
       },i*160);
     }
     setTimeout(()=>{
-      document.getElementById('summonRingLabel').textContent='\u2014 the sigil awakens \u2014';
+      document.getElementById('summonRingLabel').textContent='\u00b7 the sigil awakens \u00b7';
       animateSummonSigil();
       setTimeout(()=>transitionToPhase3(),4000);
     },9*160+400);
@@ -1444,7 +1445,7 @@ function flipTenthCard(){
 
 // ── Share reading ──
 function shareReading(){
-  const text=`I just completed The Localization Oracle \u2014 nine cards revealing the hidden craft of Localization PM, ending with The Summoning. The tenth card: Judgement. \u2726\n\nhttps://duyiyi05.github.io/The-Localization-Oracle/\n\n#LocalizationPM #Portfolio #Tarot`;
+  const text=`I just completed The Localization Oracle, nine cards revealing the hidden craft of Localization PM, ending with The Summoning. The tenth card: Judgement. \u2726\n\nhttps://duyiyi05.github.io/The-Localization-Oracle/\n\n#LocalizationPM #Portfolio #Tarot`;
   const linkedInUrl=`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://duyiyi05.github.io/The-Localization-Oracle/')}`;
   navigator.clipboard.writeText(text).catch(()=>{});
   window.open(linkedInUrl,'_blank');
