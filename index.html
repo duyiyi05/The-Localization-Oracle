@@ -1,320 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Localization Oracle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <!-- Open Graph / Social sharing -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://duyiyi05.github.io/The-Localization-Oracle/">
-<meta property="og:title" content="The Localization Oracle — Nine Cards Revealing the Craft of Localization PM">
-<meta property="og:description" content="An interactive tarot spread mapping the nine disciplines of Localization Project Management onto the Major Arcana. Flip the cards. Complete the reading.">
+<meta property="og:title" content="The Localization Oracle">
+<meta property="og:description" content="Nine cards. Three stages. The complete craft of Localization PM — revealed through the Major Arcana.">
 <meta property="og:image" content="https://duyiyi05.github.io/The-Localization-Oracle/images/og-preview.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Localization Oracle">
 <meta name="twitter:description" content="Nine cards. Three stages. The complete craft of Localization PM — revealed through the Major Arcana.">
 <meta name="twitter:image" content="https://duyiyi05.github.io/The-Localization-Oracle/images/og-preview.jpg">
-<!-- General SEO -->
-<meta name="description" content="An interactive tarot-inspired portfolio mapping nine Localization PM disciplines onto the Major Arcana. Built by a Localization Project Manager.">
+<meta name="description" content="An interactive tarot-inspired portfolio by Duygu Taş mapping nine Localization PM disciplines onto the Major Arcana.">
 <meta name="author" content="duyiyi05">
-<title>The Localization Oracle</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-  background:#06020f;
-  min-height:100vh;
-  font-family:'Raleway',sans-serif;
-  overflow-x:hidden;
+:root {
+  --deep:       #06020f;
+  --surface:    #100828;
+  --gold:       #c9a84c;
+  --gold-lt:    #e8c97a;
+  --gold-dim:   #7a6030;
+  --gold-faint: rgba(201,168,76,0.12);
+  --parch:      #f0e6cc;
+  --parch-dim:  rgba(240,230,204,0.52);
+  --mist:       #9b8fd4;
+  --div:        rgba(201,168,76,0.18);
 }
 
-.oracle-page{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:3.5rem 1.5rem 3rem;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--deep);
+  min-height: 100vh;
+  font-family: 'Raleway', sans-serif;
+  overflow-x: hidden;
 }
 
-.oracle-page::before{
-  content:'';
-  position:absolute;
-  inset:0;
+/* ── Page wrapper ── */
+.oracle-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Deep space radial glow */
+.oracle-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(60,30,120,0.28) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(30,60,100,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 30% at 80% 70%, rgba(80,20,80,0.15) 0%, transparent 50%);
-  pointer-events:none;
-  z-index:0;
+    radial-gradient(ellipse 80% 55% at 50% 0%,  rgba(60,30,120,0.32) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 40% at 15% 85%, rgba(30,55,100,0.2)  0%, transparent 60%),
+    radial-gradient(ellipse 40% 35% at 85% 75%, rgba(80,15,80,0.18)  0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-#starCanvas{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
+/* Star canvas */
+#starCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.corner{
-  position:absolute;
-  width:24px;
-  height:24px;
-  border-color:rgba(201,168,76,0.18);
-  border-style:solid;
-  border-width:0;
-  z-index:2;
+/* Corner ornaments */
+.corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: rgba(201,168,76,0.18);
+  border-style: solid;
+  border-width: 0;
+  z-index: 2;
 }
-.corner.tl{top:18px;left:18px;border-top-width:1px;border-left-width:1px;}
-.corner.tr{top:18px;right:18px;border-top-width:1px;border-right-width:1px;}
-.corner.bl{bottom:18px;left:18px;border-bottom-width:1px;border-left-width:1px;}
-.corner.br{bottom:18px;right:18px;border-bottom-width:1px;border-right-width:1px;}
+.corner.tl { top: 20px; left: 20px;  border-top-width: 1px;    border-left-width: 1px; }
+.corner.tr { top: 20px; right: 20px; border-top-width: 1px;    border-right-width: 1px; }
+.corner.bl { bottom: 20px; left: 20px;  border-bottom-width: 1px; border-left-width: 1px; }
+.corner.br { bottom: 20px; right: 20px; border-bottom-width: 1px; border-right-width: 1px; }
 
-.inner{
-  position:relative;
-  z-index:2;
-  max-width:520px;
-  width:100%;
-}
-
-/* Moon */
-.moon-svg{animation:moonSpin 60s linear infinite;}
-@keyframes moonSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-
-/* Ornament */
-.orn{
-  color:rgba(201,168,76,0.45);
-  font-size:12px;
-  letter-spacing:0.6em;
-  margin-bottom:1.1rem;
-  opacity:0.75;
+/* Inner content column */
+.inner {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
 
-/* Title shimmer */
-.oracle-title{
-  font-family:'Cinzel Decorative',serif;
-  font-size:clamp(22px,5vw,38px);
-  letter-spacing:0.08em;
-  line-height:1.2;
-  margin-bottom:0.75rem;
-  background:linear-gradient(135deg,#e8c97a 0%,#c9a84c 30%,#f0e6cc 50%,#c9a84c 70%,#e8c97a 100%);
-  background-size:300% 100%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  animation:shimmerText 4s ease-in-out infinite;
-}
-@keyframes shimmerText{
-  0%{background-position:100% 0}
-  50%{background-position:0% 0}
-  100%{background-position:100% 0}
+/* ── Moon ── */
+.moon-svg { animation: moonSpin 60s linear infinite; }
+@keyframes moonSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* ── Ornament ── */
+.orn {
+  color: rgba(201,168,76,0.48);
+  font-size: 13px;
+  letter-spacing: 0.65em;
+  opacity: 0.75;
 }
 
-/* Subtitle */
-.oracle-sub{
-  font-family:'IM Fell English',serif;
-  font-style:italic;
-  color:rgba(240,230,204,0.52);
-  font-size:clamp(12px,1.8vw,15px);
-  line-height:1.65;
-  margin-bottom:1.5rem;
+/* ── Title shimmer ── */
+.oracle-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(28px, 6vw, 46px);
+  letter-spacing: 0.07em;
+  line-height: 1.15;
+  background: linear-gradient(
+    135deg,
+    #e8c97a  0%,
+    #c9a84c  28%,
+    #f0e6cc  50%,
+    #c9a84c  72%,
+    #e8c97a  100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerTitle 4s ease-in-out infinite;
 }
 
-/* Gold divider */
-.gold-divider{
-  width:280px;
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.35),transparent);
-  margin:0 auto 1.5rem;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.gold-divider::after{
-  content:'\2726';
-  position:absolute;
-  font-size:10px;
-  color:rgba(201,168,76,0.5);
-  background:#06020f;
-  padding:0 10px;
+@keyframes shimmerTitle {
+  0%   { background-position: 100% 0; }
+  50%  { background-position: 0%   0; }
+  100% { background-position: 100% 0; }
 }
 
-/* Atmospheric paragraph */
-.oracle-para{
-  font-family:'IM Fell English',serif;
-  font-style:italic;
-  color:rgba(240,230,204,0.48);
-  font-size:clamp(13px,1.6vw,15px);
-  line-height:1.75;
-  margin-bottom:1.75rem;
-  max-width:400px;
-  margin-left:auto;
-  margin-right:auto;
+/* ── Subtitle ── */
+.oracle-sub {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: rgba(240,230,204,0.55);
+  line-height: 1.65;
 }
 
-/* Mini cards */
-.mini-cards{
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  align-items:flex-end;
-  height:84px;
-  margin-bottom:1.75rem;
+/* ── Gold divider ── */
+.gold-divider {
+  width: 300px;
+  max-width: 90%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.38), transparent);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gold-divider::after {
+  content: '✦';
+  position: absolute;
+  font-size: 11px;
+  color: rgba(201,168,76,0.5);
+  background: var(--deep);
+  padding: 0 12px;
 }
 
-.mc{
-  border-radius:7px;
-  border:1px solid rgba(201,168,76,0.3);
-  background:linear-gradient(160deg,#110830,#0c0520);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
-  flex-shrink:0;
+/* ── Atmospheric paragraph ── */
+.oracle-para {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: clamp(15px, 2vw, 18px);
+  color: rgba(240,230,204,0.5);
+  line-height: 1.8;
+  max-width: 440px;
 }
 
-.mc::before{
-  content:'';
-  position:absolute;
-  inset:4px;
-  border:1px solid rgba(201,168,76,0.08);
-  border-radius:4px;
+/* ── Mini cards ── */
+.mini-cards {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: flex-end;
+  height: 90px;
+}
+
+.mc {
+  border-radius: 8px;
+  border: 1px solid rgba(201,168,76,0.3);
+  background: linear-gradient(160deg, #110830, #0c0520);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.mc::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(201,168,76,0.08);
+  border-radius: 5px;
   background:
-    repeating-linear-gradient(45deg,transparent,transparent 5px,rgba(201,168,76,0.018) 5px,rgba(201,168,76,0.018) 6px),
-    repeating-linear-gradient(-45deg,transparent,transparent 5px,rgba(201,168,76,0.018) 5px,rgba(201,168,76,0.018) 6px);
+    repeating-linear-gradient( 45deg, transparent, transparent 5px, rgba(201,168,76,0.018) 5px, rgba(201,168,76,0.018) 6px),
+    repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(201,168,76,0.018) 5px, rgba(201,168,76,0.018) 6px);
 }
 
-.mc svg{position:relative;z-index:1;}
+.mc svg { position: relative; z-index: 1; }
 
-.mc-l,.mc-r{width:42px;height:68px;}
-.mc-c{
-  width:46px;
-  height:76px;
-  border-color:rgba(201,168,76,0.5);
-  box-shadow:0 0 18px rgba(201,168,76,0.1);
+.mc-l { width: 48px; height: 76px; animation: floatCard 3.5s ease-in-out infinite; }
+.mc-c { width: 54px; height: 86px; border-color: rgba(201,168,76,0.52); box-shadow: 0 0 20px rgba(201,168,76,0.1); animation: floatCard 3.5s ease-in-out infinite; animation-delay: 0.5s; }
+.mc-r { width: 48px; height: 76px; animation: floatCard 3.5s ease-in-out infinite; animation-delay: 1s; }
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
 }
 
-.mc-l{animation:floatCard 3.5s ease-in-out infinite;animation-delay:0s;}
-.mc-c{animation:floatCard 3.5s ease-in-out infinite;animation-delay:0.5s;}
-.mc-r{animation:floatCard 3.5s ease-in-out infinite;animation-delay:1s;}
-
-@keyframes floatCard{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-7px)}
+/* ── CTA button ── */
+.cta-btn {
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.48);
+  border-radius: 10px;
+  padding: 16px 48px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.04));
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s, border-color 0.3s;
+  animation: btnGlow 3s ease-in-out infinite;
 }
 
-/* CTA button */
-.cta-btn{
-  display:inline-block;
-  font-family:'Raleway',sans-serif;
-  font-size:11px;
-  font-weight:500;
-  letter-spacing:0.22em;
-  text-transform:uppercase;
-  text-decoration:none;
-  color:#c9a84c;
-  border:1px solid rgba(201,168,76,0.45);
-  border-radius:8px;
-  padding:14px 40px;
-  background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.03));
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-  transition:border-color 0.3s,background 0.3s;
-  animation:btnGlow 3s ease-in-out infinite;
+@keyframes btnGlow {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  50%       { box-shadow: 0 0 28px rgba(201,168,76,0.22), 0 0 0 1px rgba(201,168,76,0.1); }
 }
 
-@keyframes btnGlow{
-  0%,100%{box-shadow:0 0 0 0 transparent}
-  50%{box-shadow:0 0 22px rgba(201,168,76,0.18),0 0 0 1px rgba(201,168,76,0.08)}
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.14), transparent);
+  animation: btnSweep 4s ease-in-out infinite;
+  animation-delay: 1s;
 }
 
-.cta-btn::after{
-  content:'';
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:60%;
-  height:100%;
-  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.12),transparent);
-  animation:btnSweep 4s ease-in-out infinite;
-  animation-delay:1s;
+@keyframes btnSweep {
+  0%, 100% { left: -100%; }
+  50%       { left: 150%; }
 }
 
-@keyframes btnSweep{
-  0%,100%{left:-100%}
-  50%{left:150%}
+.cta-btn:hover {
+  background: rgba(201,168,76,0.15);
+  border-color: rgba(201,168,76,0.75);
 }
 
-.cta-btn:hover{
-  background:rgba(201,168,76,0.12);
-  border-color:rgba(201,168,76,0.7);
+/* ── Whisper ── */
+.whisper {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(201,168,76,0.28);
+  letter-spacing: 0.04em;
 }
 
-/* Whisper */
-.whisper{
-  font-family:'IM Fell English',serif;
-  font-style:italic;
-  color:rgba(201,168,76,0.25);
-  font-size:11px;
-  margin-bottom:1.5rem;
-  letter-spacing:0.04em;
+/* ── Scroll hint ── */
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  animation: scrollBob 2s ease-in-out infinite;
+}
+.scroll-hint span {
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.45);
+}
+.scroll-arrow {
+  width: 10px; height: 10px;
+  border-right: 1px solid rgba(201,168,76,0.45);
+  border-bottom: 1px solid rgba(201,168,76,0.45);
+  transform: rotate(45deg);
+}
+@keyframes scrollBob {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50%       { opacity: 0.6; transform: translateY(5px); }
 }
 
-/* Scroll hint */
-.scroll-hint{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:6px;
-  animation:scrollBob 2s ease-in-out infinite;
+/* ── About corner link ── */
+.about-corner-link {
+  position: fixed;
+  bottom: 1.5rem; right: 1.75rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.22);
+  text-decoration: none;
+  transition: color 0.2s;
+  z-index: 10;
 }
+.about-corner-link:hover { color: rgba(201,168,76,0.6); }
 
-.scroll-hint span{
-  font-size:8px;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:rgba(201,168,76,0.5);
-  font-family:'Raleway',sans-serif;
+/* ── Responsive ── */
+@media (max-width: 500px) {
+  .oracle-title  { letter-spacing: 0.04em; }
+  .mini-cards    { gap: 10px; }
+  .mc-l, .mc-r   { width: 40px; height: 64px; }
+  .mc-c          { width: 46px; height: 74px; }
+  .gold-divider  { width: 220px; }
+  .oracle-sub    { font-size: 15px; }
+  .oracle-para   { font-size: 15px; }
 }
-
-.scroll-arrow{
-  width:9px;
-  height:9px;
-  border-right:1px solid rgba(201,168,76,0.45);
-  border-bottom:1px solid rgba(201,168,76,0.45);
-  transform:rotate(45deg);
-}
-
-@keyframes scrollBob{
-  0%,100%{opacity:0.28;transform:translateY(0)}
-  50%{opacity:0.55;transform:translateY(4px)}
-}
-
-/* Responsive */
-@media(max-width:480px){
-  .oracle-title{letter-spacing:0.05em;}
-  .mini-cards{gap:8px;}
-  .mc-l,.mc-r{width:36px;height:58px;}
-  .mc-c{width:40px;height:66px;}
-  .corner{width:18px;height:18px;}
-  .gold-divider{width:200px;}
-}
-.index-about-link{position:fixed;bottom:1.5rem;right:1.5rem;font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,168,76,0.25);text-decoration:none;transition:color .2s;z-index:10}
-.index-about-link:hover{color:rgba(201,168,76,0.6)}
 </style>
 </head>
 <body>
+
 <div class="oracle-page">
   <canvas id="starCanvas"></canvas>
 
@@ -325,72 +345,84 @@ body{
 
   <div class="inner">
 
-    <!-- 1. Moon -->
-    <div style="display:flex;justify-content:center;margin-bottom:1.25rem;">
-      <svg class="moon-svg" width="72" height="72" viewBox="0 0 72 72" fill="none">
-        <circle cx="36" cy="36" r="26" stroke="#c9a84c" stroke-width="0.8" opacity="0.38"/>
-        <circle cx="42" cy="30" r="20" fill="#06020f"/>
-        <circle cx="36" cy="36" r="4" fill="rgba(201,168,76,0.2)"/>
-        <line x1="36" y1="6" x2="36" y2="1" stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
-        <line x1="36" y1="66" x2="36" y2="71" stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
-        <line x1="6" y1="36" x2="1" y2="36" stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
-        <line x1="66" y1="36" x2="71" y2="36" stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
-        <line x1="12" y1="12" x2="8" y2="8" stroke="#c9a84c" stroke-width="0.7" opacity="0.22"/>
-        <line x1="60" y1="12" x2="64" y2="8" stroke="#c9a84c" stroke-width="0.7" opacity="0.22"/>
-        <line x1="12" y1="60" x2="8" y2="64" stroke="#c9a84c" stroke-width="0.7" opacity="0.22"/>
-        <line x1="60" y1="60" x2="64" y2="64" stroke="#c9a84c" stroke-width="0.7" opacity="0.22"/>
-        <circle cx="20" cy="18" r="1.5" fill="#c9a84c" opacity="0.45"/>
-        <circle cx="58" cy="52" r="1.2" fill="#c9a84c" opacity="0.4"/>
-        <circle cx="14" cy="55" r="1" fill="#c9a84c" opacity="0.35"/>
+    <!-- 1. Moon SVG -->
+    <div style="margin-bottom:1.5rem;">
+      <svg class="moon-svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <circle cx="40" cy="40" r="30" stroke="#c9a84c" stroke-width="0.8" opacity="0.38"/>
+        <circle cx="47" cy="34" r="23" fill="#06020f"/>
+        <circle cx="40" cy="40" r="4.5" fill="rgba(201,168,76,0.18)"/>
+        <!-- cardinal rays -->
+        <line x1="40" y1="7"  x2="40" y2="2"  stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
+        <line x1="40" y1="73" x2="40" y2="78" stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
+        <line x1="7"  y1="40" x2="2"  y2="40" stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
+        <line x1="73" y1="40" x2="78" y2="40" stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
+        <!-- diagonal rays -->
+        <line x1="13" y1="13" x2="9"  y2="9"  stroke="#c9a84c" stroke-width="0.7" opacity="0.22"/>
+        <line x1="67" y1="13" x2="71" y2="9"  stroke="#c9a84c" stroke-width="0.7" opacity="0.22"/>
+        <line x1="13" y1="67" x2="9"  y2="71" stroke="#c9a84c" stroke-width="0.7" opacity="0.22"/>
+        <line x1="67" y1="67" x2="71" y2="71" stroke="#c9a84c" stroke-width="0.7" opacity="0.22"/>
+        <!-- tiny stars -->
+        <circle cx="22" cy="20" r="1.8" fill="#c9a84c" opacity="0.45"/>
+        <circle cx="64" cy="58" r="1.4" fill="#c9a84c" opacity="0.38"/>
+        <circle cx="16" cy="62" r="1.1" fill="#c9a84c" opacity="0.32"/>
       </svg>
     </div>
 
     <!-- 2. Ornament -->
-    <div class="orn">&#10022; &#10022; &#10022;</div>
+    <div class="orn" style="margin-bottom:1.25rem;">✦ ✦ ✦</div>
 
     <!-- 3. Title -->
-    <h1 class="oracle-title">The Localization Oracle</h1>
+    <h1 class="oracle-title" style="margin-bottom:1rem;">The Localization Oracle</h1>
 
     <!-- 4. Subtitle -->
-    <p class="oracle-sub">Nine cards. Three stages. The complete craft of<br>Localization PM &mdash; revealed through the Major Arcana.</p>
+    <p class="oracle-sub" style="margin-bottom:1.75rem;">
+      Nine cards. Three stages. The complete craft of<br>Localization PM &mdash; revealed through the Major Arcana.
+    </p>
 
     <!-- 5. Gold divider -->
-    <div class="gold-divider"></div>
+    <div class="gold-divider" style="margin-bottom:1.75rem;"></div>
 
     <!-- 6. Atmospheric paragraph -->
-    <p class="oracle-para">Step closer. Some journeys begin quietly &mdash; with words waiting to cross languages. Tonight, the cards will reveal the hidden craft.</p>
+    <p class="oracle-para" style="margin-bottom:2rem;">
+      Step closer. Some journeys begin quietly &mdash; with words waiting to cross languages. Tonight, the cards will reveal the hidden craft.
+    </p>
 
-    <!-- 7. Three mini cards -->
-    <div class="mini-cards">
+    <!-- 7. Three floating mini cards -->
+    <div class="mini-cards" style="margin-bottom:2rem;">
+
       <div class="mc mc-l">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <polygon points="10,1 12,7 18,7 13,11 15,17 10,13 5,17 7,11 2,7 8,7" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+        <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
+          <polygon points="10,1 12,7 18,7 13,11 15,17 10,13 5,17 7,11 2,7 8,7"
+                   stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
         </svg>
       </div>
+
       <div class="mc mc-c">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="9" stroke="#c9a84c" stroke-width="0.9" opacity="0.55"/>
-          <circle cx="12" cy="12" r="5" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
+        <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+          <circle cx="12" cy="12" r="9"  stroke="#c9a84c" stroke-width="0.9" opacity="0.55"/>
+          <circle cx="12" cy="12" r="5"  stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
           <line x1="12" y1="3" x2="12" y2="21" stroke="#c9a84c" stroke-width="0.6" opacity="0.3"/>
           <line x1="3" y1="12" x2="21" y2="12" stroke="#c9a84c" stroke-width="0.6" opacity="0.3"/>
           <circle cx="12" cy="12" r="2" fill="#c9a84c" opacity="0.4"/>
         </svg>
       </div>
+
       <div class="mc mc-r">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
           <path d="M10 2L18 17H2Z" stroke="#c9a84c" stroke-width="0.9" opacity="0.5"/>
-          <path d="M10 7L15 17H5Z" stroke="#c9a84c" stroke-width="0.7" opacity="0.3"/>
+          <path d="M10 7L15 17H5Z" stroke="#c9a84c" stroke-width="0.7" opacity="0.28"/>
         </svg>
       </div>
+
     </div>
 
-    <!-- 8. CTA -->
-    <div style="margin-bottom:1.25rem;">
+    <!-- 8. CTA button -->
+    <div style="margin-bottom:1.5rem;">
       <a href="spread.html" class="cta-btn">Consult the Cards</a>
     </div>
 
-    <!-- 9. Whisper -->
-    <p class="whisper">The cards rarely reveal their meaning to those who rush.</p>
+    <!-- 9. Whisper text -->
+    <p class="whisper" style="margin-bottom:2rem;">The cards rarely reveal their meaning to those who rush.</p>
 
     <!-- 10. Scroll hint -->
     <div class="scroll-hint">
@@ -399,40 +431,44 @@ body{
     </div>
 
   </div>
-</div>
 
+  <!-- 11. About link -->
+  <a href="about.html" class="about-corner-link">About the Oracle's Keeper</a>
+
+</div><!-- /.oracle-page -->
+
+<!-- Star canvas JS -->
 <script>
 const cv = document.getElementById('starCanvas');
 const cx = cv.getContext('2d');
 let W, H, stars = [];
 
-function initStars(){
-  const pg = cv.parentElement;
-  W = cv.width = pg.offsetWidth;
-  H = cv.height = pg.offsetHeight;
-  stars = Array.from({length:160},()=>({
-    x: Math.random()*W,
-    y: Math.random()*H,
-    r: Math.random()*1.4+0.15,
-    o: Math.random()*0.55+0.07,
-    sp: Math.random()*0.1+0.015,
-    tw: Math.random()*Math.PI*2,
-    g: Math.random()<0.07
+function initStars() {
+  W = cv.width  = window.innerWidth;
+  H = cv.height = window.innerHeight;
+  stars = Array.from({ length: 180 }, () => ({
+    x:  Math.random() * W,
+    y:  Math.random() * H,
+    r:  Math.random() * 1.5 + 0.15,
+    o:  Math.random() * 0.55 + 0.07,
+    sp: Math.random() * 0.1  + 0.015,
+    tw: Math.random() * Math.PI * 2,
+    g:  Math.random() < 0.07
   }));
 }
 
-function drawStars(t){
-  cx.clearRect(0,0,W,H);
-  stars.forEach(s=>{
-    const f = 0.4+0.6*Math.sin(t*0.0009+s.tw);
+function drawStars(t) {
+  cx.clearRect(0, 0, W, H);
+  stars.forEach(s => {
+    const f = 0.4 + 0.6 * Math.sin(t * 0.0009 + s.tw);
     cx.beginPath();
-    cx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    cx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     cx.fillStyle = s.g
-      ? `rgba(201,168,76,${(s.o*f*0.7).toFixed(3)})`
-      : `rgba(232,218,195,${(s.o*f).toFixed(3)})`;
+      ? `rgba(201,168,76,${s.o * f * 0.7})`
+      : `rgba(232,218,195,${s.o * f})`;
     cx.fill();
     s.y -= s.sp;
-    if(s.y < -2){ s.y = H+2; s.x = Math.random()*W; }
+    if (s.y < -2) { s.y = H + 2; s.x = Math.random() * W; }
   });
   requestAnimationFrame(drawStars);
 }
@@ -441,11 +477,12 @@ window.addEventListener('resize', initStars);
 initStars();
 requestAnimationFrame(drawStars);
 </script>
-<!-- STARDUST CURSOR -->
+
+<!-- Stardust cursor -->
 <canvas id="dustCanvas" style="position:fixed;inset:0;z-index:9999;pointer-events:none;"></canvas>
 <script>
 (function(){
-  if(window.matchMedia('(hover:none)').matches) return;
+  if (window.matchMedia('(hover:none)').matches) return;
   const cv = document.getElementById('dustCanvas');
   const cx = cv.getContext('2d');
   let W, H, particles = [];
@@ -455,27 +492,27 @@ requestAnimationFrame(drawStars);
   document.addEventListener('mousemove', e => {
     for (let i = 0; i < 3; i++) {
       particles.push({
-        x: e.clientX + (Math.random() - 0.5) * 6,
-        y: e.clientY + (Math.random() - 0.5) * 6,
-        vx: (Math.random() - 0.5) * 1.2,
-        vy: -(Math.random() * 1.6 + 0.4),
+        x: e.clientX + (Math.random()-0.5)*6,
+        y: e.clientY + (Math.random()-0.5)*6,
+        vx: (Math.random()-0.5)*1.2,
+        vy: -(Math.random()*1.6+0.4),
         life: 1.0,
-        decay: Math.random() * 0.018 + 0.012,
-        r: Math.random() * 2.2 + 0.4,
+        decay: Math.random()*0.018+0.012,
+        r: Math.random()*2.2+0.4,
         gold: Math.random() < 0.55
       });
     }
   });
   function draw() {
     cx.clearRect(0, 0, W, H);
-    for (let i = particles.length - 1; i >= 0; i--) {
+    for (let i = particles.length-1; i >= 0; i--) {
       const p = particles[i];
       p.x += p.vx; p.y += p.vy; p.vy -= 0.015; p.life -= p.decay;
       if (p.life <= 0) { particles.splice(i, 1); continue; }
-      cx.beginPath(); cx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2);
+      cx.beginPath(); cx.arc(p.x, p.y, p.r*p.life, 0, Math.PI*2);
       cx.fillStyle = p.gold
-        ? `rgba(201,168,76,${p.life * 0.85})`
-        : `rgba(240,228,200,${p.life * 0.55})`;
+        ? `rgba(201,168,76,${p.life*0.85})`
+        : `rgba(240,228,200,${p.life*0.55})`;
       cx.fill();
     }
     requestAnimationFrame(draw);
@@ -483,6 +520,6 @@ requestAnimationFrame(drawStars);
   draw();
 })();
 </script>
-<a href="about.html" class="index-about-link">About the Oracle's Keeper</a>
+
 </body>
 </html>
