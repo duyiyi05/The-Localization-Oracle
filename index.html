@@ -423,5 +423,47 @@ window.addEventListener('resize', initStars);
 initStars();
 requestAnimationFrame(drawStars);
 </script>
+<!-- STARDUST CURSOR -->
+<canvas id="dustCanvas" style="position:fixed;inset:0;z-index:9999;pointer-events:none;"></canvas>
+<script>
+(function(){
+  if(window.matchMedia('(hover:none)').matches) return;
+  const cv = document.getElementById('dustCanvas');
+  const cx = cv.getContext('2d');
+  let W, H, particles = [];
+  function resize() { W = cv.width = window.innerWidth; H = cv.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  document.addEventListener('mousemove', e => {
+    for (let i = 0; i < 3; i++) {
+      particles.push({
+        x: e.clientX + (Math.random() - 0.5) * 6,
+        y: e.clientY + (Math.random() - 0.5) * 6,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: -(Math.random() * 1.6 + 0.4),
+        life: 1.0,
+        decay: Math.random() * 0.018 + 0.012,
+        r: Math.random() * 2.2 + 0.4,
+        gold: Math.random() < 0.55
+      });
+    }
+  });
+  function draw() {
+    cx.clearRect(0, 0, W, H);
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.vx; p.y += p.vy; p.vy -= 0.015; p.life -= p.decay;
+      if (p.life <= 0) { particles.splice(i, 1); continue; }
+      cx.beginPath(); cx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2);
+      cx.fillStyle = p.gold
+        ? `rgba(201,168,76,${p.life * 0.85})`
+        : `rgba(240,228,200,${p.life * 0.55})`;
+      cx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
 </body>
 </html>
