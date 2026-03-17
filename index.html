@@ -31,7 +31,7 @@
   --gold-dim:   #7a6030;
   --gold-faint: rgba(201,168,76,0.12);
   --parch:      #f0e6cc;
-  --parch-dim:  rgba(240,230,204,0.52);
+  --parch-dim:  rgba(240,230,204,0.72);
   --mist:       #9b8fd4;
   --div:        rgba(201,168,76,0.18);
 }
@@ -279,7 +279,7 @@ body {
   font-family: 'IM Fell English', serif;
   font-style: italic;
   font-size: 14px;
-  color: rgba(201,168,76,0.55);
+  color: rgba(201,168,76,0.72);
   letter-spacing: 0.04em;
   font-weight: 400;
 }
@@ -374,6 +374,32 @@ body {
   .controls-bar { padding: 6px 10px; gap: 2px; }
   .ctrl-btn { min-width: 28px; padding: 4px 5px; }
 }
+
+/* ── Sound pill ── */
+.sound-pill {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16,8,40,0.92);
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 20px;
+  padding: 7px 14px;
+  color: rgba(201,168,76,0.75);
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: color 0.2s, border-color 0.2s;
+}
+.sound-pill:hover { color: var(--gold); border-color: rgba(201,168,76,0.6); }
+.sound-pill.muted { opacity: 0.55; }
 </style>
 </head>
 <body>
@@ -474,6 +500,17 @@ body {
   <a href="about.html" class="about-corner-link">About the Oracle's Keeper</a>
 
 </div><!-- /.oracle-page -->
+
+<audio id="bgAudio" src="sounds/ambient.mp3" loop preload="auto"></audio>
+
+<!-- Sound pill -->
+<button class="sound-pill muted" id="soundPill" aria-label="Toggle ambient sound">
+  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" id="soundIcon">
+    <path d="M2 4.5h2l3-3v10l-3-3H2V4.5z" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+    <path d="M9 4a3.5 3.5 0 010 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" id="soundWave"/>
+  </svg>
+  <span id="soundLabel">Sound</span>
+</button>
 
 <!-- Zoom controls -->
 <div class="controls-bar" id="controlsBar">
@@ -582,6 +619,34 @@ requestAnimationFrame(drawStars);
 </script>
 
 <script>
+/* ── Sound ── */
+(function(){
+  const audio = document.getElementById('bgAudio');
+  const pill  = document.getElementById('soundPill');
+  const wave  = document.getElementById('soundWave');
+  let enabled = localStorage.getItem('oracleSoundEnabled') === 'true';
+
+  function apply(save){
+    if(save) localStorage.setItem('oracleSoundEnabled', enabled);
+    if(enabled){
+      audio.volume = 0;
+      audio.play().catch(()=>{});
+      let v = 0;
+      const ramp = setInterval(()=>{ v = Math.min(0.35, v+0.02); audio.volume = v; if(v>=0.35) clearInterval(ramp); }, 80);
+      pill.classList.remove('muted');
+      wave.style.display = '';
+    } else {
+      let v = audio.volume;
+      const fade = setInterval(()=>{ v = Math.max(0, v-0.04); audio.volume = v; if(v<=0){ audio.pause(); clearInterval(fade); } }, 80);
+      pill.classList.add('muted');
+      wave.style.display = 'none';
+    }
+  }
+
+  pill.addEventListener('click', ()=>{ enabled = !enabled; apply(true); });
+  document.addEventListener('DOMContentLoaded', ()=>{ apply(false); });
+})();
+
 /* ── Zoom Controls ── */
 let currentZoom = parseFloat(localStorage.getItem('oracleZoom') || '1.0');
 
