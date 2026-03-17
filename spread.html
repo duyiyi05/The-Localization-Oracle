@@ -750,50 +750,59 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
 })();
 
 /* ── Sound System ── */
-let soundEnabled = false;
+let soundEnabled = localStorage.getItem('oracleSoundEnabled') === 'true';
 let ambientAudio = null;
 
 function initAmbient() {
   ambientAudio = new Audio('sounds/ambient.mp3');
   ambientAudio.loop = true;
-  ambientAudio.volume = 0.15;
+  ambientAudio.volume = 0;
 }
 
-function toggleSound() {
-  soundEnabled = !soundEnabled;
+function applySoundState(save) {
+  if (save) localStorage.setItem('oracleSoundEnabled', soundEnabled);
   const btn = document.getElementById('soundToggle');
   const w1  = document.getElementById('soundWave1');
   const w2  = document.getElementById('soundWave2');
   if (soundEnabled) {
-    btn.classList.add('active');
-    btn.classList.remove('muted');
+    if (btn) { btn.classList.add('active'); btn.classList.remove('muted'); }
     if (w1) w1.style.display = '';
     if (w2) w2.style.display = '';
     if (!ambientAudio) initAmbient();
+    ambientAudio.volume = 0;
     ambientAudio.play().catch(() => {
       document.addEventListener('click',
         () => ambientAudio.play().catch(() => {}),
         { once: true }
       );
     });
+    let v = 0;
+    const ramp = setInterval(() => {
+      v = Math.min(0.35, v + 0.02);
+      ambientAudio.volume = v;
+      if (v >= 0.35) clearInterval(ramp);
+    }, 80);
   } else {
-    btn.classList.remove('active');
-    btn.classList.add('muted');
+    if (btn) { btn.classList.remove('active'); btn.classList.add('muted'); }
     if (w1) w1.style.display = 'none';
     if (w2) w2.style.display = 'none';
     if (ambientAudio) {
+      let v = ambientAudio.volume;
       const fade = setInterval(() => {
-        if (ambientAudio.volume > 0.01) {
-          ambientAudio.volume = Math.max(0, ambientAudio.volume - 0.015);
-        } else {
-          ambientAudio.pause();
-          ambientAudio.volume = 0.15;
-          clearInterval(fade);
-        }
-      }, 50);
+        v = Math.max(0, v - 0.04);
+        ambientAudio.volume = v;
+        if (v <= 0) { ambientAudio.pause(); clearInterval(fade); }
+      }, 80);
     }
   }
 }
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  applySoundState(true);
+}
+
+document.addEventListener('DOMContentLoaded', () => { applySoundState(false); });
 
 function playSound(file, volume = 0.4) {
   if (!soundEnabled) return;

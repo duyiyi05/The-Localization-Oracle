@@ -40,13 +40,25 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
   min-height: 100vh;
 }
 
+.about-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 0%,  rgba(60,30,120,0.38) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 40% at 15% 85%, rgba(30,55,100,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 35% at 85% 75%, rgba(80,15,80,0.20)  0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* ── Back link ── */
 .back-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: rgba(201,168,76,0.65);
-  font-size: 12px;
+  color: rgba(201,168,76,0.72);
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-decoration: none;
@@ -64,7 +76,7 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
   font-size: 13px;
   color: var(--gold-dim);
   letter-spacing: 0.6em;
-  opacity: 0.55;
+  opacity: 0.65;
   margin-bottom: 1rem;
 }
 
@@ -90,8 +102,8 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 .about-subtitle {
   font-family: 'IM Fell English', serif;
   font-style: italic;
-  font-size: clamp(15px, 2vw, 18px);
-  color: rgba(240,230,204,0.75);
+  font-size: clamp(16px, 2vw, 19px);
+  color: rgba(240,230,204,0.82);
   font-weight: 400;
   margin-bottom: 2.5rem;
 }
@@ -183,8 +195,8 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 
 .hero-title {
   font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-  color: rgba(168,151,216,0.85);
+  font-size: 17px;
+  color: rgba(168,151,216,0.92);
   font-weight: 400;
   margin-bottom: 1rem;
 }
@@ -197,8 +209,8 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
   letter-spacing: 0.08em;
   padding: 5px 14px;
   border-radius: 20px;
-  border: 1px solid var(--div);
-  color: rgba(240,230,204,0.72);
+  border: 1px solid rgba(201,168,76,0.35);
+  color: rgba(240,230,204,0.85);
   font-weight: 400;
 }
 
@@ -208,8 +220,8 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 .section-eyebrow {
   font-family: 'Cinzel Decorative', serif;
   font-size: 11px;
-  color: rgba(201,168,76,0.55);
-  letter-spacing: 0.2em;
+  color: rgba(201,168,76,0.65);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   margin-bottom: 1rem;
   font-weight: 500;
@@ -219,9 +231,9 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 .about-bio {
   font-family: 'IM Fell English', serif;
   font-style: italic;
-  font-size: 18px;
-  color: rgba(232,201,122,0.88);
-  border-left: 2px solid var(--gold-dim);
+  font-size: 19px;
+  color: #e8c97a;
+  border-left: 2px solid rgba(201,168,76,0.5);
   padding-left: 18px;
   line-height: 1.8;
   margin-bottom: 1.25rem;
@@ -229,8 +241,8 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 
 .about-bio-plain {
   font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-  color: rgba(240,230,204,0.78);
+  font-size: 17px;
+  color: rgba(240,230,204,0.88);
   line-height: 1.82;
   font-weight: 400;
   margin-bottom: 1.25rem;
@@ -256,9 +268,10 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 }
 
 .principle-text {
-  font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-  color: rgba(240,230,204,0.75);
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: rgba(240,230,204,0.85);
   line-height: 1.75;
   font-weight: 400;
 }
@@ -266,11 +279,11 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 .about-closer {
   font-family: 'IM Fell English', serif;
   font-style: italic;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--gold-dim);
   text-align: center;
   margin-top: 1rem;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 /* ── Skills ── */
@@ -292,23 +305,23 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 .skill-arcana {
   font-family: 'Cinzel Decorative', serif;
   font-size: 16px;
-  color: rgba(201,168,76,0.2);
+  color: rgba(201,168,76,0.45);
   line-height: 1;
   margin-bottom: 5px;
 }
 
 .skill-name {
   font-family: 'Raleway', sans-serif;
-  font-size: 14px;
-  color: rgba(232,201,122,0.9);
+  font-size: 15px;
+  color: rgba(232,201,122,0.95);
   font-weight: 500;
   margin-bottom: 4px;
 }
 
 .skill-desc {
   font-family: 'Raleway', sans-serif;
-  font-size: 13px;
-  color: rgba(240,230,204,0.68);
+  font-size: 14px;
+  color: rgba(240,230,204,0.78);
   line-height: 1.6;
   font-weight: 400;
 }
@@ -318,12 +331,12 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 
 .tool-tag {
   font-family: 'Raleway', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.06em;
   padding: 7px 16px;
   border-radius: 20px;
-  border: 1px solid rgba(201,168,76,0.2);
-  color: rgba(240,230,204,0.72);
+  border: 1px solid rgba(201,168,76,0.28);
+  color: rgba(240,230,204,0.82);
   font-weight: 400;
   background: rgba(201,168,76,0.03);
   transition: border-color 0.2s, color 0.2s;
@@ -333,8 +346,8 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 /* ── Connect ── */
 .connect-text {
   font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-  color: rgba(240,230,204,0.78);
+  font-size: 17px;
+  color: rgba(240,230,204,0.85);
   line-height: 1.78;
   font-weight: 400;
   margin-bottom: 1.5rem;
@@ -348,11 +361,11 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
   align-items: center;
   gap: 8px;
   font-family: 'Raleway', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 600;
-  padding: 13px 26px;
+  padding: 14px 28px;
   border-radius: 9px;
   text-decoration: none;
   transition: background 0.2s, border-color 0.2s, transform 0.1s;
@@ -377,7 +390,7 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 .footer-text {
   font-family: 'Raleway', sans-serif;
   font-size: 13px;
-  color: rgba(240,230,204,0.52);
+  color: rgba(240,230,204,0.58);
   line-height: 1.68;
   margin-bottom: 1rem;
   max-width: 480px;
@@ -388,10 +401,10 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 
 .footer-link {
   font-family: 'Raleway', sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.16em;
+  font-size: 13px;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(201,168,76,0.5);
+  color: rgba(201,168,76,0.62);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -458,6 +471,32 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
   .controls-bar { padding: 6px 10px; gap: 2px; }
   .ctrl-btn { min-width: 28px; padding: 4px 5px; }
 }
+
+/* ── Sound pill ── */
+.sound-pill {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16,8,40,0.92);
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 20px;
+  padding: 7px 14px;
+  color: rgba(201,168,76,0.75);
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: color 0.2s, border-color 0.2s;
+}
+.sound-pill:hover { color: var(--gold); border-color: rgba(201,168,76,0.6); }
+.sound-pill.muted { opacity: 0.55; }
 </style>
 </head>
 <body>
@@ -630,6 +669,17 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 
 </div><!-- /.about-page -->
 
+<audio id="bgAudio" src="sounds/ambient.mp3" loop preload="auto"></audio>
+
+<!-- Sound pill -->
+<button class="sound-pill muted" id="soundPill" aria-label="Toggle ambient sound">
+  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" id="soundIcon">
+    <path d="M2 4.5h2l3-3v10l-3-3H2V4.5z" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+    <path d="M9 4a3.5 3.5 0 010 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" id="soundWave"/>
+  </svg>
+  <span id="soundLabel">Sound</span>
+</button>
+
 <!-- Zoom controls -->
 <div class="controls-bar" id="controlsBar">
   <button class="ctrl-btn" onclick="adjustZoom(-0.1)" title="Zoom out">
@@ -736,6 +786,34 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 </script>
 
 <script>
+/* ── Sound ── */
+(function(){
+  const audio = document.getElementById('bgAudio');
+  const pill  = document.getElementById('soundPill');
+  const wave  = document.getElementById('soundWave');
+  let enabled = localStorage.getItem('oracleSoundEnabled') === 'true';
+
+  function apply(save){
+    if(save) localStorage.setItem('oracleSoundEnabled', enabled);
+    if(enabled){
+      audio.volume = 0;
+      audio.play().catch(()=>{});
+      let v = 0;
+      const ramp = setInterval(()=>{ v = Math.min(0.35, v+0.02); audio.volume = v; if(v>=0.35) clearInterval(ramp); }, 80);
+      pill.classList.remove('muted');
+      wave.style.display = '';
+    } else {
+      let v = audio.volume;
+      const fade = setInterval(()=>{ v = Math.max(0, v-0.04); audio.volume = v; if(v<=0){ audio.pause(); clearInterval(fade); } }, 80);
+      pill.classList.add('muted');
+      wave.style.display = 'none';
+    }
+  }
+
+  pill.addEventListener('click', ()=>{ enabled = !enabled; apply(true); });
+  document.addEventListener('DOMContentLoaded', ()=>{ apply(false); });
+})();
+
 /* ── Zoom Controls ── */
 let currentZoom = parseFloat(localStorage.getItem('oracleZoom') || '1.0');
 
