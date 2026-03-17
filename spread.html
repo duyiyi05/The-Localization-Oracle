@@ -8,11 +8,11 @@
 <link rel="canonical" href="https://theoracleoflocalization.online/spread.html"/>
 <meta property="og:title" content="The Spread: The Localization Oracle">
 <meta property="og:description" content="Nine cards. Three stages. Flip each card to reveal the hidden craft of Localization Project Management.">
-<meta property="og:image" content="https://duyiyi05.github.io/The-Localization-Oracle/images/og-preview.jpg">
+<meta property="og:image" content="https://theoracleoflocalization.online/images/og-preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Spread: The Localization Oracle">
 <meta name="twitter:description" content="Nine cards. Three stages. The complete craft of Localization PM, revealed through the Major Arcana.">
-<meta name="twitter:image" content="https://duyiyi05.github.io/The-Localization-Oracle/images/og-preview.jpg">
+<meta name="twitter:image" content="https://theoracleoflocalization.online/images/og-preview.jpg">
 <title>The Nine-Card Spread: The Localization Oracle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -32,25 +32,25 @@ html,body{height:100%}
 body{background:var(--deep);overflow-x:hidden;font-family:'Raleway',sans-serif;color:var(--parch)}
 #starCanvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
 .page{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:2.5rem 1.25rem 6rem}
-.back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(201,168,76,0.65);font-size:12px;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;margin-bottom:2rem;transition:color .2s;font-weight:500}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(201,168,76,0.65);font-size:13px;letter-spacing:.18em;text-decoration:none;text-transform:uppercase;margin-bottom:2rem;transition:color .2s;font-weight:500}
 .back-link:hover{color:var(--gold)}
 .back-link::before{content:'←';font-size:12px}
 .header{text-align:center}
 .ornament{font-size:13px;color:var(--gold-dim);letter-spacing:.6em;opacity:.55;margin-bottom:1rem}
-h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:var(--gold);letter-spacing:.08em;margin-bottom:.5rem}
-.subtitle{font-family:'IM Fell English',serif;font-style:italic;color:var(--parch-dim);font-size:clamp(14px,2vw,17px);margin-bottom:.75rem}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:var(--gold);letter-spacing:.08em;margin-bottom:.5rem}
+.subtitle{font-family:'IM Fell English',serif;font-style:italic;color:var(--parch-dim);font-size:clamp(15px,2vw,18px);font-weight:400;margin-bottom:.75rem}
 .stage-legend{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:1.75rem}
-.legend-item{display:flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.12em;color:rgba(240,230,204,0.72);text-transform:uppercase;font-weight:400}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:13px;letter-spacing:.12em;color:rgba(240,230,204,0.72);text-transform:uppercase;font-weight:400}
 .legend-dot{width:8px;height:8px;border-radius:50%}
 .progress-area{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:2.25rem}
 .progress-row{display:flex;justify-content:center;gap:7px}
-.progress-counter{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.55);font-weight:400;transition:color 0.4s}
+.progress-counter{font-family:'Raleway',sans-serif;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(201,168,76,0.55);font-weight:400;transition:color 0.4s}
 .progress-counter.all-revealed{color:rgba(201,168,76,0.7);animation:counterPulse 1.5s ease-in-out 3}
 @keyframes counterPulse{0%,100%{opacity:0.7}50%{opacity:1;color:var(--gold)}}
 .pip{width:5px;height:5px;border-radius:50%;background:rgba(201,168,76,.18);transition:background .4s,transform .3s,box-shadow .3s}
 .pip.lit{background:var(--gold);transform:scale(1.5);box-shadow:0 0 8px rgba(201,168,76,.5)}
 .cards-grid{display:grid;grid-template-columns:repeat(3,var(--cw));gap:22px 16px;justify-content:center;margin-bottom:2.5rem}
-.stage-row-label{grid-column:1/-1;display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,0.55);font-weight:500;margin-top:6px;margin-bottom:-8px}
+.stage-row-label{grid-column:1/-1;display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,0.55);font-weight:500;margin-top:6px;margin-bottom:-8px}
 .stage-row-label::before,.stage-row-label::after{content:'';flex:1;height:1px;background:var(--div)}
 .card-slot{width:var(--cw);height:var(--ch);perspective:1100px;cursor:pointer}
 .card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.34,1.08,.64,1);border-radius:14px}
@@ -70,7 +70,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .cb-corner.bl{bottom:12px;left:12px;border-width:0 0 1px 1px;border-radius:0 0 0 3px}
 .cb-corner.br{bottom:12px;right:12px;border-width:0 1px 1px 0;border-radius:0 0 3px 0}
 .cb-sigil{position:relative;z-index:2;width:68px;height:68px}
-.cb-roman{position:relative;z-index:2;font-family:'Cinzel Decorative',serif;font-size:11px;color:rgba(201,168,76,0.65);letter-spacing:.22em;font-weight:500}
+.cb-roman{position:relative;z-index:2;font-family:'Cinzel Decorative',serif;font-size:16px;color:rgba(201,168,76,0.65);letter-spacing:.22em;font-weight:400}
 .cb-whisper{position:relative;z-index:2;font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:rgba(201,168,76,0.45);text-align:center;padding:0 14px;line-height:1.4}
 @keyframes breathe{
   0%,100%{box-shadow:0 4px 24px rgba(0,0,0,.6)}
@@ -88,7 +88,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .cf-art svg{width:100%;height:100%;max-width:148px;max-height:162px;display:block}
 .cf-art.has-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,2,15,.35) 0%,transparent 30%,transparent 65%,rgba(6,2,15,.55) 100%);z-index:2;pointer-events:none}
 .cf-bottom{padding:6px 10px 8px;border-top:1px solid var(--div);flex-shrink:0}
-.cf-mystical{font-family:'Cinzel Decorative',serif;font-size:9px;color:var(--gold-lt);letter-spacing:.1em;margin-bottom:2px;line-height:1.35;font-weight:500}
+.cf-mystical{font-family:'Cinzel Decorative',serif;font-size:10px;color:var(--gold-lt);letter-spacing:.1em;margin-bottom:2px;line-height:1.35;font-weight:500}
 .cf-real{font-family:'Raleway',sans-serif;font-style:normal;font-size:11px;color:rgba(240,230,204,0.72);line-height:1.3;font-weight:400}
 .detail-panel{display:none;background:var(--surface);border:1px solid var(--div);border-radius:16px;max-width:740px;margin:0 auto 2rem;overflow:hidden;opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s;pointer-events:none}
 .detail-panel.visible{opacity:1;transform:translateY(0);pointer-events:auto}
@@ -129,7 +129,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .m-sub{font-family:'Raleway',sans-serif;font-style:normal;font-size:15px;color:rgba(168,151,216,0.85);font-weight:400;margin-bottom:1.25rem}
 .scenario-block{background:rgba(255,255,255,.025);border:1px solid var(--div);border-radius:10px;padding:1.1rem 1.25rem;margin-bottom:1rem}
 .scenario-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px}
-.scenario-text{font-size:14px;line-height:1.72;color:rgba(240,230,204,0.82);font-weight:400}
+.scenario-text{font-size:15px;line-height:1.75;color:rgba(240,230,204,0.82);font-weight:400}
 .scenario-text strong{color:var(--gold-lt);font-weight:600}
 .outcome-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
 .outcome-card{border-radius:10px;padding:.9rem 1rem;border:1px solid}
@@ -138,24 +138,24 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .outcome-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:5px;font-weight:600}
 .outcome-card.good .outcome-label{color:var(--teal)}
 .outcome-card.bad .outcome-label{color:var(--rose)}
-.outcome-text{font-size:13px;line-height:1.65;color:rgba(240,230,204,0.72);font-weight:400}
+.outcome-text{font-size:14px;line-height:1.72;color:rgba(240,230,204,0.72);font-weight:400}
 .pm-tip{background:linear-gradient(135deg,rgba(201,168,76,.07),rgba(201,168,76,.02));border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:1rem 1.25rem}
 .pm-tip-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px}
-.pm-tip-text{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:rgba(240,230,204,0.82);line-height:1.7}
+.pm-tip-text{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:rgba(240,230,204,0.82);line-height:1.75;font-weight:400}
 .complete-msg{text-align:center;padding:2rem 1rem;opacity:0;transition:opacity .8s}
 .complete-msg.show{opacity:1}
 .complete-title{font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--gold);margin-bottom:.5rem}
 .complete-sub{font-family:'IM Fell English',serif;font-style:italic;color:var(--parch-dim);font-size:14px;margin-bottom:1.25rem}
 .btn-again{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:.15em;text-transform:uppercase;padding:10px 26px;border:1px solid rgba(201,168,76,.38);border-radius:8px;background:transparent;color:var(--gold);cursor:pointer}
 .btn-again:hover{background:var(--gold-faint)}
-.controls-bar{position:fixed;top:1.25rem;right:1.5rem;z-index:50;display:flex;align-items:center;gap:4px;background:rgba(16,8,40,0.92);border:1px solid rgba(201,168,76,0.35);border-radius:10px;padding:8px 14px;backdrop-filter:blur(8px);box-shadow:0 4px 20px rgba(0,0,0,0.5)}
+.controls-bar{position:fixed;top:1.25rem;right:1.5rem;z-index:250;display:flex;align-items:center;gap:4px;background:rgba(16,8,40,0.92);border:1px solid rgba(201,168,76,0.35);border-radius:10px;padding:8px 14px;backdrop-filter:blur(8px);box-shadow:0 4px 20px rgba(0,0,0,0.5)}
 .ctrl-btn{display:flex;flex-direction:column;align-items:center;gap:3px;background:transparent;border:none;color:rgba(201,168,76,0.75);cursor:pointer;padding:4px 8px;border-radius:6px;transition:color 0.2s,background 0.2s;min-width:36px}
 .ctrl-btn:hover{color:var(--gold);background:rgba(201,168,76,0.1)}
 .ctrl-btn.active{color:var(--gold)}
 .ctrl-btn.muted{color:rgba(201,168,76,0.3)}
-.ctrl-label{font-family:'Raleway',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;line-height:1;color:rgba(201,168,76,0.72);font-weight:500}
+.ctrl-label{font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;line-height:1;color:rgba(201,168,76,0.72);font-weight:500}
 .ctrl-divider{width:1px;height:28px;background:rgba(201,168,76,0.18);margin:0 4px}
-.ctrl-zoom-level{font-family:'Raleway',sans-serif;font-size:12px;color:rgba(201,168,76,0.75);min-width:40px;text-align:center;letter-spacing:0.05em;font-weight:500}
+.ctrl-zoom-level{font-family:'Raleway',sans-serif;font-size:13px;color:rgba(201,168,76,0.75);min-width:40px;text-align:center;letter-spacing:0.05em;font-weight:500}
 .sound-toggle.pulse{animation:soundPulse 1s ease-in-out 3}
 @keyframes soundPulse{0%,100%{opacity:0.75}50%{opacity:1;color:var(--gold)}}
 @media(max-width:500px){.ctrl-label{display:none}.controls-bar{padding:6px 10px;gap:2px}.ctrl-btn{min-width:28px;padding:4px 5px}}
@@ -180,15 +180,15 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .finish-constellation{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity 1.5s ease}
 .finish-constellation.show{opacity:1}
 .finish-content{position:relative;z-index:1;padding:2rem 1.5rem;background:linear-gradient(135deg,rgba(11,5,32,0.6),rgba(16,8,40,0.4));border:1px solid rgba(201,168,76,0.2);border-radius:16px}
-.finish-eyebrow{font-family:'Cinzel Decorative',serif;font-size:10px;color:var(--gold-dim);letter-spacing:0.28em;text-transform:uppercase;margin-bottom:0.75rem}
-.finish-text{font-family:'IM Fell English',serif;font-style:italic;font-size:16px;color:rgba(240,230,204,0.72);line-height:1.75;margin-bottom:1.75rem;max-width:420px;margin-left:auto;margin-right:auto;font-weight:400}
-.finish-btn{display:inline-flex;align-items:center;gap:14px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(201,168,76,0.04));border:1px solid rgba(201,168,76,0.5);border-radius:10px;padding:16px 44px;cursor:pointer;position:relative;overflow:hidden;transition:background 0.3s,border-color 0.3s;animation:finishGlow 2.5s ease-in-out infinite;margin-bottom:1rem}
+.finish-eyebrow{font-family:'Cinzel Decorative',serif;font-size:11px;color:var(--gold-dim);letter-spacing:0.22em;text-transform:uppercase;margin-bottom:0.75rem}
+.finish-text{font-family:'IM Fell English',serif;font-style:italic;font-size:17px;color:rgba(240,230,204,0.72);line-height:1.78;margin-bottom:1.75rem;max-width:420px;margin-left:auto;margin-right:auto;font-weight:400}
+.finish-btn{display:inline-flex;align-items:center;gap:14px;font-family:'Raleway',sans-serif;font-size:14px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(201,168,76,0.04));border:1px solid rgba(201,168,76,0.5);border-radius:10px;padding:18px 50px;cursor:pointer;position:relative;overflow:hidden;transition:background 0.3s,border-color 0.3s;animation:finishGlow 2.5s ease-in-out infinite;margin-bottom:1rem}
 @keyframes finishGlow{0%,100%{box-shadow:0 0 0 0 transparent}50%{box-shadow:0 0 32px rgba(201,168,76,0.25),0 0 0 1px rgba(201,168,76,0.12)}}
 .finish-btn::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.14),transparent);animation:finishSweep 3.5s ease-in-out infinite;animation-delay:0.8s}
 @keyframes finishSweep{0%,100%{left:-100%}50%{left:150%}}
 .finish-btn:hover{background:rgba(201,168,76,0.16);border-color:var(--gold)}
 .finish-btn-orn{font-size:11px;opacity:0.6}
-.finish-whisper{font-family:'IM Fell English',serif;font-style:italic;font-size:13px;color:rgba(201,168,76,0.45);letter-spacing:0.04em;font-weight:400}
+.finish-whisper{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:rgba(201,168,76,0.45);letter-spacing:0.04em;font-weight:400}
 
 /* ══════════════════════════════════════
    THE SUMMONING OVERLAY
@@ -198,13 +198,13 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 #summonStars{position:fixed;inset:0;z-index:0;pointer-events:none}
 .summon-phase{position:relative;z-index:1;text-align:center;max-width:680px;width:100%}
 .summon-phase-text{display:flex;flex-direction:column;align-items:center;gap:.75rem}
-.summon-eyebrow{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-dim)}
+.summon-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dim)}
 .summon-orn{font-size:13px;letter-spacing:.5em;color:rgba(201,168,76,.45)}
-.summon-phase-title{font-family:'Cinzel Decorative',serif;font-size:clamp(20px,4vw,32px);color:var(--gold);letter-spacing:.08em;line-height:1.2}
-.summon-phase-sub{font-family:'IM Fell English',serif;font-style:italic;color:rgba(240,230,204,0.72);font-size:clamp(13px,1.8vw,15px);font-weight:400}
+.summon-phase-title{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,34px);color:var(--gold);letter-spacing:.08em;line-height:1.2}
+.summon-phase-sub{font-family:'IM Fell English',serif;font-style:italic;color:rgba(240,230,204,0.72);font-size:17px;line-height:1.72;font-weight:400}
 .summon-ring-wrap{position:relative;width:340px;height:340px;margin:0 auto;flex-shrink:0}
 #sigilCanvas{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2}
-.summon-ring-label{text-align:center;margin-top:1.5rem;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.4);font-family:'IM Fell English',serif;font-style:italic}
+.summon-ring-label{text-align:center;margin-top:1.5rem;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,.4);font-family:'IM Fell English',serif;font-style:italic}
 .ring-card{position:absolute;width:40px;height:64px;border-radius:7px;border:1px solid rgba(201,168,76,.3);background:linear-gradient(160deg,#130830,#0c0520);display:flex;align-items:center;justify-content:center;opacity:0;transform-origin:170px 170px;transition:opacity .6s ease,box-shadow .6s ease}
 .ring-card.visible{opacity:1}
 .ring-card.lit{border-color:rgba(201,168,76,.6);box-shadow:0 0 14px rgba(201,168,76,.22)}
@@ -237,26 +237,26 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .tc-real{font-family:'IM Fell English',serif;font-style:italic;font-size:9px;color:var(--parch-dim)}
 .oracle-reading{background:var(--surface);border:1px solid var(--div);border-radius:16px;overflow:hidden;width:100%;max-width:680px}
 .oracle-reading>*{padding:0 2rem}
-.or-eyebrow{padding-top:1.5rem;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
-.or-name{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3vw,26px);color:var(--gold);line-height:1.2;margin-bottom:3px;background:linear-gradient(135deg,#e8c97a 0%,#c9a84c 40%,#f0e6cc 55%,#c9a84c 70%,#e8c97a 100%);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmerText 4s ease-in-out infinite}
+.or-eyebrow{padding-top:1.5rem;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
+.or-name{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,3.5vw,30px);color:var(--gold);line-height:1.2;margin-bottom:3px;background:linear-gradient(135deg,#e8c97a 0%,#c9a84c 40%,#f0e6cc 55%,#c9a84c 70%,#e8c97a 100%);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmerText 4s ease-in-out infinite}
 @keyframes shimmerText{0%{background-position:100% 0}50%{background-position:0% 0}100%{background-position:100% 0}}
-.or-arcana{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--mist);margin-bottom:0}
+.or-arcana{font-family:'IM Fell English',serif;font-style:italic;font-size:16px;color:var(--mist);margin-bottom:0}
 .or-divider{width:calc(100% - 4rem);margin:1rem 2rem;height:1px;background:var(--div);position:relative;display:flex;align-items:center;justify-content:center}
 .or-divider::after{content:'\2726';position:absolute;font-size:10px;color:var(--gold-dim);background:var(--surface);padding:0 8px}
 .or-tarot-block{background:rgba(201,168,76,.055);border:1px solid rgba(201,168,76,.18);border-radius:10px;padding:1rem 1.25rem;margin:0 2rem 1rem}
-.or-tarot-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px}
-.or-tarot-text{font-family:'IM Fell English',serif;font-style:italic;font-size:12px;color:rgba(240,230,204,0.72);line-height:1.65;font-weight:400}
-.or-oracle-text{font-family:'IM Fell English',serif;font-style:italic;font-size:17px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;margin-left:2rem;margin-right:2rem;line-height:1.75;margin-bottom:1rem}
-.or-def{font-size:16px;line-height:1.78;color:rgba(240,230,204,0.82);margin-bottom:.9rem;font-weight:400}
-.or-pm-note{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:rgba(240,230,204,0.72);line-height:1.7;font-weight:400}
+.or-tarot-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px}
+.or-tarot-text{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:rgba(240,230,204,0.72);line-height:1.7;font-weight:400}
+.or-oracle-text{font-family:'IM Fell English',serif;font-style:italic;font-size:17px;color:var(--gold-lt);border-left:2px solid var(--gold-dim);padding-left:14px;margin-left:2rem;margin-right:2rem;line-height:1.78;margin-bottom:1rem}
+.or-def{font-size:16px;line-height:1.82;color:rgba(240,230,204,0.82);margin-bottom:.9rem;font-weight:400}
+.or-pm-note{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:rgba(240,230,204,0.72);line-height:1.75;font-weight:400}
 .or-tags{display:flex;flex-wrap:wrap;gap:6px;padding:1rem 2rem}
-.or-tag{font-size:12px;letter-spacing:.08em;padding:5px 14px;border-radius:20px;border:1px solid var(--div);color:var(--parch-dim)}
+.or-tag{font-size:13px;letter-spacing:.08em;padding:5px 15px;border-radius:20px;border:1px solid var(--div);color:var(--parch-dim)}
 .or-buttons{display:flex;gap:12px;flex-wrap:wrap;padding:1rem 2rem 1.75rem;justify-content:flex-start}
-.or-btn-share{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:10px 20px;border-radius:8px;cursor:pointer;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.06));border:1px solid rgba(201,168,76,.5);color:var(--gold);transition:background .2s}
+.or-btn-share{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:12px 24px;border-radius:8px;cursor:pointer;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.06));border:1px solid rgba(201,168,76,.5);color:var(--gold);transition:background .2s}
 .or-btn-share:hover{background:rgba(201,168,76,.22)}
-.or-btn-again{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 20px;border-radius:8px;cursor:pointer;background:transparent;border:1px solid rgba(201,168,76,.25);color:rgba(201,168,76,.55);transition:background .2s}
+.or-btn-again{font-family:'Raleway',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:12px 24px;border-radius:8px;cursor:pointer;background:transparent;border:1px solid rgba(201,168,76,.25);color:rgba(201,168,76,.55);transition:background .2s}
 .or-btn-again:hover{background:rgba(201,168,76,.08)}
-.or-btn-about{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 20px;border-radius:8px;background:transparent;border:1px solid rgba(168,151,216,0.3);color:rgba(168,151,216,0.65);text-decoration:none;transition:background .2s,color .2s;display:inline-block}
+.or-btn-about{font-family:'Raleway',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:12px 24px;border-radius:8px;background:transparent;border:1px solid rgba(168,151,216,0.3);color:rgba(168,151,216,0.65);text-decoration:none;transition:background .2s,color .2s;display:inline-block}
 .or-btn-about:hover{background:rgba(168,151,216,0.08);color:var(--mist)}
 @media(max-width:640px){
   .tenth-card{width:160px;height:264px}
@@ -283,19 +283,19 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .cmd-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:5px}
 .cmd-roman{font-family:'Cinzel Decorative',serif;font-size:10px;color:var(--gold-dim);letter-spacing:0.25em}
 .cmd-stage{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:2px 9px;border-radius:20px;font-weight:600;border:1px solid}
-.cmd-arcana-title{font-family:'Cinzel Decorative',serif;font-size:13px;color:rgba(201,168,76,0.5);letter-spacing:0.08em;margin-bottom:2px}
-.cmd-name{font-family:'Cinzel Decorative',serif;font-size:clamp(16px,2.8vw,22px);color:var(--gold);margin-bottom:4px;line-height:1.2}
-.cmd-real{font-family:'Raleway',sans-serif;font-size:14px;color:rgba(168,151,216,0.85);font-weight:400}
+.cmd-arcana-title{font-family:'Cinzel Decorative',serif;font-size:14px;color:rgba(201,168,76,0.5);letter-spacing:0.08em;margin-bottom:2px}
+.cmd-name{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3vw,24px);color:var(--gold);margin-bottom:4px;line-height:1.2}
+.cmd-real{font-family:'Raleway',sans-serif;font-size:16px;color:rgba(168,151,216,0.85);font-weight:400}
 .cmd-example-btn{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;padding:9px 16px;border-radius:8px;cursor:pointer;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.4);color:var(--gold);transition:background 0.2s;white-space:nowrap;flex-shrink:0;align-self:flex-start}
 .cmd-example-btn:hover{background:rgba(201,168,76,0.16)}
 .cmd-tarot-block{background:rgba(201,168,76,0.055);border:1px solid rgba(201,168,76,0.18);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem}
-.cmd-tarot-label{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
-.cmd-tarot-name{font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold-lt);margin-bottom:6px}
-.cmd-tarot-meaning{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:rgba(240,230,204,0.72);line-height:1.68}
+.cmd-tarot-label{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
+.cmd-tarot-name{font-family:'Cinzel Decorative',serif;font-size:15px;color:var(--gold-lt);margin-bottom:6px}
+.cmd-tarot-meaning{font-family:'IM Fell English',serif;font-style:italic;font-size:16px;color:rgba(240,230,204,0.72);line-height:1.72}
 .cmd-divider{width:48px;height:1px;background:var(--div);margin:1.1rem 0}
-.cmd-oracle{font-family:'IM Fell English',serif;font-style:italic;font-size:17px;color:rgba(232,201,122,0.88);border-left:2px solid var(--gold-dim);padding-left:14px;line-height:1.72;margin-bottom:1rem}
-.cmd-def{font-family:'Raleway',sans-serif;font-size:16px;line-height:1.78;color:rgba(240,230,204,0.82);margin-bottom:0.9rem;font-weight:400}
-.cmd-pm{font-family:'Raleway',sans-serif;font-size:15px;line-height:1.72;color:rgba(240,230,204,0.72);font-weight:400}
+.cmd-oracle{font-family:'IM Fell English',serif;font-style:italic;font-size:17px;color:rgba(232,201,122,0.88);border-left:2px solid var(--gold-dim);padding-left:14px;line-height:1.75;margin-bottom:1rem}
+.cmd-def{font-family:'Raleway',sans-serif;font-size:16px;line-height:1.8;color:rgba(240,230,204,0.82);margin-bottom:0.9rem;font-weight:400}
+.cmd-pm{font-family:'Raleway',sans-serif;font-size:15px;line-height:1.75;color:rgba(240,230,204,0.72);font-weight:400}
 .cmd-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.1rem;padding-bottom:0.25rem}
 .cmd-tag{font-family:'Raleway',sans-serif;font-size:12px;letter-spacing:0.08em;padding:5px 14px;border-radius:20px;border:1px solid var(--div);color:rgba(240,230,204,0.68);font-weight:400}
 @media(max-width:640px){
@@ -313,20 +313,20 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .easter-close:hover{color:var(--gold);border-color:var(--gold)}
 .easter-sigil{font-size:28px;color:rgba(201,168,76,0.4);margin-bottom:0.5rem;animation:easterPulse 2s ease-in-out infinite}
 @keyframes easterPulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:0.8;transform:scale(1.15)}}
-.easter-eyebrow{font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px}
-.easter-title{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3vw,24px);color:var(--gold);margin-bottom:1rem;line-height:1.2}
-.easter-text{font-family:'Raleway',sans-serif;font-size:14px;line-height:1.75;color:var(--parch-dim);margin-bottom:0.75rem;text-align:left}
+.easter-eyebrow{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px}
+.easter-title{font-family:'Cinzel Decorative',serif;font-size:clamp(20px,3vw,26px);color:var(--gold);margin-bottom:1rem;line-height:1.2}
+.easter-text{font-family:'Raleway',sans-serif;font-size:15px;line-height:1.78;color:var(--parch-dim);margin-bottom:0.75rem;text-align:left;font-weight:400}
 .easter-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:1.25rem 0}
-.easter-link{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;padding:10px 18px;border:1px solid rgba(201,168,76,0.38);border-radius:8px;color:var(--gold);background:rgba(201,168,76,0.06);text-decoration:none;transition:background 0.2s,border-color 0.2s}
+.easter-link{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;padding:11px 20px;border:1px solid rgba(201,168,76,0.38);border-radius:8px;color:var(--gold);background:rgba(201,168,76,0.06);text-decoration:none;transition:background 0.2s,border-color 0.2s}
 .easter-link:hover{background:rgba(201,168,76,0.14);border-color:var(--gold)}
-.easter-footer{font-family:'IM Fell English',serif;font-style:italic;font-size:13px;color:rgba(201,168,76,0.28);margin-top:0.5rem}
+.easter-footer{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:rgba(201,168,76,0.28);margin-top:0.5rem}
 /* ── GO DEEPER / ORACLE'S LIBRARY ── */
 .go-deeper{width:100%;padding:0 2rem 2.5rem}
 .gd-divider{width:100%;height:1px;background:var(--div);position:relative;display:flex;align-items:center;justify-content:center;margin:1.25rem 0 1.5rem}
 .gd-divider::after{content:'✦';position:absolute;font-size:10px;color:var(--gold-dim);background:var(--surface);padding:0 8px}
 .gd-eyebrow{font-family:'Cinzel Decorative',serif;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px}
-.gd-title{font-family:'Cinzel Decorative',serif;font-size:clamp(14px,2vw,18px);color:var(--gold);margin-bottom:7px;line-height:1.2}
-.gd-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:rgba(240,230,204,0.72);line-height:1.65;margin-bottom:1.5rem;font-weight:400}
+.gd-title{font-family:'Cinzel Decorative',serif;font-size:clamp(16px,2.2vw,20px);color:var(--gold);margin-bottom:7px;line-height:1.2}
+.gd-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:16px;color:rgba(240,230,204,0.72);line-height:1.7;margin-bottom:1.5rem;font-weight:400}
 .gd-section-label{font-family:'Cinzel Decorative',serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,168,76,0.55);margin-bottom:10px;margin-top:1.5rem}
 .gd-section-label:first-of-type{margin-top:0}
 .gd-grid{display:grid;gap:10px;margin-bottom:0.5rem}
@@ -346,10 +346,10 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
 .gd-card-type{font-family:'Raleway',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.55);margin-bottom:4px}
 .gd-card-learn .gd-card-type{color:rgba(58,172,172,0.6)}
 .gd-card-watch .gd-card-type{color:rgba(168,151,216,0.6)}
-.gd-card-name{font-family:'Cinzel Decorative',serif;font-size:11px;color:var(--gold-lt);letter-spacing:0.06em;margin-bottom:3px;line-height:1.3}
-.gd-card-source{font-family:'Raleway',sans-serif;font-size:10px;color:rgba(240,230,204,0.48);margin-bottom:7px;letter-spacing:0.02em}
-.gd-card-desc{font-family:'Raleway',sans-serif;font-size:12px;color:rgba(240,230,204,0.68);line-height:1.58;margin-bottom:10px;font-weight:400}
-.gd-card-tag{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-dim);padding:2px 8px;border:1px solid rgba(201,168,76,0.18);border-radius:20px;display:inline-block}
+.gd-card-name{font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold-lt);letter-spacing:0.06em;margin-bottom:3px;line-height:1.3}
+.gd-card-source{font-family:'Raleway',sans-serif;font-size:11px;color:rgba(240,230,204,0.48);margin-bottom:7px;letter-spacing:0.02em}
+.gd-card-desc{font-family:'Raleway',sans-serif;font-size:13px;color:rgba(240,230,204,0.68);line-height:1.62;margin-bottom:10px;font-weight:400}
+.gd-card-tag{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-dim);padding:3px 10px;border:1px solid rgba(201,168,76,0.18);border-radius:20px;display:inline-block}
 .gd-tag-rose{color:#c05580;border-color:rgba(192,85,128,0.3)}
 .gd-tag-video{color:var(--mist);border-color:rgba(168,151,216,0.3)}
 @media(max-width:640px){.go-deeper{padding:0 1.25rem 1.5rem}.gd-grid-learn,.gd-grid-watch,.gd-grid-community{grid-template-columns:1fr}.gd-sub{font-size:14px}}
@@ -475,7 +475,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,3.5vw,32px);color:
       <div class="summon-ring-wrap" id="summonRing">
         <canvas id="sigilCanvas" width="160" height="160"></canvas>
       </div>
-      <div class="summon-ring-label" id="summonRingLabel">&middot; the circle is cast &middot;</div>
+      <div class="summon-ring-label" id="summonRingLabel">the circle is cast</div>
     </div>
 
     <!-- Phase 3: sigil complete + oracle message -->
@@ -1354,7 +1354,7 @@ function transitionToPhase2(){
       },i*160);
     }
     setTimeout(()=>{
-      document.getElementById('summonRingLabel').textContent='\u00b7 the sigil awakens \u00b7';
+      document.getElementById('summonRingLabel').textContent='the sigil awakens';
       animateSummonSigil();
       setTimeout(()=>transitionToPhase3(),4000);
     },9*160+400);
@@ -1446,8 +1446,8 @@ function flipTenthCard(){
 
 // ── Share reading ──
 function shareReading(){
-  const text=`I just completed The Localization Oracle, nine cards revealing the hidden craft of Localization PM, ending with The Summoning. The tenth card: Judgement. \u2726\n\nhttps://duyiyi05.github.io/The-Localization-Oracle/\n\n#LocalizationPM #Portfolio #Tarot`;
-  const linkedInUrl=`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://duyiyi05.github.io/The-Localization-Oracle/')}`;
+  const text=`I just completed The Localization Oracle, nine cards revealing the hidden craft of Localization PM, ending with The Summoning. The tenth card: Judgement. \u2726\n\nhttps://theoracleoflocalization.online/\n\n#LocalizationPM #Portfolio #Tarot`;
+  const linkedInUrl=`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://theoracleoflocalization.online/')}`;
   navigator.clipboard.writeText(text).catch(()=>{});
   window.open(linkedInUrl,'_blank');
 }
