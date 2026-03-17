@@ -547,10 +547,20 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
   letter-spacing: 0.05em;
   font-weight: 500;
 }
-@media (max-width: 500px) {
+@media (max-width: 640px) {
+  .controls-bar {
+    top: 0.75rem;
+    left: 0.75rem;
+    right: auto;
+  }
   .ctrl-label { display: none; }
-  .controls-bar { padding: 6px 10px; gap: 2px; }
   .ctrl-btn { min-width: 28px; padding: 4px 5px; }
+  .sound-pill {
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 10px;
+    padding: 7px 12px;
+  }
 }
 
 /* ── Sound pill ── */
