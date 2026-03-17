@@ -258,7 +258,8 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
 .tc-whisper{position:relative;z-index:2;font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:rgba(201,168,76,0.45);text-align:center;padding:0 16px;line-height:1.4}
 .tenth-front{transform:rotateY(180deg);background:#08031a;border:1px solid rgba(201,168,76,.55);display:flex;flex-direction:column;box-shadow:0 0 60px rgba(201,168,76,.15)}
 .tc-front-top{padding:8px 12px 6px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--div);flex-shrink:0}
-.tc-arcana-num{font-family:'Cinzel Decorative',serif;font-size:12px;color:var(--gold);letter-spacing:.15em}
+.tc-arcana-num{font-family:'Cinzel Decorative',serif;font-size:12px;color:var(--gold);letter-spacing:.15em;cursor:pointer;animation:romanPulse 3s ease-in-out infinite}
+@keyframes romanPulse{0%,100%{opacity:0.65}50%{opacity:1;color:var(--gold)}}
 .cf-roman,.cb-roman,.d-roman,.cmd-roman,.tc-roman{font-family:'Cinzel',serif;font-variant-numeric:normal;font-feature-settings:"kern" 1,"liga" 0,"calt" 0;-webkit-font-feature-settings:"kern" 1,"liga" 0,"calt" 0;font-style:normal}
 .tc-arcana-label{font-family:'Cinzel Decorative',serif;font-size:8px;color:var(--gold-dim);letter-spacing:.12em}
 .tc-art{flex:1;overflow:hidden;position:relative;min-height:0}
@@ -543,7 +544,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
             <!-- card front: Judgement illustration -->
             <div class="tenth-face tenth-front">
               <div class="tc-front-top">
-                <span class="tc-arcana-num" onclick="handleEasterClick()" style="cursor:pointer" title="">X</span>
+                <span class="tc-arcana-num" onclick="handleEasterClick()" title="Click twice...">X</span>
                 <span class="tc-arcana-label">Judgement</span>
               </div>
               <div class="tc-art">
@@ -869,8 +870,8 @@ let easterTimeout = null;
 function handleEasterClick() {
   easterClickCount++;
   clearTimeout(easterTimeout);
-  easterTimeout = setTimeout(() => { easterClickCount = 0; }, 2000);
-  if (easterClickCount >= 3) {
+  easterTimeout = setTimeout(() => { easterClickCount = 0; }, 4000);
+  if (easterClickCount >= 2) {
     easterClickCount = 0;
     document.getElementById('easterOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
