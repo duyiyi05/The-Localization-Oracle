@@ -348,7 +348,9 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
 @keyframes easterPulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:0.8;transform:scale(1.15)}}
 .easter-eyebrow{font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px}
 .easter-title{font-family:'Cinzel Decorative',serif;font-size:clamp(20px,3vw,26px);color:var(--gold);margin-bottom:1rem;line-height:1.2}
-.easter-text{font-family:'Raleway',sans-serif;font-size:15px;line-height:1.78;color:var(--parch-dim);margin-bottom:0.75rem;text-align:left;font-weight:400}
+.easter-text{font-family:'Raleway',sans-serif;font-size:14px;line-height:1.78;color:var(--parch-dim);margin-bottom:0.75rem;text-align:center;font-weight:400}
+.easter-divider{width:60px;height:1px;background:rgba(201,168,76,0.2);margin:1rem auto}
+.easter-subtle{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:rgba(240,230,204,0.52);line-height:1.7;margin-bottom:1rem;text-align:center}
 .easter-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:1.25rem 0}
 .easter-link{display:inline-flex;align-items:center;gap:7px;font-family:'Raleway',sans-serif;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;padding:11px 20px;border:1px solid rgba(201,168,76,0.38);border-radius:8px;color:var(--gold);background:rgba(201,168,76,0.06);text-decoration:none;transition:background 0.2s,border-color 0.2s}
 .easter-link:hover{background:rgba(201,168,76,0.14);border-color:var(--gold)}
@@ -1724,24 +1726,35 @@ buildGrid();
     <button class="easter-close" onclick="document.getElementById('easterOverlay').classList.remove('open')">×</button>
     <div class="easter-sigil">✦</div>
     <div class="easter-eyebrow">You found the hidden chamber</div>
-    <h2 class="easter-title">Hello, Recruiter</h2>
-    <p class="easter-text">If you made it to the tenth card and clicked three times: you have walked all nine paths of the localization craft and gone further still. That is exactly the kind of attention to detail this work is about.</p>
-    <p class="easter-text">I am a Localization Project Manager with hands-on experience across TM leverage, LQA, MTPE, vendor management, and cultural adaptation. I built this oracle to show, not just tell.</p>
-    <div class="easter-links" id="easterLinks">
+    <h2 class="easter-title">The Oracle Sees You</h2>
+    <p class="easter-text">Not many make it this far. You flipped nine cards, walked every stage of the craft, and then clicked three times on a roman numeral. That kind of attention to detail is either professional habit or genuine curiosity. Either way — welcome.</p>
+    <p class="easter-text">This oracle is one of several projects exploring how localization PM knowledge can be made visible, accessible, and — occasionally — beautiful. More are coming.</p>
+    <div class="easter-divider"></div>
+    <p class="easter-subtle">If you are a recruiter or a fellow PM and something here resonated, the door is open.</p>
+    <div class="easter-links">
       <a href="https://www.linkedin.com/in/duygu-ta%C5%9F-%E6%9D%9C%E4%BE%9D%E4%BE%9D/" target="_blank" class="easter-link">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 6v5M5 4v.5M8 11V8c0-1 .5-2 2-2s2 1 2 2v3M8 6v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        LinkedIn Profile
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M5 6v5M5 4v.5M8 11V8c0-1 .5-2 2-2s2 1 2 2v3M8 6v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Connect
       </a>
       <a href="mailto:duygutasw@hotmail.com" class="easter-link">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        Send Email
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Write to me
       </a>
       <a href="about.html" class="easter-link">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        About Me
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M2 14c0-3 2.7-5 6-5s6 2 6 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        The Keeper
       </a>
     </div>
-    <p class="easter-footer">✦ The Oracle rewards the persistent ✦</p>
+    <p class="easter-footer">✦ The oracle rewards the persistent ✦</p>
   </div>
 </div>
 </body>
