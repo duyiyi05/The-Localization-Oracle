@@ -1317,19 +1317,48 @@ function showFocusedView(i, c, st){
   const fv = document.getElementById('focusedView');
   fv.classList.add('active');
 
-  // LEFT: render a static card face
-  const slot = document.querySelectorAll('.card-slot')[i];
+  // LEFT: build card display directly from data
   const cardWrap = document.getElementById('focusCardWrap');
-  cardWrap.innerHTML = '';
-  const cardDiv = document.createElement('div');
-  cardDiv.style.cssText = 'width:160px;height:264px;border-radius:12px;overflow:hidden;border:1px solid rgba(201,168,76,0.5);background:#08031a;box-shadow:0 0 40px rgba(201,168,76,0.15);';
-  const frontFace = slot ? slot.querySelector('.cf-front') : null;
-  if(frontFace){
-    cardDiv.innerHTML = frontFace.outerHTML;
-    const f = cardDiv.querySelector('.cf-front');
-    if(f) f.style.cssText = 'position:relative;transform:none;backface-visibility:visible;width:100%;height:100%;display:flex;flex-direction:column;';
-  }
-  cardWrap.appendChild(cardDiv);
+  cardWrap.innerHTML = `
+    <div style="
+      width:160px;height:264px;border-radius:12px;overflow:hidden;
+      border:1px solid rgba(201,168,76,0.55);background:${c.bgColor};
+      box-shadow:0 0 40px rgba(201,168,76,0.18);
+      display:flex;flex-direction:column;flex-shrink:0;
+    ">
+      <div style="
+        padding:8px 12px 6px;display:flex;align-items:center;
+        justify-content:space-between;
+        border-bottom:1px solid rgba(201,168,76,0.15);flex-shrink:0;
+      ">
+        <span style="font-family:'Cinzel',serif;font-size:12px;
+          color:var(--gold);letter-spacing:.15em;">${c.roman}</span>
+        <span style="font-family:'Cinzel',serif;font-size:8px;
+          color:rgba(201,168,76,0.5);letter-spacing:.1em;
+          text-align:right;max-width:90px;line-height:1.2;">${c.arcanaTitle}</span>
+      </div>
+      <div style="flex:1;overflow:hidden;position:relative;min-height:0;">
+        <img src="images/${c.imgFile}" alt="${c.mystical}"
+          style="width:100%;height:100%;object-fit:cover;
+                 object-position:top center;display:block;
+                 filter:sepia(18%) contrast(1.05) brightness(0.92);"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <span style="display:none;width:100%;height:100%;
+          align-items:center;justify-content:center;opacity:0.4;">${c.svg}</span>
+      </div>
+      <div style="
+        padding:8px 10px 10px;border-top:1px solid rgba(201,168,76,0.15);
+        flex-shrink:0;background:rgba(0,0,0,0.3);
+      ">
+        <div style="font-family:'Cinzel Decorative',serif;font-size:8.5px;
+          color:var(--gold);letter-spacing:.08em;margin-bottom:3px;
+          line-height:1.3;">${c.mystical}</div>
+        <div style="font-family:'Raleway',sans-serif;font-size:7.5px;
+          color:rgba(201,168,76,0.45);letter-spacing:.06em;
+          text-transform:uppercase;line-height:1.3;">${c.real}</div>
+      </div>
+    </div>
+  `;
 
   // RIGHT: populate reading panel (mirrors card detail modal content)
   const panel = document.getElementById('focusReadingPanel');
