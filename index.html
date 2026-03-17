@@ -200,6 +200,18 @@ body {
   font-weight: 400;
 }
 
+/* ── Landing hook ── */
+.landing-hook {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(13px, 1.6vw, 15px);
+  font-weight: 400;
+  color: rgba(201,168,76,0.55);
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
 /* ── Gold divider ── */
 .gold-divider {
   width: 300px;
@@ -352,6 +364,32 @@ body {
   color: var(--gold);
   border-color: rgba(201,168,76,0.6);
   background: rgba(16,8,40,0.95);
+}
+
+/* ── Keeper link (top-left) ── */
+.keeper-link {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.75rem;
+  z-index: 10;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.keeper-link:hover {
+  color: rgba(201,168,76,0.85);
+}
+@media (max-width: 500px) {
+  .keeper-link {
+    top: 1rem;
+    left: 1rem;
+    font-size: 11px;
+  }
 }
 
 /* ── Responsive ── */
@@ -522,7 +560,13 @@ body {
     <!-- 3. Title -->
     <h1 class="oracle-title" style="margin-bottom:1rem;">The Localization Oracle</h1>
 
-    <!-- 4. Subtitle -->
+    <!-- 4. Hook -->
+    <p class="landing-hook">
+      A localization PM built this. Nine disciplines.
+      One oracle. See if it reads true.
+    </p>
+
+    <!-- 5. Subtitle -->
     <p class="oracle-sub" style="margin-bottom:1.75rem;">
       Nine cards. Three stages. The complete craft of<br>Localization PM, revealed through the Major Arcana.
     </p>
@@ -575,7 +619,8 @@ body {
 
   </div>
 
-  <!-- 11. About link -->
+  <!-- 11. About links -->
+  <a href="about.html" class="keeper-link">The Keeper →</a>
   <a href="about.html" class="about-corner-link"><span class="link-text">About the Oracle's Keeper</span></a>
 
 </div><!-- /.oracle-page -->
