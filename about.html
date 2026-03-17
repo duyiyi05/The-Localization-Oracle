@@ -588,6 +588,65 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
 }
 .sound-pill:hover { color: var(--gold); border-color: rgba(201,168,76,0.6); }
 .sound-pill.muted { opacity: 0.55; }
+
+/* ── Case study ── */
+.case-study-section { margin-bottom: 0; }
+.case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 1.25rem;
+}
+.case-tag {
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(58,172,172,0.3);
+  color: rgba(58,172,172,0.85);
+  background: rgba(58,172,172,0.06);
+}
+.case-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+.case-block {
+  border-left: 2px solid rgba(201,168,76,0.2);
+  padding-left: 18px;
+  margin-bottom: 1.5rem;
+}
+.case-block-judgment {
+  border-left-color: rgba(201,168,76,0.55);
+  background: rgba(201,168,76,0.04);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin-left: 0;
+}
+.case-block-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.55);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.case-block-text {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color: rgba(240,230,204,0.82);
+  line-height: 1.78;
+  font-weight: 400;
+}
+.case-block-text em {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  color: var(--gold-lt);
+}
 </style>
 </head>
 <body>
@@ -724,6 +783,71 @@ body { background: var(--deep); font-family: 'Raleway', sans-serif; color: var(-
       <span class="tool-tag">XTM</span>
       <span class="tool-tag">Microsoft Excel</span>
       <span class="tool-tag">Figma</span>
+    </div>
+  </div>
+
+  <!-- Case study -->
+  <div class="about-divider"></div>
+  <div class="about-section case-study-section">
+    <div class="section-eyebrow">The Field — A Case Study</div>
+    <div class="case-meta">
+      <span class="case-tag">Turkish Market Localization</span>
+      <span class="case-tag">Travel Platform</span>
+      <span class="case-tag">UX · SEO · Cultural Adaptation</span>
+      <span class="case-tag">2025</span>
+    </div>
+    <h3 class="case-title">When Translation Is Not Enough</h3>
+    <div class="case-block">
+      <div class="case-block-label">The Brief</div>
+      <p class="case-block-text">A global travel platform with millions
+      of users had a Turkish website. It was translated. It was not
+      localized. The homepage ran a literal rendering of its English
+      tagline. Discount banners displayed prices in euros. CTAs used
+      awkward placeholder phrasing. The checkout flow mixed English and
+      Turkish mid-sentence. The platform was technically available in
+      Turkish — but it did not feel Turkish.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">The Problem</div>
+      <p class="case-block-text">Surface-level translation had masked
+      a deeper structural issue: the platform's entire UX logic was
+      built for a Western user profile. Turkish travelers — high
+      uncertainty avoidance, collectivist, deeply price-conscious,
+      with strong language pride — needed different trust signals.
+      Not different words. Different architecture.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">The Work</div>
+      <p class="case-block-text">Full localization audit across
+      language and tone, UX, cultural adaptation, SEO, and trust cues.
+      Seven user segments mapped by motivation and pain point. A user
+      journey built for the primary persona — young Turkish travelers
+      planning their first visa-free trip — with four friction points
+      identified. Hero tagline rewritten using the Turkish cultural
+      debate <em>"Çok gezen mi bilir, çok okuyan mı?"</em> to connect
+      the platform's promise to something emotionally resonant.
+      Figma mockups. A full SEO localization framework. Academic
+      research across ten localization and UX studies.</p>
+    </div>
+    <div class="case-block case-block-judgment">
+      <div class="case-block-label">The Judgment Call</div>
+      <p class="case-block-text">The easy path was a copy audit: fix
+      the mistranslations, replace the euro signs, shorten the CTAs.
+      I chose the harder path: making the case that the problem was
+      strategic, not linguistic. Turkish destinations first. TRY by
+      default. Taksit as a trust signal, not a footnote. Ücretsiz
+      iptal visible before the booking flow, not buried in the terms.
+      These are product decisions. I framed them as product decisions,
+      with evidence.</p>
+    </div>
+    <div class="case-block">
+      <div class="case-block-label">The Outcome</div>
+      <p class="case-block-text">A full cultural, linguistic, and UX
+      adaptation proposal: academic research backing, competitor
+      analysis, Figma mockups of the redesigned interface, and a
+      localized SEO framework. The proposal demonstrated that closing
+      the gap between a global template and Turkish user expectations
+      required not a translation review — but a localization strategy.</p>
     </div>
   </div>
 
