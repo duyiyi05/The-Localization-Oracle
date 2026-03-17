@@ -386,6 +386,40 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
 .gd-tag-rose{color:#c05580;border-color:rgba(192,85,128,0.3)}
 .gd-tag-video{color:var(--mist);border-color:rgba(168,151,216,0.3)}
 @media(max-width:640px){.go-deeper{padding:0 1.25rem 1.5rem}.gd-grid-learn,.gd-grid-watch,.gd-grid-community{grid-template-columns:1fr}.gd-sub{font-size:14px}}
+/* ── Focused Two-Panel View (desktop only) ── */
+.focused-view{display:none;min-height:80vh}
+@media(min-width:769px){
+  .focused-view.active{
+    display:flex;gap:0;width:100%;max-width:1100px;
+    margin:0 auto;border:1px solid var(--div);
+    border-radius:16px;overflow:hidden;
+    animation:focusIn 0.4s cubic-bezier(0.34,1.08,0.64,1)
+  }
+  @keyframes focusIn{
+    from{opacity:0;transform:scale(0.97)}
+    to{opacity:1;transform:scale(1)}
+  }
+  .focus-card-panel{
+    width:280px;flex-shrink:0;background:var(--card-bg);
+    border-right:1px solid var(--div);
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:center;padding:2rem 1.5rem;gap:1.5rem
+  }
+  .focus-card-wrap{width:160px;height:264px;position:relative}
+  .focus-back-btn{
+    font-family:'Raleway',sans-serif;font-size:11px;
+    letter-spacing:0.16em;text-transform:uppercase;
+    color:rgba(201,168,76,0.55);background:transparent;
+    border:1px solid rgba(201,168,76,0.22);border-radius:7px;
+    padding:9px 18px;cursor:pointer;
+    transition:color 0.2s,border-color 0.2s
+  }
+  .focus-back-btn:hover{color:var(--gold);border-color:rgba(201,168,76,0.5)}
+  .focus-reading-panel{
+    flex:1;overflow-y:auto;background:var(--surface);max-height:85vh
+  }
+}
+@media(max-width:768px){.focused-view{display:none!important}}
 </style>
 </head>
 <body>
@@ -436,6 +470,22 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
     </div>
   </div>
   <div class="cards-grid" id="cardsGrid"></div>
+  <!-- FOCUSED TWO-PANEL VIEW (desktop only) -->
+  <div class="focused-view" id="focusedView">
+    <!-- LEFT: the card -->
+    <div class="focus-card-panel">
+      <div class="focus-card-wrap" id="focusCardWrap">
+        <!-- card front face injected by JS -->
+      </div>
+      <button class="focus-back-btn" onclick="closeFocusedView()">
+        ← Back to the spread
+      </button>
+    </div>
+    <!-- RIGHT: the reading -->
+    <div class="focus-reading-panel" id="focusReadingPanel">
+      <!-- reading content injected by JS -->
+    </div>
+  </div>
   <!-- CARD DETAIL MODAL -->
   <div class="card-modal-overlay" id="cardModalOverlay" onclick="closeCardModal(event)">
     <div class="card-modal-box" id="cardModalBox">
@@ -1227,6 +1277,13 @@ function showDetail(i){
   const c = CARDS[i], st = ST[c.stage];
   activeIdx = i;
 
+  // Desktop: use focused two-panel view
+  if(window.innerWidth >= 769){
+    showFocusedView(i, c, st);
+    return;
+  }
+
+  // Mobile: existing card detail modal
   document.getElementById('cmdStripe').style.background = st.stripe;
   document.getElementById('cmdRoman').textContent = 'Arcana '+c.roman;
 
@@ -1247,6 +1304,74 @@ function showDetail(i){
   const overlay = document.getElementById('cardModalOverlay');
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+function showFocusedView(i, c, st){
+  // Hide grid and finish-wrap
+  document.getElementById('cardsGrid').style.display = 'none';
+  const fw = document.getElementById('finishWrap');
+  if(fw) fw.style.display = 'none';
+
+  const fv = document.getElementById('focusedView');
+  fv.classList.add('active');
+
+  // LEFT: render a static card face
+  const slot = document.querySelectorAll('.card-slot')[i];
+  const cardWrap = document.getElementById('focusCardWrap');
+  cardWrap.innerHTML = '';
+  const cardDiv = document.createElement('div');
+  cardDiv.style.cssText = 'width:160px;height:264px;border-radius:12px;overflow:hidden;border:1px solid rgba(201,168,76,0.5);background:#08031a;box-shadow:0 0 40px rgba(201,168,76,0.15);';
+  const frontFace = slot ? slot.querySelector('.cf-front') : null;
+  if(frontFace){
+    cardDiv.innerHTML = frontFace.outerHTML;
+    const f = cardDiv.querySelector('.cf-front');
+    if(f) f.style.cssText = 'position:relative;transform:none;backface-visibility:visible;width:100%;height:100%;display:flex;flex-direction:column;';
+  }
+  cardWrap.appendChild(cardDiv);
+
+  // RIGHT: populate reading panel (mirrors card detail modal content)
+  const panel = document.getElementById('focusReadingPanel');
+  panel.innerHTML = `
+    <div class="cmd-stripe" style="background:${st.stripe};height:4px"></div>
+    <div class="cmd-body">
+      <div class="cmd-header">
+        <div class="cmd-left">
+          <div class="cmd-eyebrow">
+            <span class="cmd-roman">Arcana ${c.roman}</span>
+            <span class="cmd-stage" style="color:${st.color};border-color:${st.color}44;background:${st.color}14">${st.label}</span>
+          </div>
+          <div class="cmd-arcana-title">${c.arcanaTitle}</div>
+          <div class="cmd-name">${c.mystical}</div>
+          <div class="cmd-real">${c.real}</div>
+        </div>
+        <button class="cmd-example-btn" onclick="openModal()">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M8 7v5M8 5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Real-Life Example
+        </button>
+      </div>
+      <div class="cmd-tarot-block">
+        <div class="cmd-tarot-label">Tarot Correspondence</div>
+        <div class="cmd-tarot-name">${c.tarotCard}</div>
+        <div class="cmd-tarot-meaning">${c.tarotMeaning}</div>
+      </div>
+      <div class="cmd-divider"></div>
+      <p class="cmd-oracle">${c.oracle}</p>
+      <p class="cmd-def">${c.def}</p>
+      <p class="cmd-pm">${c.pm}</p>
+      <div class="cmd-tags">${c.tags.map(t=>`<span class="cmd-tag">${t}</span>`).join('')}</div>
+    </div>
+  `;
+}
+
+function closeFocusedView(){
+  document.getElementById('cardsGrid').style.display = '';
+  const fw = document.getElementById('finishWrap');
+  if(fw) fw.style.removeProperty('display');
+  document.getElementById('focusedView').classList.remove('active');
+  document.getElementById('focusReadingPanel').innerHTML = '';
 }
 
 function closeCardModal(e){
@@ -1285,6 +1410,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
     closeModal();
     closeCardModal();
+    closeFocusedView();
     document.getElementById('easterOverlay')?.classList.remove('open');
     if(document.getElementById('easterOverlay')?.classList.contains('open') === false){
       document.body.style.overflow='';
