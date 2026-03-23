@@ -1910,9 +1910,12 @@ function generateShareImage() {
   const message = getShareMessage(dominant);
 
   const W = 1200, H = 630;
+  const SCALE = 2; // retina quality
   const canvas = document.createElement('canvas');
-  canvas.width = W; canvas.height = H;
+  canvas.width = W * SCALE;
+  canvas.height = H * SCALE;
   const ctx = canvas.getContext('2d');
+  ctx.scale(SCALE, SCALE);
 
   const cardFiles = [
     'magician.jpg','high-priestess.jpg','fool.jpg',
@@ -1984,11 +1987,11 @@ function generateShareImage() {
     ctx.textAlign='center';
     if (readerName) {
       ctx.fillStyle=`rgba(${rgb},0.55)`;
-      ctx.font='300 14px Raleway, sans-serif';
-      ctx.fillText(readerName.toUpperCase(), W/2, 52);
+      ctx.font='600 30px Raleway, sans-serif';
+      ctx.fillText(readerName.toUpperCase(), W/2, 54);
       ctx.fillStyle='rgba(201,168,76,0.35)';
-      ctx.font='400 13px Raleway, sans-serif';
-      ctx.fillText('COMPLETED THE READING', W/2, 72);
+      ctx.font='300 16px Raleway, sans-serif';
+      ctx.fillText('completed the reading', W/2, 80);
     } else {
       ctx.fillStyle='rgba(201,168,76,0.42)';
       ctx.font='400 13px Raleway, sans-serif';
