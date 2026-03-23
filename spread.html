@@ -220,6 +220,8 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
 @keyframes finishSweep{0%,100%{left:-100%}50%{left:150%}}
 .finish-btn:hover{background:rgba(201,168,76,0.16);border-color:var(--gold)}
 .finish-btn-orn{font-size:11px;opacity:0.6}
+.share-btn-subtle{font-family:'Raleway',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:10px 20px;border-radius:8px;background:transparent;border:1px solid rgba(201,168,76,0.25);color:rgba(201,168,76,0.55);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:color 0.2s,border-color 0.2s,background 0.2s;margin-top:8px}
+.share-btn-subtle:hover{color:var(--gold);border-color:rgba(201,168,76,0.5);background:rgba(201,168,76,0.06)}
 .finish-whisper{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:rgba(201,168,76,0.45);letter-spacing:0.04em;font-weight:400}
 
 /* ══════════════════════════════════════
@@ -540,6 +542,13 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
         Complete the Reading
         <span class="finish-btn-orn">✦</span>
       </button>
+      <button class="share-btn-subtle" onclick="generateShareImage()">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+          <path d="M4 8V13a1 1 0 001 1h6a1 1 0 001-1V8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M8 1v8M5 4l3-3 3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Share your spread
+      </button>
       <p class="finish-whisper">Step forward when you are ready.</p>
     </div>
   </div>
@@ -640,9 +649,12 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
             <span class="or-tag">The Oracle Awakens</span>
           </div>
           <div class="or-buttons">
-            <button class="or-btn-share" onclick="shareReading()">
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M12 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm8 4a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" stroke="currentColor" stroke-width="1.3"/><path d="M6 7.5l4-3M6 8.5l4 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              Share This Reading
+            <button class="or-btn-share" onclick="generateShareImage()">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                <path d="M4 8V13a1 1 0 001 1h6a1 1 0 001-1V8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M8 1v8M5 4l3-3 3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Download &amp; Share
             </button>
             <button class="or-btn-again" onclick="closeSummoningAndReset()">Begin Again</button>
             <a href="about.html" class="or-btn-about">Meet the Oracle's Keeper →</a>
@@ -1183,6 +1195,24 @@ const ROWS = [
 
 let flippedCount = 0, activeIdx = null;
 
+const stageEngagement = { ling: 0, tech: 0, mgmt: 0 };
+
+function incrementStage(stage) {
+  if (!stage) return;
+  const s = stage.toLowerCase();
+  if (s.includes('ling')) stageEngagement.ling++;
+  else if (s.includes('tech')) stageEngagement.tech++;
+  else if (s.includes('mgmt') || s.includes('manag')) stageEngagement.mgmt++;
+}
+
+function getDominantStage() {
+  const { ling, tech, mgmt } = stageEngagement;
+  if (ling === 0 && tech === 0 && mgmt === 0) return 'balanced';
+  if (ling >= tech && ling >= mgmt) return 'ling';
+  if (tech >= ling && tech >= mgmt) return 'tech';
+  return 'mgmt';
+}
+
 function buildGrid(){
   const grid = document.getElementById('cardsGrid');
   const prog = document.getElementById('progressRow');
@@ -1278,6 +1308,7 @@ function reveal(slot,i){
 }
 
 function showDetail(i){
+  incrementStage(CARDS[i].stage);
   const c = CARDS[i], st = ST[c.stage];
   activeIdx = i;
 
@@ -1660,13 +1691,381 @@ function flipTenthCard(){
 }
 
 // ── Share reading ──
-function shareReading(){
-  const text=`I just completed The Localization Oracle, nine cards revealing the hidden craft of Localization PM, ending with The Summoning. The tenth card: Judgement. \u2726\n\nhttps://theoracleoflocalization.online/\n\n#LocalizationPM #Portfolio #Tarot`;
-  const linkedInUrl=`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://theoracleoflocalization.online/')}`;
-  navigator.clipboard.writeText(text).catch(()=>{});
-  window.open(linkedInUrl,'_blank');
+const DOMINANT_STAGE_DATA = {
+  ling: {
+    label: 'Linguistic Arts',
+    color: '#a897d8',
+    colorBright: 'rgba(168,151,216,0.8)',
+    cards: [0,1,2],
+    desc: 'Translation Memory \u00b7 LQA \u00b7 Pseudotranslation',
+    caption: `I just walked through a tarot oracle mapping the nine disciplines of localization PM.\n\nMy reading kept returning to the linguistic foundations \u2014 translation memory, LQA, the craft of quality before anything ships.\n\nWhoever built this understood that making invisible work visible requires ceremony.\n\n\ud83d\udc49 theoracleoflocalization.online\n\n#LocalizationPM #L10n #LanguageIndustry`,
+  },
+  tech: {
+    label: 'Technical Process',
+    color: '#3aacac',
+    colorBright: 'rgba(58,172,172,0.8)',
+    cards: [3,4,5],
+    desc: 'MTPE \u00b7 Fuzzy Thresholds \u00b7 Asset Management',
+    caption: `I just walked through a tarot oracle mapping the nine disciplines of localization PM.\n\nMy reading gravitated to the technical engine room \u2014 MTPE, fuzzy match analysis, linguistic asset governance.\n\nThis is the clearest explanation of localization PM craft I\u2019ve seen in a format people will actually remember.\n\n\ud83d\udc49 theoracleoflocalization.online\n\n#LocalizationPM #L10n #MachineTranslation`,
+  },
+  mgmt: {
+    label: 'Management & Delivery',
+    color: '#c05580',
+    colorBright: 'rgba(192,85,128,0.8)',
+    cards: [6,7,8],
+    desc: 'Vendor Management \u00b7 Localization Testing \u00b7 Transcreation',
+    caption: `I just walked through a tarot oracle mapping the nine disciplines of localization PM.\n\nMy reading kept returning to programme management \u2014 vendor relationships, localization testing, transcreation.\n\nThe oracle was right: the brief is not a formality.\n\n\ud83d\udc49 theoracleoflocalization.online\n\n#LocalizationPM #L10n #VendorManagement`,
+  },
+  balanced: {
+    label: 'All Three Stages',
+    color: '#c9a84c',
+    colorBright: 'rgba(201,168,76,0.85)',
+    cards: [0,1,2,3,4,5,6,7,8],
+    desc: 'Linguistic Arts \u00b7 Technical Process \u00b7 Management & Delivery',
+    caption: `I just walked through a tarot oracle mapping the nine disciplines of localization PM.\n\nNine cards. Three stages. The complete craft \u2014 made visible in a format genuinely unlike anything else in the industry.\n\nRarely do portfolio projects stop you mid-scroll. This one did.\n\n\ud83d\udc49 theoracleoflocalization.online\n\n#LocalizationPM #L10n #LanguageIndustry`,
+  },
+};
+
+const SHARE_MESSAGES = {
+  ling: [
+    '"The PM who does not build memory builds debt." \u2014 Arcana I',
+    '"Quality is not the absence of errors. It is the presence of judgment." \u2014 Arcana II',
+    '"Test the shadow before you commit to the shape." \u2014 Arcana III',
+  ],
+  tech: [
+    '"The machine is fast. The judgment is yours." \u2014 Arcana IV',
+    '"The fog is not the enemy. The PM who cannot read it is." \u2014 Arcana V',
+    '"A termbase ignored is a termbase that does not exist." \u2014 Arcana VI',
+  ],
+  mgmt: [
+    '"The brief is not a formality. It is the contract before the contract." \u2014 Arcana VII',
+    '"Testing is not the last step. It is the proof of every step before it." \u2014 Arcana VIII',
+    '"Translation moves words. Transcreation moves people." \u2014 Arcana IX',
+  ],
+  balanced: [
+    '"Nine disciplines. Three stages. One craft that has been invisible for too long." \u2014 The Oracle',
+  ],
+};
+
+function getShareMessage(stage) {
+  const pool = SHARE_MESSAGES[stage] || SHARE_MESSAGES.balanced;
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1,3), 16);
+  const g = parseInt(hex.slice(3,5), 16);
+  const b = parseInt(hex.slice(5,7), 16);
+  return `${r},${g},${b}`;
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineH) {
+  const words = text.split(' ');
+  let line = '', currentY = y;
+  for (let n = 0; n < words.length; n++) {
+    const test = line + words[n] + ' ';
+    if (ctx.measureText(test).width > maxWidth && n > 0) {
+      ctx.fillText(line.trim(), x, currentY);
+      line = words[n] + ' ';
+      currentY += lineH;
+    } else { line = test; }
+  }
+  ctx.fillText(line.trim(), x, currentY);
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  if (typeof r === 'number') r = [r,r,r,r];
+  const [tl,tr,br,bl] = r;
+  ctx.beginPath();
+  ctx.moveTo(x+tl,y); ctx.lineTo(x+w-tr,y);
+  ctx.quadraticCurveTo(x+w,y,x+w,y+tr);
+  ctx.lineTo(x+w,y+h-br);
+  ctx.quadraticCurveTo(x+w,y+h,x+w-br,y+h);
+  ctx.lineTo(x+bl,y+h);
+  ctx.quadraticCurveTo(x,y+h,x,y+h-bl);
+  ctx.lineTo(x,y+tl);
+  ctx.quadraticCurveTo(x,y,x+tl,y);
+  ctx.closePath();
+}
+
+function generateShareImage() {
+  const dominant = getDominantStage();
+  const stageData = DOMINANT_STAGE_DATA[dominant];
+  const message = getShareMessage(dominant);
+
+  const W = 1200, H = 630;
+  const canvas = document.createElement('canvas');
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+
+  const cardFiles = [
+    'magician.jpg','high-priestess.jpg','fool.jpg',
+    'chariot.jpg','hermit.jpg','empress.jpg',
+    'hierophant.jpg','justice.jpg','world.jpg'
+  ];
+
+  let loaded = 0;
+  const imgs = cardFiles.map(src => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = 'images/' + src;
+    const done = () => { loaded++; if (loaded === 9) drawAll(); };
+    img.onload = done; img.onerror = done;
+    return img;
+  });
+
+  if (imgs.every(img => img.complete)) drawAll();
+
+  function drawAll() {
+    if (loaded < 9 && !imgs.every(i => i.complete)) return;
+
+    ctx.fillStyle = '#06020f';
+    ctx.fillRect(0, 0, W, H);
+
+    const hex = stageData.color;
+    const rgb = hexToRgb(hex);
+    const topGlow = ctx.createRadialGradient(W/2, 0, 0, W/2, 0, 520);
+    topGlow.addColorStop(0, `rgba(${rgb},0.28)`);
+    topGlow.addColorStop(1, 'rgba(6,2,15,0)');
+    ctx.fillStyle = topGlow;
+    ctx.fillRect(0, 0, W, H);
+
+    const baseGlow = ctx.createRadialGradient(W/2, 0, 0, W/2, 0, 480);
+    baseGlow.addColorStop(0, 'rgba(50,20,100,0.42)');
+    baseGlow.addColorStop(1, 'rgba(6,2,15,0)');
+    ctx.fillStyle = baseGlow; ctx.fillRect(0, 0, W, H);
+
+    [[80,H,300,'rgba(30,55,100,0.25)'],[W-80,H,260,'rgba(70,10,70,0.22)']].forEach(([x,y,r,c])=>{
+      const g = ctx.createRadialGradient(x,y,0,x,y,r);
+      g.addColorStop(0,c); g.addColorStop(1,'rgba(6,2,15,0)');
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+    });
+
+    for (let i = 0; i < 200; i++) {
+      const x = Math.random()*W, y = Math.random()*H;
+      const r = Math.random()*1.5+0.2;
+      const isGold = Math.random()<0.07;
+      const alpha = Math.random()*0.45+0.08;
+      ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
+      ctx.fillStyle = isGold
+        ? `rgba(201,168,76,${alpha*0.65})`
+        : `rgba(232,218,195,${alpha})`;
+      ctx.fill();
+    }
+
+    ctx.strokeStyle = 'rgba(201,168,76,0.28)';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(1,1,W-2,H-2);
+
+    const cs = 32;
+    ctx.strokeStyle = 'rgba(201,168,76,0.3)';
+    ctx.lineWidth = 1;
+    [[24,24,1,1],[W-24,24,-1,1],[24,H-24,1,-1],[W-24,H-24,-1,-1]].forEach(([x,y,dx,dy])=>{
+      ctx.beginPath();
+      ctx.moveTo(x+dx*cs,y); ctx.lineTo(x,y); ctx.lineTo(x,y+dy*cs);
+      ctx.stroke();
+    });
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(201,168,76,0.42)';
+    ctx.font = '400 14px Raleway, sans-serif';
+    ctx.fillText('I  COMPLETED  THE  READING  \u00b7  THE  LOCALIZATION  ORACLE', W/2, 76);
+
+    ctx.fillStyle = '#c9a84c';
+    ctx.font = 'bold 60px "Cinzel Decorative", serif';
+    ctx.fillText('The Localization Oracle', W/2, 152);
+
+    ctx.fillStyle = 'rgba(240,230,204,0.36)';
+    ctx.font = '300 17px Raleway, sans-serif';
+    ctx.fillText('Nine tarot cards \u00b7 The complete craft of Localization PM', W/2, 186);
+
+    const divY = 212;
+    const divG = ctx.createLinearGradient(W/2-180,divY,W/2+180,divY);
+    divG.addColorStop(0,'rgba(201,168,76,0)');
+    divG.addColorStop(0.5,'rgba(201,168,76,0.38)');
+    divG.addColorStop(1,'rgba(201,168,76,0)');
+    ctx.strokeStyle = divG; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(W/2-180,divY); ctx.lineTo(W/2+180,divY); ctx.stroke();
+    ctx.fillStyle = 'rgba(201,168,76,0.48)';
+    ctx.font = '12px serif'; ctx.fillText('\u2726',W/2,divY+5);
+
+    ctx.fillStyle = 'rgba(240,230,204,0.6)';
+    ctx.font = 'italic 20px "IM Fell English", serif';
+    ctx.fillText('\u201cJudgement does not ask whether you are ready.', W/2, 248);
+    ctx.fillText('It announces that you already are.\u201d', W/2, 274);
+
+    const cW=70, cH=108, cGap=9;
+    const totalW = 9*cW + 8*cGap;
+    const cStartX = W/2 - totalW/2;
+    const cY = 298;
+
+    const stageColors=['#a897d8','#a897d8','#a897d8','#3aacac','#3aacac','#3aacac','#c05580','#c05580','#c05580'];
+    const stageBgs=['#1a0f35','#1a0f35','#1a0f35','#0d2525','#0d2525','#0d2525','#2a0f1f','#2a0f1f','#2a0f1f'];
+
+    imgs.forEach((img, i) => {
+      const cx2 = cStartX + i*(cW+cGap);
+      const cy2 = cY;
+      const isDominant = stageData.cards.includes(i);
+
+      ctx.globalAlpha = isDominant ? 1.0 : 0.22;
+
+      ctx.fillStyle = stageBgs[i];
+      roundRect(ctx,cx2,cy2,cW,cH,5); ctx.fill();
+
+      if (img.complete && img.naturalWidth > 0) {
+        ctx.save();
+        roundRect(ctx,cx2,cy2,cW,cH,5); ctx.clip();
+        ctx.drawImage(img,cx2,cy2,cW,cH);
+        ctx.fillStyle='rgba(6,2,15,0.2)';
+        ctx.fillRect(cx2,cy2,cW,cH);
+        ctx.restore();
+      }
+
+      ctx.strokeStyle = isDominant ? stageColors[i] : 'rgba(201,168,76,0.12)';
+      ctx.lineWidth = isDominant ? 1.2 : 0.5;
+      roundRect(ctx,cx2,cy2,cW,cH,5); ctx.stroke();
+
+      if (isDominant) {
+        ctx.fillStyle = stageColors[i];
+        roundRect(ctx,cx2,cy2,cW,3,[2,2,0,0]); ctx.fill();
+      }
+
+      ctx.globalAlpha = 1.0;
+    });
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = stageData.colorBright;
+    ctx.font = 'bold 13px Raleway, sans-serif';
+    ctx.fillText(`YOUR PATH: ${stageData.label.toUpperCase()}`, W/2, 426);
+
+    ctx.fillStyle = 'rgba(240,230,204,0.36)';
+    ctx.font = '300 12px Raleway, sans-serif';
+    ctx.fillText(stageData.desc, W/2, 444);
+
+    const msgRgb = hexToRgb(stageData.color);
+    ctx.fillStyle = `rgba(${msgRgb},0.78)`;
+    ctx.font = 'italic 18px "IM Fell English", serif';
+    wrapText(ctx, message, W/2, 472, W-200, 26);
+
+    ctx.fillStyle = 'rgba(6,2,15,0.82)';
+    ctx.fillRect(0, H-50, W, 50);
+    ctx.strokeStyle = 'rgba(201,168,76,0.14)';
+    ctx.lineWidth = 0.5;
+    ctx.beginPath(); ctx.moveTo(0,H-50); ctx.lineTo(W,H-50); ctx.stroke();
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(201,168,76,0.58)';
+    ctx.font = '500 13px Raleway, sans-serif';
+    ctx.fillText('theoracleoflocalization.online', 34, H-18);
+
+    ctx.textAlign = 'right';
+    ctx.fillStyle = 'rgba(240,230,204,0.3)';
+    ctx.font = '300 13px Raleway, sans-serif';
+    ctx.fillText('Built by Duygu Ta\u015f \u00b7 Localization PM & Linguist', W-34, H-18);
+
+    canvas.toBlob(blob => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'localization-oracle-reading.png';
+      a.click();
+      URL.revokeObjectURL(url);
+      setTimeout(() => showSharePanel(dominant, stageData), 500);
+    }, 'image/png');
+  }
+}
+
+function showSharePanel(dominant, stageData) {
+  document.getElementById('sharePanel')?.remove();
+
+  const panel = document.createElement('div');
+  panel.id = 'sharePanel';
+  panel.style.cssText = `
+    position:fixed;bottom:0;left:0;right:0;
+    background:rgba(11,5,32,0.97);
+    border-top:1px solid rgba(201,168,76,0.22);
+    padding:1.25rem 2rem;z-index:500;
+    font-family:'Raleway',sans-serif;
+    backdrop-filter:blur(12px);
+    display:flex;gap:1.25rem;
+    align-items:flex-start;flex-wrap:wrap;
+  `;
+
+  panel.innerHTML = `
+    <div style="flex:0 0 auto;display:flex;flex-direction:column;
+      gap:4px;min-width:140px;padding-top:2px;">
+      <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+        color:rgba(58,172,172,0.85);">\u2713 Downloaded</div>
+      <div style="font-size:11px;color:rgba(240,230,204,0.45);line-height:1.55;">
+        Your path: <span style="color:${stageData.colorBright};font-weight:600;">
+        ${stageData.label}</span><br>
+        Upload the image to LinkedIn<br>then paste this caption:
+      </div>
+    </div>
+    <div style="flex:1;min-width:220px;">
+      <textarea id="shareCaptionText" readonly
+        style="width:100%;height:86px;
+          background:rgba(6,2,15,0.85);
+          border:1px solid rgba(201,168,76,0.18);
+          border-radius:8px;
+          color:rgba(240,230,204,0.72);
+          font-family:'Raleway',sans-serif;
+          font-size:11px;line-height:1.6;
+          padding:9px 12px;resize:none;outline:none;">${stageData.caption}</textarea>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:7px;flex-shrink:0;">
+      <button id="shareCopyBtn" onclick="copyShareCaption()"
+        style="font-family:'Raleway',sans-serif;font-size:10px;
+          letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+          padding:10px 18px;border-radius:8px;cursor:pointer;
+          background:rgba(201,168,76,0.1);
+          border:1px solid rgba(201,168,76,0.45);
+          color:#c9a84c;white-space:nowrap;transition:all .2s;">
+        Copy Caption
+      </button>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheoracleoflocalization.online%2F"
+         target="_blank"
+         style="font-family:'Raleway',sans-serif;font-size:10px;
+           letter-spacing:.12em;text-transform:uppercase;
+           padding:10px 18px;border-radius:8px;text-decoration:none;
+           background:transparent;
+           border:1px solid rgba(240,230,204,0.15);
+           color:rgba(240,230,204,0.42);text-align:center;
+           white-space:nowrap;display:block;">
+        Open LinkedIn \u2192
+      </a>
+      <button onclick="document.getElementById('sharePanel').remove()"
+        style="font-family:'Raleway',sans-serif;font-size:10px;
+          letter-spacing:.1em;text-transform:uppercase;
+          padding:6px;border-radius:8px;cursor:pointer;
+          background:transparent;border:none;
+          color:rgba(240,230,204,0.22);">
+        Close
+      </button>
+    </div>
+  `;
+
+  document.body.appendChild(panel);
+}
+
+function copyShareCaption() {
+  const text = document.getElementById('shareCaptionText').value;
+  navigator.clipboard.writeText(text).catch(() => {
+    const ta = document.getElementById('shareCaptionText');
+    ta.select(); document.execCommand('copy');
+  });
+  const btn = document.getElementById('shareCopyBtn');
+  btn.textContent = 'Copied \u2713';
+  btn.style.background = 'rgba(58,172,172,0.1)';
+  btn.style.borderColor = 'rgba(58,172,172,0.5)';
+  btn.style.color = '#3aacac';
+  setTimeout(() => {
+    btn.textContent = 'Copy Caption';
+    btn.style.background = 'rgba(201,168,76,0.1)';
+    btn.style.borderColor = 'rgba(201,168,76,0.45)';
+    btn.style.color = '#c9a84c';
+  }, 2500);
+}
 // ── Close + reset ──
 function closeSummoningAndReset(){
   const overlay=document.getElementById('summoningOverlay');
