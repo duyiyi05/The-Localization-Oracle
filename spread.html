@@ -1902,8 +1902,9 @@ function showNamePrompt() {
 }
 
 function generateShareImage() {
-  document.getElementById('namePromptOverlay')?.remove();
   const readerName = (document.getElementById('readerNameInput')?.value || '').trim();
+  // Close name prompt after reading the value
+  document.getElementById('namePromptOverlay')?.remove();
   const dominant = getDominantStage();
   const stageData = DOMINANT_STAGE_DATA[dominant];
   const message = getShareMessage(dominant);
