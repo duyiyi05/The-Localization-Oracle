@@ -220,8 +220,11 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
 @keyframes finishSweep{0%,100%{left:-100%}50%{left:150%}}
 .finish-btn:hover{background:rgba(201,168,76,0.16);border-color:var(--gold)}
 .finish-btn-orn{font-size:11px;opacity:0.6}
-.share-btn-subtle{font-family:'Raleway',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:10px 20px;border-radius:8px;background:transparent;border:1px solid rgba(201,168,76,0.25);color:rgba(201,168,76,0.55);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:color 0.2s,border-color 0.2s,background 0.2s;margin-top:8px}
-.share-btn-subtle:hover{color:var(--gold);border-color:rgba(201,168,76,0.5);background:rgba(201,168,76,0.06)}
+.share-buttons-row,.or-share-row{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.share-li-btn,.or-btn-li{font-family:'Raleway',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:11px 22px;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background 0.2s,border-color 0.2s;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.45);color:var(--gold)}
+.share-li-btn:hover,.or-btn-li:hover{background:rgba(201,168,76,0.2);border-color:var(--gold)}
+.share-dl-btn,.or-btn-dl{font-family:'Raleway',sans-serif;font-size:11px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;padding:11px 18px;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:background 0.2s,color 0.2s;background:transparent;border:1px solid rgba(240,230,204,0.15);color:rgba(240,230,204,0.42)}
+.share-dl-btn:hover,.or-btn-dl:hover{background:rgba(240,230,204,0.05);color:rgba(240,230,204,0.65)}
 .finish-whisper{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:rgba(201,168,76,0.45);letter-spacing:0.04em;font-weight:400}
 
 /* ══════════════════════════════════════
@@ -542,13 +545,22 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
         Complete the Reading
         <span class="finish-btn-orn">✦</span>
       </button>
-      <button class="share-btn-subtle" onclick="generateShareImage()">
-        <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-          <path d="M4 8V13a1 1 0 001 1h6a1 1 0 001-1V8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M8 1v8M5 4l3-3 3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Share your spread
-      </button>
+      <div class="share-buttons-row">
+        <button class="share-li-btn" onclick="shareOnLinkedIn()">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+            <rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M5 6v6M5 4v.4M8 12V9c0-1.5 1-3 3-3v0M11 12V9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          Share on LinkedIn
+        </button>
+        <button class="share-dl-btn" onclick="showNamePrompt()">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <path d="M4 8V13a1 1 0 001 1h6a1 1 0 001-1V8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M8 1v8M5 10l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Download card
+        </button>
+      </div>
       <p class="finish-whisper">Step forward when you are ready.</p>
     </div>
   </div>
@@ -649,13 +661,22 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,36px);color:va
             <span class="or-tag">The Oracle Awakens</span>
           </div>
           <div class="or-buttons">
-            <button class="or-btn-share" onclick="generateShareImage()">
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-                <path d="M4 8V13a1 1 0 001 1h6a1 1 0 001-1V8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-                <path d="M8 1v8M5 4l3-3 3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Download &amp; Share
-            </button>
+            <div class="or-share-row">
+              <button class="or-btn-li" onclick="shareOnLinkedIn()">
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                  <rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.3"/>
+                  <path d="M5 6v6M5 4v.4M8 12V9c0-1.5 1-3 3-3v0M11 12V9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+                Share on LinkedIn
+              </button>
+              <button class="or-btn-dl" onclick="showNamePrompt()">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 8V13a1 1 0 001 1h6a1 1 0 001-1V8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                  <path d="M8 1v8M5 10l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Download card
+              </button>
+            </div>
             <button class="or-btn-again" onclick="closeSummoningAndReset()">Begin Again</button>
             <a href="about.html" class="or-btn-about">Meet the Oracle's Keeper →</a>
           </div>
@@ -1695,7 +1716,7 @@ const DOMINANT_STAGE_DATA = {
   ling: {
     label: 'Linguistic Arts',
     color: '#a897d8',
-    colorBright: 'rgba(168,151,216,0.8)',
+    colorBright: 'rgba(168,151,216,0.85)',
     cards: [0,1,2],
     desc: 'Translation Memory \u00b7 LQA \u00b7 Pseudotranslation',
     caption: `I just walked through a tarot oracle mapping the nine disciplines of localization PM.\n\nMy reading kept returning to the linguistic foundations \u2014 translation memory, LQA, the craft of quality before anything ships.\n\nWhoever built this understood that making invisible work visible requires ceremony.\n\n\ud83d\udc49 theoracleoflocalization.online\n\n#LocalizationPM #L10n #LanguageIndustry`,
@@ -1703,7 +1724,7 @@ const DOMINANT_STAGE_DATA = {
   tech: {
     label: 'Technical Process',
     color: '#3aacac',
-    colorBright: 'rgba(58,172,172,0.8)',
+    colorBright: 'rgba(58,172,172,0.85)',
     cards: [3,4,5],
     desc: 'MTPE \u00b7 Fuzzy Thresholds \u00b7 Asset Management',
     caption: `I just walked through a tarot oracle mapping the nine disciplines of localization PM.\n\nMy reading gravitated to the technical engine room \u2014 MTPE, fuzzy match analysis, linguistic asset governance.\n\nThis is the clearest explanation of localization PM craft I\u2019ve seen in a format people will actually remember.\n\n\ud83d\udc49 theoracleoflocalization.online\n\n#LocalizationPM #L10n #MachineTranslation`,
@@ -1711,7 +1732,7 @@ const DOMINANT_STAGE_DATA = {
   mgmt: {
     label: 'Management & Delivery',
     color: '#c05580',
-    colorBright: 'rgba(192,85,128,0.8)',
+    colorBright: 'rgba(192,85,128,0.85)',
     cards: [6,7,8],
     desc: 'Vendor Management \u00b7 Localization Testing \u00b7 Transcreation',
     caption: `I just walked through a tarot oracle mapping the nine disciplines of localization PM.\n\nMy reading kept returning to programme management \u2014 vendor relationships, localization testing, transcreation.\n\nThe oracle was right: the brief is not a formality.\n\n\ud83d\udc49 theoracleoflocalization.online\n\n#LocalizationPM #L10n #VendorManagement`,
@@ -1719,7 +1740,7 @@ const DOMINANT_STAGE_DATA = {
   balanced: {
     label: 'All Three Stages',
     color: '#c9a84c',
-    colorBright: 'rgba(201,168,76,0.85)',
+    colorBright: 'rgba(201,168,76,0.88)',
     cards: [0,1,2,3,4,5,6,7,8],
     desc: 'Linguistic Arts \u00b7 Technical Process \u00b7 Management & Delivery',
     caption: `I just walked through a tarot oracle mapping the nine disciplines of localization PM.\n\nNine cards. Three stages. The complete craft \u2014 made visible in a format genuinely unlike anything else in the industry.\n\nRarely do portfolio projects stop you mid-scroll. This one did.\n\n\ud83d\udc49 theoracleoflocalization.online\n\n#LocalizationPM #L10n #LanguageIndustry`,
@@ -1788,7 +1809,101 @@ function roundRect(ctx, x, y, w, h, r) {
   ctx.closePath();
 }
 
+function shareOnLinkedIn() {
+  const dominant = getDominantStage();
+  const stageData = DOMINANT_STAGE_DATA[dominant];
+  navigator.clipboard.writeText(stageData.caption).catch(() => {});
+  const url = encodeURIComponent('https://theoracleoflocalization.online/');
+  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+  showCaptionHint(stageData);
+}
+
+function showCaptionHint(stageData) {
+  document.getElementById('captionHint')?.remove();
+  const hint = document.createElement('div');
+  hint.id = 'captionHint';
+  hint.style.cssText = `
+    position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
+    background:rgba(11,5,32,0.97);
+    border:1px solid rgba(201,168,76,0.25);
+    border-radius:10px;padding:12px 20px;z-index:500;
+    font-family:'Raleway',sans-serif;text-align:center;
+    backdrop-filter:blur(12px);max-width:380px;width:90%;
+    box-shadow:0 8px 32px rgba(0,0,0,0.5);
+  `;
+  hint.innerHTML = `
+    <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+      color:rgba(58,172,172,0.85);margin-bottom:6px;">Caption copied to clipboard \u2713</div>
+    <div style="font-size:12px;color:rgba(240,230,204,0.55);line-height:1.6;">
+      LinkedIn is opening. Paste the caption,<br>then post \u2014 the preview loads automatically.
+    </div>
+    <div style="margin-top:8px;font-size:11px;color:${stageData.colorBright};font-style:italic;">
+      Your path: ${stageData.label}
+    </div>
+  `;
+  document.body.appendChild(hint);
+  setTimeout(() => hint.remove(), 5000);
+}
+
+function showNamePrompt() {
+  document.getElementById('namePromptOverlay')?.remove();
+  const overlay = document.createElement('div');
+  overlay.id = 'namePromptOverlay';
+  overlay.style.cssText = `
+    position:fixed;inset:0;background:rgba(6,2,15,0.85);z-index:400;
+    display:flex;align-items:center;justify-content:center;
+    backdrop-filter:blur(6px);
+  `;
+  overlay.innerHTML = `
+    <div style="background:#100828;border:1px solid rgba(201,168,76,0.28);
+      border-radius:14px;padding:2rem 2.25rem;max-width:380px;width:90%;
+      text-align:center;font-family:'Raleway',sans-serif;">
+      <div style="font-family:'Cinzel Decorative',serif;font-size:13px;
+        color:#c9a84c;letter-spacing:.08em;margin-bottom:8px;">
+        Personalise Your Card
+      </div>
+      <div style="font-size:13px;color:rgba(240,230,204,0.55);
+        line-height:1.6;margin-bottom:1.25rem;">
+        Add your name to the card \u2014 or leave it blank<br>and generate without.
+      </div>
+      <input id="readerNameInput" type="text" placeholder="Your name (optional)"
+        maxlength="32"
+        style="width:100%;padding:11px 14px;background:rgba(6,2,15,0.8);
+          border:1px solid rgba(201,168,76,0.25);border-radius:8px;
+          color:#f0e6cc;font-family:'Raleway',sans-serif;font-size:14px;
+          outline:none;text-align:center;margin-bottom:1rem;
+          letter-spacing:.04em;transition:border-color .2s;box-sizing:border-box;"
+        onfocus="this.style.borderColor='rgba(201,168,76,0.6)'"
+        onblur="this.style.borderColor='rgba(201,168,76,0.25)'"
+        onkeydown="if(event.key==='Enter')generateShareImage()"
+      />
+      <div style="display:flex;gap:10px;justify-content:center;">
+        <button onclick="generateShareImage()"
+          style="font-family:'Raleway',sans-serif;font-size:11px;
+            letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+            padding:10px 22px;border-radius:8px;cursor:pointer;
+            background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.45);
+            color:#c9a84c;transition:background .2s;">
+          Generate Card
+        </button>
+        <button onclick="document.getElementById('namePromptOverlay').remove()"
+          style="font-family:'Raleway',sans-serif;font-size:11px;
+            letter-spacing:.1em;text-transform:uppercase;
+            padding:10px 18px;border-radius:8px;cursor:pointer;
+            background:transparent;border:1px solid rgba(240,230,204,0.12);
+            color:rgba(240,230,204,0.35);">
+          Cancel
+        </button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  setTimeout(() => document.getElementById('readerNameInput')?.focus(), 100);
+}
+
 function generateShareImage() {
+  document.getElementById('namePromptOverlay')?.remove();
+  const readerName = (document.getElementById('readerNameInput')?.value || '').trim();
   const dominant = getDominantStage();
   const stageData = DOMINANT_STAGE_DATA[dominant];
   const message = getShareMessage(dominant);
@@ -1813,106 +1928,119 @@ function generateShareImage() {
     img.onload = done; img.onerror = done;
     return img;
   });
-
-  if (imgs.every(img => img.complete)) drawAll();
+  if (imgs.every(i => i.complete)) drawAll();
 
   function drawAll() {
-    if (loaded < 9 && !imgs.every(i => i.complete)) return;
-
+    // BACKGROUND
     ctx.fillStyle = '#06020f';
     ctx.fillRect(0, 0, W, H);
 
-    const hex = stageData.color;
-    const rgb = hexToRgb(hex);
-    const topGlow = ctx.createRadialGradient(W/2, 0, 0, W/2, 0, 520);
-    topGlow.addColorStop(0, `rgba(${rgb},0.28)`);
-    topGlow.addColorStop(1, 'rgba(6,2,15,0)');
-    ctx.fillStyle = topGlow;
-    ctx.fillRect(0, 0, W, H);
+    const rgb = hexToRgb(stageData.color);
 
-    const baseGlow = ctx.createRadialGradient(W/2, 0, 0, W/2, 0, 480);
-    baseGlow.addColorStop(0, 'rgba(50,20,100,0.42)');
-    baseGlow.addColorStop(1, 'rgba(6,2,15,0)');
-    ctx.fillStyle = baseGlow; ctx.fillRect(0, 0, W, H);
+    const topGlow = ctx.createRadialGradient(W/2,0,0,W/2,0,520);
+    topGlow.addColorStop(0,`rgba(${rgb},0.28)`);
+    topGlow.addColorStop(1,'rgba(6,2,15,0)');
+    ctx.fillStyle=topGlow; ctx.fillRect(0,0,W,H);
+
+    const baseGlow = ctx.createRadialGradient(W/2,0,0,W/2,0,480);
+    baseGlow.addColorStop(0,'rgba(50,20,100,0.42)');
+    baseGlow.addColorStop(1,'rgba(6,2,15,0)');
+    ctx.fillStyle=baseGlow; ctx.fillRect(0,0,W,H);
 
     [[80,H,300,'rgba(30,55,100,0.25)'],[W-80,H,260,'rgba(70,10,70,0.22)']].forEach(([x,y,r,c])=>{
-      const g = ctx.createRadialGradient(x,y,0,x,y,r);
+      const g=ctx.createRadialGradient(x,y,0,x,y,r);
       g.addColorStop(0,c); g.addColorStop(1,'rgba(6,2,15,0)');
-      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+      ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
     });
 
-    for (let i = 0; i < 200; i++) {
-      const x = Math.random()*W, y = Math.random()*H;
-      const r = Math.random()*1.5+0.2;
-      const isGold = Math.random()<0.07;
-      const alpha = Math.random()*0.45+0.08;
+    // STARS
+    for (let i=0;i<200;i++){
+      const x=Math.random()*W, y=Math.random()*H;
+      const r=Math.random()*1.5+0.2;
+      const isGold=Math.random()<0.07;
+      const alpha=Math.random()*0.45+0.08;
       ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
-      ctx.fillStyle = isGold
-        ? `rgba(201,168,76,${alpha*0.65})`
-        : `rgba(232,218,195,${alpha})`;
+      ctx.fillStyle=isGold?`rgba(201,168,76,${alpha*0.65})`:`rgba(232,218,195,${alpha})`;
       ctx.fill();
     }
 
-    ctx.strokeStyle = 'rgba(201,168,76,0.28)';
-    ctx.lineWidth = 1.5;
+    // BORDER
+    ctx.strokeStyle='rgba(201,168,76,0.28)';
+    ctx.lineWidth=1.5;
     ctx.strokeRect(1,1,W-2,H-2);
 
-    const cs = 32;
-    ctx.strokeStyle = 'rgba(201,168,76,0.3)';
-    ctx.lineWidth = 1;
+    // CORNER ORNAMENTS
+    const cs=32;
+    ctx.strokeStyle='rgba(201,168,76,0.3)';
+    ctx.lineWidth=1;
     [[24,24,1,1],[W-24,24,-1,1],[24,H-24,1,-1],[W-24,H-24,-1,-1]].forEach(([x,y,dx,dy])=>{
       ctx.beginPath();
       ctx.moveTo(x+dx*cs,y); ctx.lineTo(x,y); ctx.lineTo(x,y+dy*cs);
       ctx.stroke();
     });
 
-    ctx.textAlign = 'center';
-    ctx.fillStyle = 'rgba(201,168,76,0.42)';
-    ctx.font = '400 14px Raleway, sans-serif';
-    ctx.fillText('I  COMPLETED  THE  READING  \u00b7  THE  LOCALIZATION  ORACLE', W/2, 76);
+    // READER NAME / EYEBROW
+    ctx.textAlign='center';
+    if (readerName) {
+      ctx.fillStyle=`rgba(${rgb},0.55)`;
+      ctx.font='300 14px Raleway, sans-serif';
+      ctx.fillText(readerName.toUpperCase(), W/2, 52);
+      ctx.fillStyle='rgba(201,168,76,0.35)';
+      ctx.font='400 13px Raleway, sans-serif';
+      ctx.fillText('COMPLETED THE READING', W/2, 72);
+    } else {
+      ctx.fillStyle='rgba(201,168,76,0.42)';
+      ctx.font='400 13px Raleway, sans-serif';
+      ctx.fillText('I  COMPLETED  THE  READING  \u00b7  THE  LOCALIZATION  ORACLE', W/2, 66);
+    }
 
-    ctx.fillStyle = '#c9a84c';
-    ctx.font = 'bold 60px "Cinzel Decorative", serif';
-    ctx.fillText('The Localization Oracle', W/2, 152);
+    // TITLE
+    ctx.fillStyle='#c9a84c';
+    ctx.font='bold 58px "Cinzel Decorative", serif';
+    ctx.fillText('The Localization Oracle', W/2, readerName ? 148 : 142);
 
-    ctx.fillStyle = 'rgba(240,230,204,0.36)';
-    ctx.font = '300 17px Raleway, sans-serif';
-    ctx.fillText('Nine tarot cards \u00b7 The complete craft of Localization PM', W/2, 186);
+    // CONTEXT
+    ctx.fillStyle='rgba(240,230,204,0.36)';
+    ctx.font='300 16px Raleway, sans-serif';
+    ctx.fillText('Nine tarot cards \u00b7 The complete craft of Localization PM', W/2, readerName ? 178 : 172);
 
-    const divY = 212;
-    const divG = ctx.createLinearGradient(W/2-180,divY,W/2+180,divY);
+    // DIVIDER
+    const divY = readerName ? 204 : 198;
+    const divG=ctx.createLinearGradient(W/2-180,divY,W/2+180,divY);
     divG.addColorStop(0,'rgba(201,168,76,0)');
     divG.addColorStop(0.5,'rgba(201,168,76,0.38)');
     divG.addColorStop(1,'rgba(201,168,76,0)');
-    ctx.strokeStyle = divG; ctx.lineWidth = 1;
+    ctx.strokeStyle=divG; ctx.lineWidth=1;
     ctx.beginPath(); ctx.moveTo(W/2-180,divY); ctx.lineTo(W/2+180,divY); ctx.stroke();
-    ctx.fillStyle = 'rgba(201,168,76,0.48)';
-    ctx.font = '12px serif'; ctx.fillText('\u2726',W/2,divY+5);
+    ctx.fillStyle='rgba(201,168,76,0.48)';
+    ctx.font='12px serif'; ctx.fillText('\u2726',W/2,divY+5);
 
-    ctx.fillStyle = 'rgba(240,230,204,0.6)';
-    ctx.font = 'italic 20px "IM Fell English", serif';
-    ctx.fillText('\u201cJudgement does not ask whether you are ready.', W/2, 248);
-    ctx.fillText('It announces that you already are.\u201d', W/2, 274);
+    // JUDGEMENT QUOTE
+    ctx.fillStyle='rgba(240,230,204,0.6)';
+    ctx.font='italic 20px "IM Fell English", serif';
+    const qY = divY + 34;
+    ctx.fillText('\u201cJudgement does not ask whether you are ready.', W/2, qY);
+    ctx.fillText('It announces that you already are.\u201d', W/2, qY+26);
 
-    const cW=70, cH=108, cGap=9;
-    const totalW = 9*cW + 8*cGap;
-    const cStartX = W/2 - totalW/2;
-    const cY = 298;
+    // CARDS ROW
+    const cW=68, cH=106, cGap=9;
+    const totalW=9*cW+8*cGap;
+    const cStartX=W/2-totalW/2;
+    const cY = qY + 52;
 
     const stageColors=['#a897d8','#a897d8','#a897d8','#3aacac','#3aacac','#3aacac','#c05580','#c05580','#c05580'];
     const stageBgs=['#1a0f35','#1a0f35','#1a0f35','#0d2525','#0d2525','#0d2525','#2a0f1f','#2a0f1f','#2a0f1f'];
 
-    imgs.forEach((img, i) => {
-      const cx2 = cStartX + i*(cW+cGap);
-      const cy2 = cY;
-      const isDominant = stageData.cards.includes(i);
+    imgs.forEach((img,i) => {
+      const cx2=cStartX+i*(cW+cGap), cy2=cY;
+      const isDominant=stageData.cards.includes(i);
 
-      ctx.globalAlpha = isDominant ? 1.0 : 0.22;
+      ctx.globalAlpha=isDominant?1.0:0.22;
 
-      ctx.fillStyle = stageBgs[i];
+      ctx.fillStyle=stageBgs[i];
       roundRect(ctx,cx2,cy2,cW,cH,5); ctx.fill();
 
-      if (img.complete && img.naturalWidth > 0) {
+      if (img.complete&&img.naturalWidth>0) {
         ctx.save();
         roundRect(ctx,cx2,cy2,cW,cH,5); ctx.clip();
         ctx.drawImage(img,cx2,cy2,cW,cH);
@@ -1921,150 +2049,63 @@ function generateShareImage() {
         ctx.restore();
       }
 
-      ctx.strokeStyle = isDominant ? stageColors[i] : 'rgba(201,168,76,0.12)';
-      ctx.lineWidth = isDominant ? 1.2 : 0.5;
+      ctx.strokeStyle=isDominant?stageColors[i]:'rgba(201,168,76,0.12)';
+      ctx.lineWidth=isDominant?1.2:0.5;
       roundRect(ctx,cx2,cy2,cW,cH,5); ctx.stroke();
 
       if (isDominant) {
-        ctx.fillStyle = stageColors[i];
+        ctx.fillStyle=stageColors[i];
         roundRect(ctx,cx2,cy2,cW,3,[2,2,0,0]); ctx.fill();
       }
 
-      ctx.globalAlpha = 1.0;
+      ctx.globalAlpha=1.0;
     });
 
-    ctx.textAlign = 'center';
-    ctx.fillStyle = stageData.colorBright;
-    ctx.font = 'bold 13px Raleway, sans-serif';
-    ctx.fillText(`YOUR PATH: ${stageData.label.toUpperCase()}`, W/2, 426);
+    // DOMINANT LABEL
+    const labelY = cY + cH + 22;
+    ctx.textAlign='center';
+    ctx.fillStyle=stageData.colorBright;
+    ctx.font='bold 13px Raleway, sans-serif';
+    ctx.fillText(`YOUR PATH: ${stageData.label.toUpperCase()}`, W/2, labelY);
 
-    ctx.fillStyle = 'rgba(240,230,204,0.36)';
-    ctx.font = '300 12px Raleway, sans-serif';
-    ctx.fillText(stageData.desc, W/2, 444);
+    ctx.fillStyle='rgba(240,230,204,0.35)';
+    ctx.font='300 12px Raleway, sans-serif';
+    ctx.fillText(stageData.desc, W/2, labelY+18);
 
-    const msgRgb = hexToRgb(stageData.color);
-    ctx.fillStyle = `rgba(${msgRgb},0.78)`;
-    ctx.font = 'italic 18px "IM Fell English", serif';
-    wrapText(ctx, message, W/2, 472, W-200, 26);
+    // ORACLE MESSAGE
+    ctx.fillStyle=`rgba(${rgb},0.78)`;
+    ctx.font='italic 17px "IM Fell English", serif';
+    wrapText(ctx, message, W/2, labelY+42, W-200, 24);
 
-    ctx.fillStyle = 'rgba(6,2,15,0.82)';
-    ctx.fillRect(0, H-50, W, 50);
-    ctx.strokeStyle = 'rgba(201,168,76,0.14)';
-    ctx.lineWidth = 0.5;
+    // BOTTOM BAR
+    ctx.fillStyle='rgba(6,2,15,0.82)';
+    ctx.fillRect(0,H-50,W,50);
+    ctx.strokeStyle='rgba(201,168,76,0.14)';
+    ctx.lineWidth=0.5;
     ctx.beginPath(); ctx.moveTo(0,H-50); ctx.lineTo(W,H-50); ctx.stroke();
 
-    ctx.textAlign = 'left';
-    ctx.fillStyle = 'rgba(201,168,76,0.58)';
-    ctx.font = '500 13px Raleway, sans-serif';
+    ctx.textAlign='left';
+    ctx.fillStyle='rgba(201,168,76,0.58)';
+    ctx.font='500 13px Raleway, sans-serif';
     ctx.fillText('theoracleoflocalization.online', 34, H-18);
 
-    ctx.textAlign = 'right';
-    ctx.fillStyle = 'rgba(240,230,204,0.3)';
-    ctx.font = '300 13px Raleway, sans-serif';
+    ctx.textAlign='right';
+    ctx.fillStyle='rgba(240,230,204,0.3)';
+    ctx.font='300 13px Raleway, sans-serif';
     ctx.fillText('Built by Duygu Ta\u015f \u00b7 Localization PM & Linguist', W-34, H-18);
 
+    // DOWNLOAD
+    const filename = readerName
+      ? `oracle-reading-${readerName.toLowerCase().replace(/\s+/g,'-')}.png`
+      : 'localization-oracle-reading.png';
+
     canvas.toBlob(blob => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'localization-oracle-reading.png';
-      a.click();
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      a.href=url; a.download=filename; a.click();
       URL.revokeObjectURL(url);
-      setTimeout(() => showSharePanel(dominant, stageData), 500);
     }, 'image/png');
   }
-}
-
-function showSharePanel(dominant, stageData) {
-  document.getElementById('sharePanel')?.remove();
-
-  const panel = document.createElement('div');
-  panel.id = 'sharePanel';
-  panel.style.cssText = `
-    position:fixed;bottom:0;left:0;right:0;
-    background:rgba(11,5,32,0.97);
-    border-top:1px solid rgba(201,168,76,0.22);
-    padding:1.25rem 2rem;z-index:500;
-    font-family:'Raleway',sans-serif;
-    backdrop-filter:blur(12px);
-    display:flex;gap:1.25rem;
-    align-items:flex-start;flex-wrap:wrap;
-  `;
-
-  panel.innerHTML = `
-    <div style="flex:0 0 auto;display:flex;flex-direction:column;
-      gap:4px;min-width:140px;padding-top:2px;">
-      <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;
-        color:rgba(58,172,172,0.85);">\u2713 Downloaded</div>
-      <div style="font-size:11px;color:rgba(240,230,204,0.45);line-height:1.55;">
-        Your path: <span style="color:${stageData.colorBright};font-weight:600;">
-        ${stageData.label}</span><br>
-        Upload the image to LinkedIn<br>then paste this caption:
-      </div>
-    </div>
-    <div style="flex:1;min-width:220px;">
-      <textarea id="shareCaptionText" readonly
-        style="width:100%;height:86px;
-          background:rgba(6,2,15,0.85);
-          border:1px solid rgba(201,168,76,0.18);
-          border-radius:8px;
-          color:rgba(240,230,204,0.72);
-          font-family:'Raleway',sans-serif;
-          font-size:11px;line-height:1.6;
-          padding:9px 12px;resize:none;outline:none;">${stageData.caption}</textarea>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:7px;flex-shrink:0;">
-      <button id="shareCopyBtn" onclick="copyShareCaption()"
-        style="font-family:'Raleway',sans-serif;font-size:10px;
-          letter-spacing:.12em;text-transform:uppercase;font-weight:600;
-          padding:10px 18px;border-radius:8px;cursor:pointer;
-          background:rgba(201,168,76,0.1);
-          border:1px solid rgba(201,168,76,0.45);
-          color:#c9a84c;white-space:nowrap;transition:all .2s;">
-        Copy Caption
-      </button>
-      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheoracleoflocalization.online%2F"
-         target="_blank"
-         style="font-family:'Raleway',sans-serif;font-size:10px;
-           letter-spacing:.12em;text-transform:uppercase;
-           padding:10px 18px;border-radius:8px;text-decoration:none;
-           background:transparent;
-           border:1px solid rgba(240,230,204,0.15);
-           color:rgba(240,230,204,0.42);text-align:center;
-           white-space:nowrap;display:block;">
-        Open LinkedIn \u2192
-      </a>
-      <button onclick="document.getElementById('sharePanel').remove()"
-        style="font-family:'Raleway',sans-serif;font-size:10px;
-          letter-spacing:.1em;text-transform:uppercase;
-          padding:6px;border-radius:8px;cursor:pointer;
-          background:transparent;border:none;
-          color:rgba(240,230,204,0.22);">
-        Close
-      </button>
-    </div>
-  `;
-
-  document.body.appendChild(panel);
-}
-
-function copyShareCaption() {
-  const text = document.getElementById('shareCaptionText').value;
-  navigator.clipboard.writeText(text).catch(() => {
-    const ta = document.getElementById('shareCaptionText');
-    ta.select(); document.execCommand('copy');
-  });
-  const btn = document.getElementById('shareCopyBtn');
-  btn.textContent = 'Copied \u2713';
-  btn.style.background = 'rgba(58,172,172,0.1)';
-  btn.style.borderColor = 'rgba(58,172,172,0.5)';
-  btn.style.color = '#3aacac';
-  setTimeout(() => {
-    btn.textContent = 'Copy Caption';
-    btn.style.background = 'rgba(201,168,76,0.1)';
-    btn.style.borderColor = 'rgba(201,168,76,0.45)';
-    btn.style.color = '#c9a84c';
-  }, 2500);
 }
 // ── Close + reset ──
 function closeSummoningAndReset(){
